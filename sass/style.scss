@@ -1,0 +1,26 @@
+/*
+Theme Name:  FC Online 2014
+Theme URI:   http://www.codestructor.de/theme/
+Author:      Marvin Schirrmacher
+Author URI:  http://www.codestructor.de/
+Description: Official theme template of Codestructor.
+Version:     2.2
+License:     Codestructor, Inhaber Marvin Schirrmacher
+License URI: http://www.codestructor.de/license/
+Tags:        
+Text Domain: fconline
+*/
+
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+
+@import "_variables.scss";
+@import "_functions.scss";
+@import "_normalize.scss";
+@import "_structure.scss";
+@import "_navigation.scss";
+@import "_patterns.scss";
+@import "_content.scss";
+
+@import "../bower_components/photoswipe/src/css/main.scss";
+@import "../bower_components/photoswipe/src/css/default-skin/default-skin.scss";

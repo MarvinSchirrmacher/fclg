@@ -1,0 +1,31 @@
+$font-size: 16px;
+$primary-font-size-small: 14px;
+$primary-font-weight: 400;
+$primary-line-height: 1.5;
+$primary-text-tag-margin: 12px;
+
+$primary-color: lighten(black, 20%);
+$secondary-color: #97BF0D; /* rgb(151, 191,  13) */
+$tertiary-color: #229F00; /* rgb( 34, 159,   0) */
+
+$color-background-hover: lighten(black, 90%);
+$background_stripe: rgba(white, 0.2);
+$background-color: #f8f8ff;
+
+$primary-margin: 20px;
+$primary-padding: 25px;
+$secondary-padding: 5px;
+
+$primary-border-radius: 5px;
+$secondary-border-radius: 3px;
+
+$primary-box-shadow: 0 0 10px rgba(black, 0.25);
+$secondary-box-shadow: 0 0 5px rgba(black, 0.25);
+$tertiary-box-shadow: 0 0 3px rgba(black, 0.25);
+
+$site-navigation-width: 220px;
+$navw_s_li_padding: 0 10px; // navw = nav#website
+$admin-bar-height-breakpoint1: 782px;
+$admin-bar-height-breakpoint2: 600px;
+$admin-bar-height: 32px;
+$admin-bar-height-small-screen: 46px;

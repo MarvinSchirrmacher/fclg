@@ -1,0 +1,408 @@
+/* Page */
+
+#page {
+	padding-top: 20px;
+}
+
+#page-header,
+#page-main,
+#page-footer {
+	@include clearfix();	
+}
+
+#page-main {
+	margin-top: $primary-margin !important;
+}
+
+.inside {
+	margin: 0 auto !important;
+	max-width: 1512px;
+	width: 95%;
+	@include breakpoint(M) {
+		width: 100%;
+	}
+}
+
+#content {
+	> br { display: none !important; }
+}
+
+/* Header */
+
+.strip {
+	color: white;
+	background-color: lighten(black, 30%);
+	@include box-shadow($primary-box-shadow);
+	@include three-dimensional();
+	> * { position: relative; }
+}
+
+#top-strip {
+	z-index: 9;
+	color: $primary-color;
+	padding: 15px 0px;
+	background: darken(white, 10%) !important;
+}
+
+#page-title-wrapper {
+	height: 28px;
+	padding: 0px 20px;
+	@include flexbox($align: flex-end);
+}
+
+#page-title,
+#page-claim {
+	fill: $primary-color;
+	width: 190px;
+}
+
+#page-claim {
+	margin-left: 15px;
+}
+
+@include breakpoint(S) {
+	#page-title-wrapper {
+		height: (28px * 1.5 + 15px);
+		@include flex-direction(column);
+		@include flex-align(flex-start);
+	}
+	#page-claim {
+		margin-top: 15px;
+		margin-left: 0;
+	}
+}
+
+@include breakpoint(XXS) {
+	#page-title-wrapper {
+		@include flex-align(center);
+	}
+}
+
+#middle-strip {
+	z-index: 8;
+	height: 35px;
+	background: lighten($tertiary-color, 2.5%) !important;
+	@include breakpoint(XS) {
+		height: 70px;
+	}
+}
+#bottom-strip {
+	z-index: 7;
+	height: 25px;
+	background: lighten($secondary-color, 2.5%) !important;
+	@include breakpoint(XS) {
+		height: 50px;
+	}
+}
+
+$logo-diameter: 140px;
+$logo-radius: 70px;
+$logo-border: 5px;
+#site-logo {
+	z-index: 20;
+	display: block;
+	width: $logo-diameter;
+	height: $logo-diameter;
+	background: lighten($tertiary-color, 0%);
+	border: solid $logo-border $background-color;
+	margin: -$logo-diameter + 10px auto -10px;
+	position: relative;
+	@include border-radius($logo-radius);
+	@include box-shadow($primary-box-shadow, inset $primary-box-shadow);
+	@include breakpoint(XS) {
+		margin-top: -130px;
+		margin-bottom: -10px;
+	}
+	&:before, &:after, & span {
+		position: absolute;
+		left: -$logo-border;
+		top: -$logo-border;
+		display: block;
+		width: calc(100% + 2 * #{$logo-border});
+		height: calc(100% + 2 * #{$logo-border});
+		overflow: hidden;
+		@include box-sizing(border);
+		@include border-radius($logo-radius);
+	}
+	&:before, &:after {
+		content: "";
+	}
+	&:before {
+		z-index: 21;
+		background-image: url("images/coat-of-arms.svg");
+		background-position: 50% 57%;
+		background-size: 65% 65%;
+		background-repeat: no-repeat;
+		@include opacity(1);
+		@include transition(all 0.3s ease-out 0.0s);
+	}
+	span {
+		z-index: 22;
+		@include icon($icon-home, false);
+		@include opacity(0);
+		@include transform(scale(1.25));
+		&:before {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -0.5em;
+			margin-top: -0.525em;
+			color: white;
+			font-size: 5.5em;
+			text-shadow: 0 0 5px rgba(black, 0.75);
+		}
+	}
+	&:after {
+		z-index: 23;
+		@include background(
+			radial-gradient(
+				50% 10%, circle 30%,
+				rgba(255, 255, 255, 0.4)   0%,
+				rgba(255, 255, 255, 0.0) 100%),
+			radial-gradient(
+				50% -20%, circle 100%,
+				rgba(255, 255, 255, 0.0)    0%,
+				rgba(255, 255, 255, 0.0)   50%,
+				rgba(  0,   0,   0, 0.15) 100%)
+		);
+	}
+	&:hover {
+		&:before {
+			@include opacity(0);
+			@include transition(all 0.1s ease-in 0.0s);
+		}
+		span {
+			@include opacity(1);
+			@include transform(scale(1));
+		}
+	}
+}
+
+/* Footer */
+
+#page-footer {
+	margin-top: 30px;
+}
+
+#footer-sidebar {
+	overflow: hidden;
+	margin-top: 20px;
+	> .inside {
+		@include flexbox();
+	}
+	.widget {
+		width: 25%;
+		@include breakpoint(S) { width: 50%; }
+		@include breakpoint(XXS) { width: 100%; }
+		&:hover {
+			background: black;
+			background: rgba(black, 0.25);
+		}
+		&:nth-child(4n-3):hover { background: rgba( 59,  89, 182, 0.25); } // Facebook
+		&:nth-child(4n-2):hover { background: rgba(245,  96,  64, 0.25); } // Instagram
+		&:nth-child(4n-1):hover { background: rgba(  0,  46,  95, 0.25); } // FuPa
+		&:nth-child(4n-0):hover { background: rgba(153, 204,  51, 0.25); } // Fussball
+	}
+	.textwidget {
+		padding: $primary-padding * 0.8;
+		font-size: 0.9em;
+		h5 {
+			margin: 0em 0em 10px;
+		}
+		p {
+			margin: 0em 0em 10px;
+		}
+		& + & {
+			float: left;
+			width: 100%;
+			@include breakpoint(S) { width: 50%; }
+			@include breakpoint(XS) { width: 100%; }
+		}
+	}
+}
+
+$footer-logo-width: 190px;
+#site-info {
+	margin-top: 30px;
+	@include breakpoint(S) {
+		margin-top: 15px;
+	}
+	> .inside {
+		padding: 10px ($primary-padding * 0.8);
+		span {
+			display: block;
+			max-width: calc(100% - #{$footer-logo-width} + #{$primary-padding});
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+			z-index: 2;
+			width: $footer-logo-width;
+			height: 200px;
+			background: url(images/footballer_190px.png) no-repeat center center;
+			background-size: 190px 200px;
+			@include pixel-ratio(1.5) {
+				background: url(images/footballer_284px.png) no-repeat center center;
+				background-size: 190px 200px;
+			}
+			@include pixel-ratio(2) {
+				background: url(images/footballer_379px.png) no-repeat center center;
+				background-size: 190px 200px;
+			}
+		}
+	}
+}
+
+/* Module */
+
+$module-title-height: ( $font-size * 1.5 );
+.module {
+	background: white;
+	margin-bottom: 20px !important;
+	padding: $primary-padding;
+	position: relative;
+	@include box-shadow($secondary-box-shadow);
+	&[data-heading]:not([data-heading=""]) {
+		padding-top: $module-title-height + $primary-padding;
+		&:before {
+			background: lighten(black, 30%);
+			color: white;
+			content: attr(data-heading);
+			font-size: $font-size * 0.9;
+			left: 0;
+			line-height: 1;
+			padding: 0.4em $primary-padding;
+			position: absolute;
+			text-transform: uppercase;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+			@include box-shadow($secondary-box-shadow);
+		}
+	}
+	&.unpadded,
+	&.menu-module,
+	&.image-module,
+	&.map-module,
+	&.posts,
+	&.teams,
+	&.connections-module,
+	&.widget_post_preview,
+	&.widget_sp_image,
+	&.widget_em_widget,
+	&.widget_categories,
+	&.widget_archive,
+	&.widget_em_calendar,
+	&.customMetaWidget {
+		padding: 0;
+		&[data-heading]:not([data-heading=""]) {
+			padding-top: $module-title-height;
+		}
+	}
+	p {
+		text-align: justify;
+	}
+	> h1,
+	> h2,
+	> h3,
+	> h4,
+	> h5,
+	> h6 {
+		margin-top: 0;
+	} 
+}
+
+/* Columns */
+
+[class*="columns"] {
+	@include flexbox($width: 100%);
+}
+.columns-2 > * { width: (100% / 2); }
+.columns-3 > * { width: (100% / 3); }
+.columns-4 > * { width: (100% / 4); }
+@include breakpoint(XS) {
+	.columns-3 > * { width: (100% / 2); }
+	.columns-4 > * { width: (100% / 3); }
+}
+@include breakpoint(XXS) {
+	.columns-2 > *,
+	.columns-3 > * { width: (100% / 1); }
+	.columns-4 > * { width: (100% / 2); }
+}
+
+/* Grid */
+
+.grid {
+	padding-left: 20px !important;
+}
+
+[class*="grid-"] {
+	float: left;
+	padding-right: 20px;
+	&.group {
+		padding-right: 0px !important;
+		> *:not([class*="grid-"]) {
+			clear: left;
+			margin-right: 20px !important;
+			@include breakpoint(XXS) {
+				margin-right: 10px !important;
+			}
+		}
+	}
+	> br {
+		display: none;
+	}
+}
+
+.grid-1-5 { width: (100% * 1/5); }
+.grid-1-4 { width: (100% * 1/4); }
+.grid-1-3 { width: (100% * 1/3); }
+.grid-1-2 { width: (100% * 1/2); }
+.grid-2-3 { width: (100% * 2/3); }
+.grid-3-4 { width: (100% * 3/4); }
+.grid-4-5 { width: (100% * 4/5); }
+.grid-5-6 { width: (100% * 5/6); }
+.grid-8-9 { width: (100% * 8/9); }
+.grid-1-1 {	width: (100% * 1/1); }
+
+@include breakpoint(S) {
+	.grid-1-4 {	width: (100% * 1/3); }
+	.grid-1-2 {	width: (100% * 2/3);
+		> .grid-1-2 { width: (100% * 1/2); } }
+	.grid-2-3 {
+		> .grid-1-2 { width: (100% * 1/2); }	}
+	.grid-3-4 {	width: (100% * 1/1); }
+	#primary-sidebar {
+		width: (100% * 1/1);
+		> .grid-1-1 { width: (100% * 1/3); }
+	}
+}
+@include breakpoint(XS) {
+	.grid-1-5 {	width: (100% * 1/3); }
+	.grid-1-4 {	width: (100% * 1/1);
+		> .grid-1-1 { width: (100% * 1/2); } }
+	.grid-1-3 {	width: (100% * 1/2); }
+	.grid-1-2 {	width: (100% * 1/1); }
+	.grid-2-3 {
+		~ .grid-1-3 { width: (100% * 1/1); } }
+	.grid-3-4 {
+		.grid-2-3 { width: (100% * 1/1); }
+		.grid-1-4 {	width: (100% * 1/2);	} }
+	#primary-sidebar {
+		> .grid-1-1 { width: (100% * 1/2); } }
+}
+@include breakpoint(XXS) {
+	.grid-3-4.group {
+		.grid-1-4 {	width: (100% * 1/2) !important; } }
+	.grid-1-5 { width: (100% * 1/2); }
+	.grid-1-3 { width: (100% * 1/1); }
+	.grid {
+		padding-left: 10px !important;
+	}
+	[class*="grid-"] {
+		width: 100% !important;
+		padding-right: 10px;
+	}
+}

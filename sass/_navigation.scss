@@ -1,0 +1,375 @@
+/* Menu */
+
+.menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+/* Back to top link */
+
+$menu-item-border: solid 1px lighten(black, 20%);
+
+#back-to-top,
+#navigation-toggle {
+	background: lighten(black, 30%);
+	@include box-shadow( $primary-box-shadow );
+	position: fixed;
+	right: $primary-padding * 0.8;
+	z-index: 500;
+	display: block;
+	padding: $primary-padding * 0.4;
+	color: white;
+	font-weight: bold;
+	font-size: $font-size * 1.75;
+	line-height: 1;
+	@include border-radius(50%);
+	&:hover {
+		background: lighten(black, 20%);
+	}
+}
+
+#back-to-top {
+	bottom: $primary-padding * 0.8;
+	@include icon( $icon-chevron-up, false );
+	@include transform( scale(1) );
+	&.hidden {
+		@include transform( scale(0) );
+	}
+	@include breakpoint(XXS) {
+		right: $primary-padding * 0.4;
+		bottom: $primary-padding * 0.4;
+	}
+}
+
+#navigation-toggle {
+	display: none;
+	top: $primary-padding * 0.8;
+	@include icon( $icon-menu, false );
+	&.active {
+		border-left: $menu-item-border;
+		border-bottom: $menu-item-border;
+		font-size: $font-size * 1.4;
+		right: 0;
+		top: 0;
+		@include border-radius(0);
+		@include box-shadow(none);
+		@include icon-content( $icon-cross );
+	}
+	@include breakpoint(M) {
+		display: block;
+	}
+	@include breakpoint(XXS) {
+		right: $primary-padding * 0.4;
+		top: $primary-padding * 0.4;
+	}
+}
+
+/* Navigation menu */
+
+#navigation-wrapper {
+	background-color: lighten(black, 30%);
+	@include box-shadow($primary-box-shadow);
+	&, &.hidden {
+		display: block;
+	}
+	@include breakpoint(M) {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		position: fixed;
+		right: 0;
+		top: 0;
+		overflow: auto;
+		width: $site-navigation-width;
+		height: 100%;
+		z-index: 450;
+		@include box-shadow(none);
+		&.hidden {
+			right: -$site-navigation-width;
+		}
+		&:before {
+			display: none;
+		}
+	}
+}
+
+.admin-bar {
+	#navigation-toggle {
+		top: $primary-padding * 0.8 + $admin-bar-height;
+		&.active { top: $admin-bar-height; }
+	}
+	@include breakpoint(M) {
+		#navigation-wrapper {
+			top: $admin-bar-height;
+		}
+	}
+	@include breakpoint($admin-bar-height-breakpoint1) {
+		#navigation-toggle {
+			top: $primary-padding * 0.8 + $admin-bar-height-small-screen;
+			&.active { top: $admin-bar-height-small-screen; }
+		}
+		#navigation-wrapper {
+			top: $admin-bar-height-small-screen;
+		}
+	}
+	@include breakpoint($admin-bar-height-breakpoint2) {
+		#navigation-toggle{
+			top: $primary-padding * 0.8;
+			&.active { top: 0; }
+		}
+		#navigation-wrapper {
+			top: 0;
+		}
+	}
+	@include breakpoint(XXS) {
+		#navigation-toggle {
+			top: $primary-padding * 0.4;
+		}
+	}
+}
+
+#navigation-menu {
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	@include flexbox($width: 12.5%);
+	@include breakpoint(M) {
+		padding: 0 !important;
+		text-align: left;
+	}
+	
+	// * { @include transition(none); }
+	
+	&.grid {
+		padding-right: 20px;
+	}
+
+	/* general list item style */
+
+	li {
+		&:hover,
+		&.current-menu-item,
+		&.current-menu-ancestor,
+		&.current-page-ancestor {
+			background: rgba(black, 0.25);
+		}
+		position: relative;
+	}
+	a, .sub-menu-toggle {
+		color: white;
+		display: block;
+		padding: $primary-padding * 0.4;
+	}
+	a {
+		@include breakpoint(M) {
+			padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
+		}
+	}
+	.sub-menu-toggle {
+		font-size: $font-size * 1.4;
+		line-height: 1;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-left: $menu-item-border;
+		display: none;
+		@include icon( $icon-chevron-down, false );
+		&.active {
+			@include icon-content( $icon-chevron-up );
+		}
+		&:hover {
+			background-color: rgba(black, 0.25);
+		}
+		@include breakpoint(M) {
+			display: block;
+		}
+	}
+	.sub-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		margin: 0;
+		width: 100%;
+		background-color: rgba(77, 77, 77, 0.95);
+		font-weight: normal;
+		list-style-type: none;
+		word-wrap: break-word;
+		z-index: -1;
+		@include box-shadow($primary-box-shadow);
+		@include opacity(0);
+		@include transform(translateY(-10px));
+		&.hidden {
+			display: block;
+		}
+		> li:not(:first-child) {
+			border-top: $menu-item-border;
+		}
+		@include breakpoint(M) {
+			position: relative;
+			top: 0;
+			background: none;
+			padding-left: $primary-padding;
+			z-index: 450;
+			@include box-shadow(none);
+			@include opacity(1);
+			@include transform(translateY(0px));
+			&.hidden {
+				display: none;
+			}
+			> li:first-child {
+				border-top: $menu-item-border;
+			}
+		}
+	}
+
+	/* first level list item style */
+
+	> li {
+		> .sub-menu {
+			font-size: 0.875em;
+		}
+		@include breakpoint(M) {
+			width: 100%;
+			border: none;
+			border-bottom: $menu-item-border;;
+		}
+		> a {
+			padding: ($primary-padding * 0.6) 0;
+			position: relative;
+			@include breakpoint(M) {
+				padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
+			}
+			> span {
+				position: absolute;
+				left: 0;
+				bottom: $primary-padding * 0.4;
+				width: 100%;
+				display: block;
+				font-size: 0.7em;
+				margin-top: -5px;
+				@include opacity(0);
+				@include scale(0.9);
+				@include breakpoint(M) {
+					@include scale(1);
+					@include opacity(0.5);
+				}
+				@include breakpoint(M) {
+					display: none;
+				}
+			}
+		}
+		&[id^="menu-item-"] > a {
+			@include icon("", true, false, 0.3em);
+			@include breakpoint(M) {
+				&:before { margin-right: 0.6em; }
+			}
+		}
+		&:nth-child(1) > a { @include icon-content($icon-home); }
+		&:nth-child(2) > a { @include icon-content($icon-news); }
+		&:nth-child(3) > a { @include icon-content($icon-calendar); }
+		&:nth-child(4) > a { @include icon-content($icon-v-card); }
+		&:nth-child(5) > a { @include icon-content($icon-users); }
+		&:nth-child(6) > a { @include icon-content($icon-users); }
+		&:nth-child(7) > a { @include icon-content($icon-shopping-cart); }
+		&:nth-child(8) > a { @include icon-content($icon-login); }
+		&:hover,
+		&.current-menu-item,
+		&.current-menu-ancestor,
+		&.current-page-ancestor {
+			> a {
+				padding: ( $primary-padding * 0.32 ) 0 ( $primary-padding * 0.88 );
+				@include breakpoint(M) {
+					padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
+				}
+				span {
+					@include opacity(1);
+					@include scale(1);
+				}
+			}
+		}
+		&:hover {
+			> .sub-menu {
+				@include transform(translateY(0px));
+				@include opacity(1);
+				z-index: 450;
+			}
+		}
+	}
+}
+
+.logged-in #navigation-menu > li:nth-child(8) > a {
+	@include icon-content($icon-clipboard);
+}
+
+/* Menu module */
+
+.menu-module,
+.widget_categories,
+.widget_archive {
+	background: darken(white, 10%);
+	> ul,
+	> #wp_page_numbers > ul {
+		margin: 0;
+		overflow: hidden;
+		padding: 0 ($primary-padding * 0.8);
+		text-align: center;
+		> li {
+			display: inline-block;
+			> a {
+				color: $primary-color;
+				padding: 0.2em ($primary-padding * 0.2);
+				display: inline-block;
+			}
+			&.active_page, &.current-cat {
+				a {
+					background: $primary-color;
+					color: white;
+				}
+			}
+		}
+	}
+	> p, a {
+		display: block;
+		height: 100%;
+		padding: 0.2em $primary-padding;
+		text-align: center;
+		font-weight: bold;
+	}
+	a {
+		&:hover {
+			background: rgba(black, 0.1);
+		}
+		&.prev { text-align: left; }
+		&.next { text-align: right; }
+	}
+}
+
+.block-menu,
+.customMetaWidget > ul {
+	padding-top: ($primary-padding * 0.6) !important;
+	padding-bottom: ($primary-padding * 0.6) !important;
+	text-align: left !important;
+	> li {
+		display: block !important;
+		> a {
+			width: 100% !important;
+			text-align: left !important;
+		}
+	}
+}
+
+.customMetaWidget {
+	a {
+		@include icon("");
+		&[href*="wp-admin"] {
+			@include icon-content($icon-gauge);
+		}
+		&[href*="wp-login"] {
+			@include icon-content($icon-login);
+			&[href*="logout"] {
+				@include icon-content($icon-log-out);
+			}
+		}
+	}
+}

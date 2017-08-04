@@ -1,0 +1,226 @@
+# Copyright (C) 2014 Agile Coding
+msgid ""
+msgstr ""
+"Project-Id-Version: FC Online Theme\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Marvin Schirrmacher <marvin.schirrmacher@agile-coding.de>\n"
+"Language-Team: Agile Coding <marvin.schirrmacher@agile-coding.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: forum.php:28
+msgid "Appointments"
+msgstr "Termine"
+
+#: functions.php:12
+msgid "Header menu"
+msgstr "Header Menü"
+
+#: functions.php:100
+msgid "Teams"
+msgstr "Mannschaften"
+
+#: functions.php:101
+msgid "Team"
+msgstr "Mannschaft"
+
+#: functions.php:102
+msgid "All Teams"
+msgstr "Alle Mannschaften"
+
+#: functions.php:103
+msgid "Add New"
+msgstr "Neue hinzufügen"
+
+#: functions.php:104
+msgid "Add New Team"
+msgstr "Neue Mannschaft hinzufügen"
+
+#: functions.php:105
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: functions.php:106
+msgid "Edit Team"
+msgstr "Mannschaft bearbeiten"
+
+#: functions.php:107
+msgid "New Team"
+msgstr "Neue Mannschaft"
+
+#: functions.php:108
+msgid "View"
+msgstr "Anzeigen"
+
+#: functions.php:109
+msgid "View Team"
+msgstr "Mannschaft anzeigen"
+
+#: functions.php:110
+msgid "Search Teams"
+msgstr "Mannschaften durchsuchen"
+
+#: functions.php:111
+msgid "No Teams found"
+msgstr "Keine Mannschaften gefunden"
+
+#: functions.php:112
+msgid "No Teams found in Trash"
+msgstr "Keine Mannschaften im Papierkorb gefunden"
+
+#: functions.php:113
+msgid "Parent Team"
+msgstr "Übergeordnete Mannschaft"
+
+#: functions.php:118
+msgid "teams"
+msgstr "mannschaften"
+
+#: functions.php:130
+msgid "Sections"
+msgstr "Abteilungen"
+
+#: functions.php:131
+msgid "Section"
+msgstr "Abteilung"
+
+#: functions.php:133
+msgid "All Sections"
+msgstr "Alle Abteilungen"
+
+#: functions.php:134
+msgid "Edit Section"
+msgstr "Abteilung bearbeiten"
+
+#: functions.php:135
+msgid "View Section"
+msgstr "Abteilung anzeigen"
+
+#: functions.php:136
+msgid "Update Section"
+msgstr "Abteilung aktualisieren"
+
+#: functions.php:137
+msgid "Add New Section"
+msgstr "Neue Abteilung hinzufügen"
+
+#: functions.php:138
+msgid "New Section Name"
+msgstr "Neuer Abteilungsname"
+
+#: functions.php:139
+msgid "Parent Section"
+msgstr "Übergeordnete Abteilung"
+
+#: functions.php:140
+msgid "Parent Section:"
+msgstr "Übergeordnete Abteilung:"
+
+#: functions.php:141
+msgid "Search Sections"
+msgstr "Abteilungen durchsuchen"
+
+#: functions.php:142
+msgid "Popular Sections"
+msgstr "Beliebte Abteilungen"
+
+#: functions.php:143
+msgid "Seperate sections with commas"
+msgstr "Trenne Abteilungen mit Kommata"
+
+#: functions.php:144
+msgid "Add or remove sections"
+msgstr "Füge hinzu oder entferne Abteilungen"
+
+#: functions.php:145
+msgid "Chosse from the most used sections"
+msgstr "Wähle aus den meist verwendeten Abteilungen"
+
+#: functions.php:146
+msgid "No sections found."
+msgstr "Keine Abteilungen gefunden."
+
+#: functions.php:150
+msgid "section"
+msgstr "abteilung"
+
+#: functions.php:237
+msgid "Training Schedule:"
+msgstr "Trainingszeiten:"
+
+#: functions.php:308
+msgid "File not available"
+msgstr "Datei nicht verfügbar"
+
+#: 404.php:9
+msgid "Page not found"
+msgstr "Seite nicht gefunden"
+
+#: 404.php:13
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Es sieht so aus, als könnten wir nicht finden, wonach du schaust. Vielleicht kann suchen helfen."
+
+#: yarpp-template-post.php:1
+msgid "Related"
+msgstr "Verwandt"
+
+#: calendar.php:5
+msgid "Calendar"
+msgstr "Kalender"
+
+#: calendar.php:16
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: calendar.php:26
+msgid "Locations"
+msgstr "Orte"
+
+#: category.php:13
+msgid "Category"
+msgstr "Kategorie"
+
+#: category.php:44
+msgid "Categories"
+msgstr "Kategorien"
+
+#: comments.php:1
+msgid "Comments"
+msgstr "Kommentare"
+
+#: home.php:4
+msgid "Articles"
+msgstr "Artikel"
+
+#: search.php:5
+msgid "Search results"
+msgstr "Suchergebnisse"
+
+# search.php:8
+msgid "Search results for:"
+msgstr "Suchergebnisse für:"
+
+#: single-team.php:12
+msgid "Coaching Team"
+msgstr "Trainerteam"
+
+#: single-team.php:18
+msgid "Competition"
+msgstr "Wettbewerb"
+
+#: single-team.php:21
+msgid "Meta"
+msgstr "Meta"
+
+#: single-sponsor.php
+msgid "Contact"
+msgstr "Kontakt"
+
+#: single-sponsor.php
+msgid "Map"
+msgstr "Karte"

@@ -1,0 +1,197 @@
+/* Typography */
+
+@mixin icon( $character, $add_margin: true, $after_element: false, $margin: 5px ) {
+	@if $after_element {
+		&:after {
+			font-family: 'icomoon';
+			speak: none;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+			content: "#{$character}";
+			@if $add_margin {
+				margin-left: #{$margin};
+			}
+		} 
+	} @else {
+		&:before {
+			font-family: 'icomoon';
+			speak: none;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+			content: "#{$character}";
+			@if $add_margin {
+				margin-right: #{$margin};
+			}
+		}
+	}
+}
+
+@mixin icon-content( $character, $after_element: false ) {
+	@if $after_element {
+		&:after {
+			content: "#{$character}" !important;
+		} 
+	} @else {
+		&:before {
+			content: "#{$character}" !important;
+		}
+	}
+}
+
+@mixin hyphenation() {
+	 -ms-word-break: break-all;
+	     // word-break: break-all;
+	     word-break: break-word;
+	-webkit-hyphens: auto;
+	   -moz-hyphens: auto;
+	        hyphens: auto;
+}
+
+/* Structure */
+
+@mixin clearfix() {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin three-dimensional() {
+	position: relative;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@include background(linear-gradient(
+			rgba(255,255,255,.0) 0%,
+			rgba(255,255,255,.1) 30%,
+			rgba(  0,  0,  0,.2) 100%
+		));
+	}
+}
+
+@mixin flexbox(
+	$direction: row,
+	$wrap: wrap,
+	$justify: flex-start,
+	$align: stretch,
+	$width: 100%
+)
+{
+	display: box;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	   -moz-flex-direction: $direction;
+	    -ms-flex-direction: $direction;
+	-webkit-flex-direction: $direction;
+	        flex-direction: $direction;
+
+	   -moz-flex-wrap: $wrap;
+	    -ms-flex-wrap: $wrap;
+	-webkit-flex-wrap: $wrap;
+	        flex-wrap: $wrap;
+
+	   -moz-justify-content: $justify;
+	    -ms-justify-content: $justify;
+	-webkit-justify-content: $justify;
+	        justify-content: $justify;
+
+	   -moz-align-items: $align;
+	    -ms-align-items: $align;
+	-webkit-align-items: $align;
+	        align-items: $align;
+
+	> * {
+		width: $width;
+	}
+}
+
+@mixin flex-direction( $direction ) {
+	   -moz-flex-direction: $direction;
+	    -ms-flex-direction: $direction;
+	-webkit-flex-direction: $direction;
+	        flex-direction: $direction;
+}
+
+@mixin flex-align( $align ) {
+	   -moz-align-items: $align;
+	    -ms-align-items: $align;
+	-webkit-align-items: $align;
+	        align-items: $align;
+}
+@mixin flex( $values ) {
+	-webkit-box-flex: $values;
+	-moz-box-flex:  $values;
+	-webkit-flex:  $values;
+	-ms-flex:  $values;
+	flex:  $values;
+}
+
+@mixin order( $val ) {
+	-webkit-box-ordinal-group: $val;  
+	-moz-box-ordinal-group: $val;     
+	-ms-flex-order: $val;     
+	-webkit-order: $val;  
+	order: $val;
+}
+
+/* Screen */
+
+@mixin breakpoint( $point ) {
+	@if $point == L {
+		@media (max-width: 86.25em) { @content; } // 1380px
+	}
+	@if $point == M {
+		@media (max-width: 72em) { @content; } // 1152px
+	}
+	@if $point == S {
+		@media (max-width: 60em) { @content; } // 960px
+	}
+	@if $point == XS {
+		@media (max-width: 45em) { @content; } // 720px
+	}
+	@if $point == XXS {
+		@media (max-width: 27.5em) { @content; } // 440px
+	}
+	// @else {
+	// 	@media (max-width: $point) { @content; } // any
+	// }
+}
+
+@mixin pixel-ratio($ratio) {
+  @if $ratio == 1.5 {
+	@media (-moz-min-device-pixel-ratio: 1.5),
+		   (-o-min-device-pixel-ratio: 3/2),
+		   (-webkit-min-device-pixel-ratio: 1.5),
+		   (min-device-pixel-ratio: 1.5) { @content; }
+  }
+  @else if $ratio == 2 {
+	@media (-moz-min-device-pixel-ratio: 2),
+		   (-o-min-device-pixel-ratio: 2),
+		   (-webkit-min-device-pixel-ratio: 2),
+		   (min-device-pixel-ratio: 2) { @content; }
+  }
+}
+
+/* Animations */
+
+@include keyframes(loading) {
+	from { @include transform(rotate(0deg)); }
+	to   { @include transform(rotate(360deg)); }
+}
