@@ -56,14 +56,14 @@ Text Domain: fconline
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-*:not([class*="ps-"]):not(html):not(body):not(.gm-style *) {
+*:not(html):not(body):not([class^="ps-"]) {
   -moz-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
   -webkit-transition: all 0.3s ease-out;
   -webkit-transition-delay: 0s;
   transition: all 0.3s ease-out 0s;
 }
-*:not([class*="ps-"]):not(html):not(body):not(.gm-style *):hover {
+*:not(html):not(body):not([class^="ps-"]):hover {
   -moz-transition: all 0.1s ease-in 0s;
   -o-transition: all 0.1s ease-in 0s;
   -webkit-transition: all 0.1s ease-in;
