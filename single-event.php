@@ -1,1 +1,1 @@
-<?php get_template_part( 'page', 'blank' ); ?>
+<?php get_template_part( 'page', 'modules' ); ?>

@@ -2,7 +2,7 @@
 	&, &:before, &:after {
 		@include box-sizing(border-box);
 	}
-	&:not([class*="ps-"]):not(html):not(body):not(.gm-style *) {
+	&:not(html):not(body):not([class^="ps-"]) {
 		@include transition(all 0.3s ease-out 0.0s);
 		&:hover {
 			@include transition(all 0.1s ease-in 0.0s);
