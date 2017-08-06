@@ -100,15 +100,27 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-meta-edit:before { content: $icon-pencil; }
 .post-meta-export:before { content: $icon-export; }
 
-.post-summary,
-.post-content {
+.post {
 	padding-bottom: $primary-padding;
+	p {
+		@include hyphenation();
+		text-align: justify;
+	}
+	table {
+		table-layout: fixed;
+	}
 }
 
-.post-summary,
-.post-content p {
-	@include hyphenation();
-	text-align: justify;
+@include breakpoint(XS) {
+	table {
+		@for $i from 1 through 10 {
+			&.hide-xs-col-#{$i} {
+				th, td {
+					&:nth-child(#{$i}) { display: none; }
+				}
+			}
+		}
+	}
 }
 
 .read-more {

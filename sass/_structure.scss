@@ -261,6 +261,7 @@ $module-title-height: ( $font-size * 1.5 );
 .module {
 	background: white;
 	margin-bottom: 20px !important;
+	overflow: hidden;
 	padding: $primary-padding;
 	position: relative;
 	@include box-shadow($secondary-box-shadow);
@@ -311,7 +312,7 @@ $module-title-height: ( $font-size * 1.5 );
 	> h5,
 	> h6 {
 		margin-top: 0;
-	} 
+	}
 }
 
 /* Columns */

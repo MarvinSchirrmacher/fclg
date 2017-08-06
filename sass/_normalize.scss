@@ -463,17 +463,15 @@ textarea {
 table,
 th,
 td {
-	border: 1px solid rgba(black, 0.1);
+	border: 1px solid darken(white, 10%);
 }
 
 table {
-	border-left: none;
-	border-right: none;
-	border-collapse: separate;
+	border-collapse: collapse;
 	border-spacing: 0;
-	border-width: 1px 0 0 1px;
 	margin-bottom: ($font-size * 1.5);
 	width: 100%;
+	white-space: nowrap;
 }
 
 caption,
@@ -484,19 +482,15 @@ td {
 }
 
 th {
+	background: darken(white, 10%);
 	font-weight: bold;
 }
 
 th, td {
-	border-width: 0 1px 1px 0;
+	overflow: hidden;
 	padding: $primary-padding * 0.4 $primary-padding * 0.6;
-	&:first-child {
-		padding-left: 0;
-	}
-	&:last-child {
-		border-right: none;
-		padding-right: 0;
-	}
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 del {
