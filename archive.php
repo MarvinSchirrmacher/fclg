@@ -8,7 +8,7 @@
 	</div>
 	<?php endif; ?>
 
-	<div class="module">
+	<div class="module sitemap">
 		<table class="sitemap-table">
 			<tbody>
 			<?php
