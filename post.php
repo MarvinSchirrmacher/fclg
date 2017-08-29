@@ -62,7 +62,7 @@
 	<div class="post-summary">
 	<?php
 		if (function_exists("the_advanced_excerpt")) {
-			the_advanced_excerpt('length=40&length_type=words&no_custom=1&allowed_tags=a,style');
+			the_advanced_excerpt();
 		} else {
 			the_excerpt();
 		}
