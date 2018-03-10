@@ -1,0 +1,146 @@
+.wpcf7 {
+	p > label {
+		color: lighten(black, 60%);
+		text-transform: uppercase;
+	}
+}
+
+.wpcf7-form-control,
+.wpcf7-form-control-wrap {
+	display: inline-block;
+	position: relative;
+}
+
+.wpcf7-form-control-wrap,
+.wpcf7-select {
+	&:before {
+		color: lighten(black, 60%);
+		display: block;
+		line-height: $primary-line-height;
+		padding: 5px 0px;
+		position: absolute;
+			top: 1px;
+			left: 1px;
+		text-align: center;
+		width: 36px;
+		height: calc(100% - 2px);
+		z-index: 100;
+		@include border-radius($primary-border-radius 0 0 $primary-border-radius);
+	}
+}
+
+.wpcf7-form-control-wrap {
+	@include icon("", false);
+	&:before {
+		color: lighten(black, 60%);
+		display: block;
+		line-height: $primary-line-height;
+		padding: 5px 0px;
+		position: absolute;
+			top: 1px;
+			left: 1px;
+		text-align: center;
+		width: 36px;
+		height: calc(100% - 2px);
+		z-index: 100;
+		@include border-radius($primary-border-radius 0 0 $primary-border-radius);
+	}
+	&[class*="name"]:not([class*="child"]):before { content: $icon-user; }
+	&[class*="child"]:before { content: $icon-users; }
+	&[class*="address"]:before { content: $icon-home; }
+	&[class*="birthday"]:before { content: $icon-calendar; }
+	&[class*="time"]:before { content: $icon-clock; }
+	&[class*="mail"]:before { content: $icon-mail; }
+	&[class*="phone"]:before { content: $icon-phone; }
+	&[class*="iban"]:before { content: $icon-credit-card; }
+	&[class*="bic"]:before { content: $icon-credit-card; }
+	&[class*="company"]:before { content: $icon-shop; }
+	input {
+		position: relative;
+	}
+	input:not([type="file"]):not([type="radio"]):not([type="checkbox"]) {
+		padding-left: 35px !important;
+		z-index: 99;
+	}
+	input[type="file"],
+	input[type="radio"],
+	input[type="checkbox"] {
+		z-index: 101;
+	}
+	& + & {
+		margin-left: 12px;
+	}
+	@include breakpoint(XXS) {
+		display: block;
+		input:not([type="file"]):not([type="radio"]):not([type="checkbox"]),
+		select {
+			width: 100%;
+		}
+		& + & {
+			margin: 12px 0 0;
+		}
+	}
+}
+
+.wpcf7-select:before {
+	content: $icon-folder;
+}
+
+div[data-class="wpcf7cf_group"]:not(:last-child) {
+	margin-bottom: 12px;
+}
+
+.wpcf7-not-valid {
+	border-color: lighten($theme-color-2, 40%) !important;
+	margin-bottom: 12px;
+	@include border-radius($primary-border-radius $primary-border-radius 0 0 !important);
+	label {
+		background: lighten($theme-color-2, 40%);
+	}
+	&:focus, &:active {
+		border-color: $theme-color-2 !important;
+		& + .wpcf7-not-valid-tip {
+			background: $theme-color-2;
+		}
+	}
+}
+
+input[type="file"].wpcf7-not-valid {
+	background: lighten($theme-color-2, 40%);
+}
+
+.wpcf7-not-valid-tip {
+	background: lighten($theme-color-2, 40%);
+	color: white;
+	font-size: 8px;
+	line-height: 1;
+	overflow: hidden;
+	padding: 2px 10px 3px;
+	position: absolute;
+		left: 0;
+		top: calc(100% - 12px);
+		width: 100%;
+	text-transform: uppercase;
+	white-space:nowrap;
+	@include border-radius(0 0 $primary-border-radius $primary-border-radius);
+}
+
+.wpcf7-validation-errors {
+	color: $theme-color-2;
+}
+
+.wpcf7-response-output {
+	&:empty {
+		display: none;
+	}
+	&:not(:empty) {
+		@include icon($icon-info-with-circle);
+		&.wpcf7-validation-errors {
+			@include icon-content($icon-warning);
+		}
+	}
+}
+
+.screen-reader-response {
+	display: none;
+}

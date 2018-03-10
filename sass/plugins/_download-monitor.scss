@@ -1,0 +1,32 @@
+.dlm-downloads {
+	list-style-type: none;
+	margin-left: 0;
+	> br {
+		display: none;
+	}
+}
+
+.download-link {
+	margin-bottom: $primary-margin * 0.5;
+	@include icon($icon-download);
+	&:after {
+		display: block;
+		font-size: 0.75em;
+		font-weight: 400;
+	}
+	&[data-filetype]:after {
+		content: attr(data-filetype);
+	}
+	&[data-filetype][data-filesize]:after {
+		content: attr(data-filetype) " / " attr(data-filesize);
+	}
+	&:hover {
+		color: white;
+	}
+	&.invalid {
+		cursor: default;
+	}
+	&:not(.invalid):hover {
+		background-color: darken( $theme-color-green, 10% );
+	}
+}

@@ -1,0 +1,61 @@
+.gallery {
+	margin-bottom: $primary-text-tag-margin;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	@include flexbox();
+	@for $i from 1 through 9 {
+		&.gallery-columns-#{$i} > * {
+			width: 100% / $i;
+			@if (($i - 2) > 0) { 
+				@include breakpoint(M) {
+					width: 100% / ($i - 1);
+				}
+			}
+			@if (($i - 3) > 0) { 
+				@include breakpoint(S) {
+					width: 100% / ($i - 2);
+				}
+			}
+			@if (($i - 4) > 0) { 
+				@include breakpoint(XS) {
+					width: 100% / ($i - 3);
+				}
+			}
+			@if (($i - 5) > 0) { 
+				@include breakpoint(XXS) {
+					width: 100% / ($i - 4);
+				}
+			}
+		}
+	}
+}
+
+.gallery-item {
+	padding: 1px;
+	float: none !important;
+	margin: 0px !important;
+}
+
+.gallery-icon {
+	display: block;
+	margin: 0 auto;
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+.of-above-average-width {
+	margin-left: -$primary-padding;
+	width: calc(100% + #{$primary-padding} * 2);
+	max-width: calc(100% + #{$primary-padding} * 2) !important;
+	&:last-child {
+		margin-bottom: -$primary-padding;
+	}
+}

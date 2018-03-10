@@ -2,7 +2,7 @@
 	&, &:before, &:after {
 		@include box-sizing(border-box);
 	}
-	&:not(html):not(body):not([class^="ps-"]) {
+	&:not(html):not(body):not([class^="pswp"]) {
 		@include transition(all 0.3s ease-out 0.0s);
 		&:hover {
 			@include transition(all 0.1s ease-in 0.0s);
@@ -10,96 +10,12 @@
 	}
 }
 
-@font-face {
-	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?y70bgd');
-	src:url('fonts/icomoon.eot?y70bgd#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.woff?y70bgd') format('woff'),
-		url('fonts/icomoon.ttf?y70bgd') format('truetype'),
-		url('fonts/icomoon.svg?y70bgd#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+[class="em-location-map-container"],
+[class="flxmap-container"] {
+	&, & * {
+		@include transition(none);
+	}
 }
-
-[class^="icon-"], [class*=" icon-"],
-[class^="post-meta-"]:before, .sitemap-meta > *:before {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon-chevron-down:before { content: "\e900"; }
-.icon-chevron-left:before { content: "\e901"; }
-.icon-chevron-right:before { content: "\e902"; }
-.icon-chevron-up:before { content: "\e903"; }
-.icon-controller-play:before { content: "\e904"; }
-.icon-download:before { content: "\e905"; }
-.icon-browser:before { content: "\e906"; }
-.icon-calendar:before { content: "\e907"; }
-.icon-circular-graph:before { content: "\e908"; }
-.icon-clipboard:before { content: "\e909"; }
-.icon-clock:before { content: "\e90a"; }
-.icon-cross:before { content: "\e90b"; }
-.icon-export:before { content: "\e90c"; }
-.icon-folder:before { content: "\e90d"; }
-.icon-gauge:before { content: "\e90e"; }
-.icon-home:before { content: "\e90f"; }
-.icon-images:before { content: "\e910"; }
-.icon-link:before { content: "\e911"; }
-.icon-location:before { content: "\e912"; }
-.icon-log-out:before { content: "\e913"; }
-.icon-login:before { content: "\e914"; }
-.icon-mail:before { content: "\e915"; }
-.icon-menu:before { content: "\e916"; }
-.icon-message:before { content: "\e917"; }
-.icon-mobile:before { content: "\e918"; }
-.icon-news:before { content: "\e919"; }
-.icon-pencil:before { content: "\e91a"; }
-.icon-phone:before { content: "\e91b"; }
-.icon-shopping-cart:before { content: "\e91c"; }
-.icon-user:before { content: "\e91d"; }
-.icon-users:before { content: "\e91e"; }
-.icon-v-card:before { content: "\e91f"; }
-
-
-$icon-chevron-down: "\e900";
-$icon-chevron-left: "\e901";
-$icon-chevron-right: "\e902";
-$icon-chevron-up: "\e903";
-$icon-controller-play: "\e904";
-$icon-download: "\e905";
-$icon-browser: "\e906";
-$icon-calendar: "\e907";
-$icon-circular-graph: "\e908";
-$icon-clipboard: "\e909";
-$icon-clock: "\e90a";
-$icon-cross: "\e90b";
-$icon-export: "\e90c";
-$icon-folder: "\e90d";
-$icon-gauge: "\e90e";
-$icon-home: "\e90f";
-$icon-images: "\e910";
-$icon-link: "\e911";
-$icon-location: "\e912";
-$icon-log-out: "\e913";
-$icon-login: "\e914";
-$icon-mail: "\e915";
-$icon-menu: "\e916";
-$icon-message: "\e917";
-$icon-mobile: "\e918";
-$icon-news: "\e919";
-$icon-pencil: "\e91a";
-$icon-phone: "\e91b";
-$icon-shopping-cart: "\e91c";
-$icon-user: "\e91d";
-$icon-users: "\e91e";
-$icon-v-card: "\e91f";
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
 	border: 0;
@@ -134,7 +50,9 @@ video {
 	max-width: 100%;
 }
 
-html, body { position: static; }
+html, body {
+	position: static;
+}
 
 html {
 	overflow-y: scroll;
@@ -147,9 +65,9 @@ button,
 input,
 select,
 textarea {
-	color: $primary-color;
-	font-family: "Lato", sans-serif;
-	font-size: $font-size;
+	color: $theme-color;
+	font-family: $theme-font;
+	font-size: calc(16px + 0.15vw);
 	font-weight: $primary-font-weight;
 	line-height: $primary-line-height;
 }
@@ -159,14 +77,14 @@ body {
 }
 
 a {
-	color: $secondary-color;
+	color: $theme-color-green;
 	text-decoration: none;
 	&:focus {
 		outline: 0;
 	}
 	&:hover, &:active {
 		outline: 0;
-		color: darken($secondary-color, 10%);
+		color: darken($theme-color-green, 10%);
 	}
 }
 
@@ -177,50 +95,29 @@ h4,
 h5,
 h6 {
 	clear: both;
+	font-family: Verdana, Corbert, sans-serif;
 	font-weight: $primary-font-weight + 300;
+	line-height: $primary-line-height * 0.7;
 	margin: ($primary-text-tag-margin * 3) 0 $primary-text-tag-margin;
 	&:first-child {
 		margin-top: 0;
 	}
 }
 
-h1 {
-	font-size: 1.625em;
-	line-height: $primary-line-height * 0.7;
-}
-
-h2 {
-	font-size: 1.500em;
-	line-height: $primary-line-height * 0.7;
-}
-
-h3 {
-	font-size: 1.375em;
-	line-height: $primary-line-height * 0.7;
-}
-
-h4 {
-	font-size: 1.250em;
-	line-height: $primary-line-height * 0.7;
-}
-
-h5 {
-	font-size: 1.125em;
-	line-height: $primary-line-height * 0.7;
-}
-
-h6 {
-	font-size: 1.000em;
-	line-height: $primary-line-height * 1.0;
-}
+h1 { font-size: 1.625rem; }
+h2 { font-size: 1.500rem; }
+h3 { font-size: 1.375rem; }
+h4 { font-size: 1.250rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1.000rem; }
 
 address {
 	font-style: italic;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.5rem;
 }
 
 abbr[title] {
-	border-bottom: 1px dotted $primary-color;
+	border-bottom: 1px dotted $theme-color;
 	cursor: help;
 }
 
@@ -272,10 +169,10 @@ pre {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing:    border-box;
 	box-sizing:         border-box;
-	margin-bottom: $font-size * 1.5;
+	margin-bottom: 20px;
 	max-width: 100%;
 	overflow: auto;
-	padding: $font-size * 0.75;
+	padding: 10px;
 	white-space: pre;
 	white-space: pre-wrap;
 	word-wrap: break-word;
@@ -298,15 +195,15 @@ blockquote {
 	border-top: solid 1px lighten(black, 40%);
 	border-bottom: solid 1px lighten(black, 40%);
 	color: lighten(black, 40%);
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	font-style: italic;
 	font-weight: $primary-font-weight - 100;
 	line-height: $primary-line-height * 0.85;
-	margin-bottom: $font-size * 1.5;
+	margin-bottom: 20px;
 	padding: ($primary-padding * 0.4) 0;
 	cite, small {
 		display: block;
-		font-size: 0.5em;
+		font-size: 0.75rem;
 		font-weight: $primary-font-weight;
 		line-height: $primary-line-height;
 		margin-top: 10px;
@@ -350,7 +247,7 @@ sub {
 }
 
 dl {
-	margin-bottom: $font-size * 1.5;
+	margin-bottom: 20px;
 }
 
 dt {
@@ -358,26 +255,21 @@ dt {
 }
 
 dd {
-	margin-bottom: $font-size * 1.5;
+	margin-bottom: 20px;
 }
 
 ul,
 ol {
-	list-style: none;
-	margin: 0 0 ($font-size * 1.5) ($font-size * 1.25);
+	margin: 0 0 20px 40px;
 }
 
 ul {
 	list-style: disc;
 }
 
-ol {
-	list-style: decimal;
-}
-
 li > ul,
 li > ol {
-	margin: 0 0 0 ($font-size * 1.25);
+	margin-bottom: 0;
 }
 
 img {
@@ -394,8 +286,8 @@ figure {
 
 fieldset {
 	border: 1px solid rgba(black, 0.1);
-	margin: 0 0 ($font-size * 1.5);
-	padding: ($font-size * 0.6875) ($font-size * 0.75) 0;
+	margin: 0 0 20px;
+	padding: 10px 10px 0;
 }
 
 legend {
@@ -470,9 +362,9 @@ td {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	margin-bottom: ($font-size * 1.5);
+	margin-bottom: 20px;
 	width: 100%;
-	white-space: nowrap;
+	max-width: 100%;
 }
 
 caption,
@@ -491,7 +383,6 @@ th, td {
 	overflow: hidden;
 	padding: $primary-padding * 0.4 $primary-padding * 0.6;
 	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 del {
@@ -502,17 +393,17 @@ hr {
 	background-color: rgba(0, 0, 0, 0.1);
 	border: 0;
 	height: 1px;
-	margin-bottom: ($font-size * 1.4375);
+	margin-bottom: 20px;
 }
 
 ::selection {
-	background: $secondary-color;
+	background: $theme-color-green;
 	color: white;
 	text-shadow: none;
 }
 
 ::-moz-selection {
-	background: $secondary-color;
+	background: $theme-color-green;
 	color: white;
 	text-shadow: none;
 }

@@ -1,4 +1,6 @@
-/* Page */
+/**
+ * Page
+ */
 
 #page {
 	padding-top: 20px;
@@ -11,23 +13,24 @@
 }
 
 #page-main {
-	margin-top: $primary-margin !important;
+	margin-top: 30px !important;
+	@include breakpoint(L) {
+		margin-top: 20px !important;
+	}
 }
 
 .inside {
 	margin: 0 auto !important;
-	max-width: 1512px;
-	width: 95%;
-	@include breakpoint(M) {
-		width: 100%;
-	}
+	max-width: 1920px - 180px;
 }
 
 #content {
 	> br { display: none !important; }
 }
 
-/* Header */
+/**
+ * Header
+ */
 
 .strip {
 	color: white;
@@ -39,7 +42,7 @@
 
 #top-strip {
 	z-index: 9;
-	color: $primary-color;
+	color: $theme-color;
 	padding: 15px 0px;
 	background: darken(white, 10%) !important;
 }
@@ -52,7 +55,7 @@
 
 #page-title,
 #page-claim {
-	fill: $primary-color;
+	fill: $theme-color;
 	width: 190px;
 }
 
@@ -89,7 +92,7 @@
 #bottom-strip {
 	z-index: 7;
 	height: 25px;
-	background: lighten($secondary-color, 2.5%) !important;
+	background: lighten($theme-color-green, 2.5%) !important;
 	@include breakpoint(XS) {
 		height: 50px;
 	}
@@ -128,6 +131,7 @@ $logo-border: 5px;
 	&:before, &:after {
 		content: "";
 	}
+	/* Coat of arms */
 	&:before {
 		z-index: 21;
 		background-image: url("images/coat-of-arms.svg");
@@ -137,6 +141,7 @@ $logo-border: 5px;
 		@include opacity(1);
 		@include transition(all 0.3s ease-out 0.0s);
 	}
+	/* Home icon */
 	span {
 		z-index: 22;
 		@include icon($icon-home, false);
@@ -149,10 +154,11 @@ $logo-border: 5px;
 			margin-left: -0.5em;
 			margin-top: -0.525em;
 			color: white;
-			font-size: 5.5em;
+			font-size: 85px;
 			text-shadow: 0 0 5px rgba(black, 0.75);
 		}
 	}
+	/* Background circle */
 	&:after {
 		z-index: 23;
 		@include background(
@@ -179,7 +185,9 @@ $logo-border: 5px;
 	}
 }
 
-/* Footer */
+/**
+ * Footer
+ */
 
 #page-footer {
 	margin-top: 30px;
@@ -187,7 +195,16 @@ $logo-border: 5px;
 
 #footer-sidebar {
 	overflow: hidden;
-	margin-top: 20px;
+	margin-top: 30px;
+	&, .link {
+		color: white;
+	}
+	.link:hover, .link:active {
+		border-color: white;
+	}
+	@include breakpoint(L) {
+		margin-top: 20px;
+	}
 	> .inside {
 		@include flexbox();
 	}
@@ -206,12 +223,12 @@ $logo-border: 5px;
 	}
 	.textwidget {
 		padding: $primary-padding * 0.8;
-		font-size: 0.9em;
+		font-size: 1.0rem;
 		h5 {
-			margin: 0em 0em 10px;
+			margin: 0 0 10px;
 		}
 		p {
-			margin: 0em 0em 10px;
+			margin: 0 0 10px;
 		}
 		& + & {
 			float: left;
@@ -256,26 +273,29 @@ $footer-logo-width: 190px;
 	}
 }
 
-/* Module */
+/**
+ * Module
+ */
 
-$module-title-height: ( $font-size * 1.5 );
+$module-title-height: 1.9rem;
 .module {
 	background: white;
-	margin-bottom: 20px !important;
+	margin-bottom: 30px !important;
 	overflow: hidden;
 	padding: $primary-padding;
 	position: relative;
 	@include box-shadow($secondary-box-shadow);
 	&[data-heading]:not([data-heading=""]) {
-		padding-top: $module-title-height + $primary-padding;
+		padding-top: calc(#{$module-title-height} + #{$primary-padding});
 		&:before {
 			background: lighten(black, 30%);
 			color: white;
 			content: attr(data-heading);
-			font-size: $font-size * 0.9;
+			font-family: $theme-font-header;
+			font-size: 0.9rem;
 			left: 0;
 			line-height: 1;
-			padding: 0.4em $primary-padding;
+			padding: 0.5rem $primary-padding;
 			position: absolute;
 			text-transform: uppercase;
 			top: 0;
@@ -314,9 +334,14 @@ $module-title-height: ( $font-size * 1.5 );
 	> h6 {
 		margin-top: 0;
 	}
+	@include breakpoint(L) {
+		margin-bottom: 20px !important;
+	}
 }
 
-/* Columns */
+/**
+ * Columns
+ */
 
 [class*="columns"] {
 	@include flexbox($width: 100%);
@@ -334,27 +359,59 @@ $module-title-height: ( $font-size * 1.5 );
 	.columns-4 > * { width: (100% / 2); }
 }
 
-/* Grid */
+/**
+ * Grid
+ */
 
 .grid {
-	padding-left: 20px !important;
+	padding-left: 30px !important;
+	@include breakpoint(L) {
+		padding-left: 20px !important;
+	}
+	@include breakpoint(XS) {
+		padding-left: 10px !important;
+	}
+	@include breakpoint(XXS) {
+		padding-left: 0px !important;
+	}
 }
 
 [class*="grid-"] {
 	float: left;
-	padding-right: 20px;
+	padding-right: 30px;
 	&.group {
 		padding-right: 0px !important;
 		> *:not([class*="grid-"]) {
 			clear: left;
-			margin-right: 20px !important;
-			@include breakpoint(XXS) {
-				margin-right: 10px !important;
-			}
+			margin-right: 30px !important;
 		}
 	}
 	> br {
 		display: none;
+	}
+	@include breakpoint(L) {
+		padding-right: 20px;
+		&.group {
+			> *:not([class*="grid-"]) {
+				margin-right: 20px !important;
+			}
+		}
+	}
+	@include breakpoint(XS) {
+		padding-right: 10px;
+		&.group {
+			> *:not([class*="grid-"]) {
+				margin-right: 10px !important;
+			}
+		}
+	}
+	@include breakpoint(XXS) {
+		padding-right: 0px;
+		&.group {
+			> *:not([class*="grid-"]) {
+				margin-right: 0px !important;
+			}
+		}
 	}
 }
 
@@ -401,10 +458,10 @@ $module-title-height: ( $font-size * 1.5 );
 	.grid-1-5 { width: (100% * 1/2); }
 	.grid-1-3 { width: (100% * 1/1); }
 	.grid {
-		padding-left: 10px !important;
+		padding-left: 0px !important;
 	}
 	[class*="grid-"] {
 		width: 100% !important;
-		padding-right: 10px;
+		padding-right: 0px;
 	}
 }

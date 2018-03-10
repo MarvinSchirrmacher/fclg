@@ -1,0 +1,112 @@
+$cn-card-padding: $primary-padding * 0.08;
+
+.cn-template {
+	overflow: hidden;
+}
+
+#cn-list-body {
+	margin-right: -$cn-card-padding;
+	@include flexbox($width: 33.33%);
+}
+
+.cn-list-row,
+.cn-list-row-alternate {
+	padding-right: $cn-card-padding;
+}
+
+.grid-1-3,
+.post-content {
+	#cn-list-body > * {
+		width: 100% !important;
+	}
+}
+
+.grid-2-3 {
+	#cn-list-body > * {
+		width: 50% !important;
+	}
+}
+
+@include breakpoint(XS) {
+	#cn-list-body,
+	.grid-1-3 #cn-list-body {
+		> * {
+			width: 50% !important;
+		}
+	}
+}
+
+@include breakpoint(XXS) {
+	#cn-list-body,
+	.grid-1-3 #cn-list-body,
+	.grid-2-3 #cn-list-body {
+		> * {
+			width: 100% !important;
+		}
+	}
+}
+
+.cn-list-section-head {
+	display: none;
+}
+
+.cn-card {
+	.cn-image-style {
+		display: block;
+	}
+	.cn-card-data {
+		padding: $primary-padding * 0.4;
+		> span {
+			&,
+			&[class*="-block"] > span {
+				display: block;
+			}
+		}
+	}
+	.vcard-block {
+		position: static;
+	}
+	.fn.n,
+	.title {
+		font-weight: bold;
+	}
+	.fn.n {
+		line-height: 1.3;
+		text-transform: uppercase;
+	}
+	.title {
+		margin-bottom: 10px;
+	}
+	.tel, .email {
+		@include icon("");
+	}
+	.tel {
+		&:nth-child(odd) {
+			@include icon-content($icon-phone);
+		}
+		&:nth-child(even) {
+			@include icon-content($icon-mobile);
+		}
+	}
+	.email {
+		@include icon-content($icon-mail);
+	}
+	a {
+		color: $theme-color;
+		&:hover {
+			color: darken($theme-color-green, 10%);
+		}
+	}
+	.phone-name,
+	.email-name,
+	[class*="-separator"],
+	[class*="_label"] {
+		display: none;
+	}
+}
+.vcard-block {
+	display: block;
+	float: right;
+	font-size: 1.2em;
+	> a { @include icon($icon-download, false); }
+}
