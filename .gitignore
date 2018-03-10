@@ -96,3 +96,6 @@ Thumbs.db
 # CodeKit
 #-----------------------------
 config.codekit3
+style-min\.css
+
+style\.css

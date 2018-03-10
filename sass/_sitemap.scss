@@ -1,0 +1,77 @@
+.sitemap-table {
+	margin-bottom: 0;
+	a {
+		color: $theme-color;
+		&:hover {
+			color: darken($theme-color-green, 10%);
+		}
+	}
+}
+
+.sitemap-header-title {
+	margin-top: 0;
+}
+
+.sitemap-content {
+	@include breakpoint(XXS) {
+		border-right: none;
+	}
+}
+
+.sitemap-title {
+	margin-top: 0;
+	@include icon("");
+}
+
+.sitemap-summary {
+	&,
+	& a {
+		color: lighten($theme-color, 50%);
+	}
+	.more-link{
+		display: none;
+	}
+}
+
+.sitemap-meta {
+	font-weight: 700;
+	width: 25%;
+	> [class^="sitemap"] { 
+		display: block;
+		&:before {
+			margin-right: 4px;
+		}
+	}
+	@include breakpoint(XXS) {
+		display: none;
+	}
+}
+
+.sitemap-category:before { content: $icon-folder; }
+.sitemap-date:before { content: $icon-calendar; }
+
+.format-standard {
+	.sitemap-title {
+		@include icon-content($icon-news);
+	}
+}
+.format-gallery {
+	.sitemap-title{
+		@include icon-content($icon-images);
+	}
+}
+.type-team {
+	.sitemap-title{
+		@include icon-content($icon-users);
+	}
+}
+.type-page {
+	.sitemap-title{
+		@include icon-content($icon-browser);
+	}
+}
+.type-event {
+	.sitemap-title{
+		@include icon-content($icon-calendar);
+	}
+}

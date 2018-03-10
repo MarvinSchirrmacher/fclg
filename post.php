@@ -58,17 +58,16 @@
 			) );
 		?>
 	</div>
+	<?php the_tags( '<footer class="post-meta"><div class="tags-list">', '', '</div></footer>' ); ?>
 	<?php else: ?>
 	<div class="post-summary">
 	<?php
 		if (function_exists("the_advanced_excerpt")) {
-			the_advanced_excerpt('length=40&length_type=words&no_custom=1&allowed_tags=a,style');
+			the_advanced_excerpt();
 		} else {
 			the_excerpt();
 		}
 	?>
 	</div>
 	<?php endif; ?>
-
-	<?php // the_tags( '<footer class="post-meta"><span class="tag-links">', '', '</span></footer>' ); ?>
 </article>

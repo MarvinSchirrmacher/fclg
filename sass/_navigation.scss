@@ -17,13 +17,13 @@ $menu-item-border: solid 1px lighten(black, 20%);
 	@include box-shadow( $primary-box-shadow );
 	position: fixed;
 	right: $primary-padding * 0.8;
-	z-index: 500;
+	z-index: 1000;
 	display: block;
 	padding: $primary-padding * 0.4;
 	color: white;
 	font-weight: bold;
-	font-size: $font-size * 1.75;
-	line-height: 1;
+	font-size: 1.75rem;
+	line-height: 1rem;
 	@include border-radius(50%);
 	&:hover {
 		background: lighten(black, 20%);
@@ -32,10 +32,14 @@ $menu-item-border: solid 1px lighten(black, 20%);
 
 #back-to-top {
 	bottom: $primary-padding * 0.8;
+	z-index: 100;
 	@include icon( $icon-chevron-up, false );
+	@include opacity(1);
 	@include transform( scale(1) );
 	&.hidden {
-		@include transform( scale(0) );
+		z-index: -1;
+		@include opacity(0);
+		@include transform( scale(0.5) );
 	}
 	@include breakpoint(XXS) {
 		right: $primary-padding * 0.4;
@@ -50,7 +54,7 @@ $menu-item-border: solid 1px lighten(black, 20%);
 	&.active {
 		border-left: $menu-item-border;
 		border-bottom: $menu-item-border;
-		font-size: $font-size * 1.4;
+		font-size: 1.4rem;
 		right: 0;
 		top: 0;
 		@include border-radius(0);
@@ -67,6 +71,8 @@ $menu-item-border: solid 1px lighten(black, 20%);
 }
 
 /* Navigation menu */
+
+$site-navigation-width: 220px;
 
 #navigation-wrapper {
 	background-color: lighten(black, 30%);
@@ -94,6 +100,10 @@ $menu-item-border: solid 1px lighten(black, 20%);
 	}
 }
 
+$admin-bar-height-breakpoint1: 782px;
+$admin-bar-height-breakpoint2: 600px;
+$admin-bar-height: 32px;
+$admin-bar-height-small-screen: 46px;
 .admin-bar {
 	#navigation-toggle {
 		top: $primary-padding * 0.8 + $admin-bar-height;
@@ -116,10 +126,10 @@ $menu-item-border: solid 1px lighten(black, 20%);
 	@include breakpoint($admin-bar-height-breakpoint2) {
 		#navigation-toggle{
 			top: $primary-padding * 0.8;
-			&.active { top: 0; }
+			&.active { top: 0px; }
 		}
 		#navigation-wrapper {
-			top: 0;
+			top: 0px;
 		}
 	}
 	@include breakpoint(XXS) {
@@ -127,10 +137,15 @@ $menu-item-border: solid 1px lighten(black, 20%);
 			top: $primary-padding * 0.4;
 		}
 	}
+	#wp-admin-bar-wpseo-menu {
+		display: none !important;
+	}
 }
 
 #navigation-menu {
 	color: white;
+	font-family: $theme-font-header;
+	font-size: 1rem;
 	text-align: center;
 	text-transform: uppercase;
 	@include flexbox($width: 12.5%);
@@ -167,7 +182,7 @@ $menu-item-border: solid 1px lighten(black, 20%);
 		}
 	}
 	.sub-menu-toggle {
-		font-size: $font-size * 1.4;
+		font-size: 1.4rem;
 		line-height: 1;
 		position: absolute;
 		top: 0;
@@ -227,7 +242,7 @@ $menu-item-border: solid 1px lighten(black, 20%);
 
 	> li {
 		> .sub-menu {
-			font-size: 0.875em;
+			font-size: 0.875rem;
 		}
 		@include breakpoint(M) {
 			width: 100%;
@@ -246,7 +261,7 @@ $menu-item-border: solid 1px lighten(black, 20%);
 				bottom: $primary-padding * 0.4;
 				width: 100%;
 				display: block;
-				font-size: 0.7em;
+				font-size: 0.7rem;
 				margin-top: -5px;
 				@include opacity(0);
 				@include scale(0.9);
@@ -271,7 +286,7 @@ $menu-item-border: solid 1px lighten(black, 20%);
 		&:nth-child(4) > a { @include icon-content($icon-v-card); }
 		&:nth-child(5) > a { @include icon-content($icon-users); }
 		&:nth-child(6) > a { @include icon-content($icon-users); }
-		&:nth-child(7) > a { @include icon-content($icon-shopping-cart); }
+		&:nth-child(7) > a { @include icon-content($icon-shop); }
 		&:nth-child(8) > a { @include icon-content($icon-login); }
 		&:hover,
 		&.current-menu-item,
@@ -317,13 +332,13 @@ $menu-item-border: solid 1px lighten(black, 20%);
 		> li {
 			display: inline-block;
 			> a {
-				color: $primary-color;
+				color: $theme-color;
 				padding: 0.2em ($primary-padding * 0.2);
 				display: inline-block;
 			}
 			&.active_page, &.current-cat {
 				a {
-					background: $primary-color;
+					background: $theme-color;
 					color: white;
 				}
 			}

@@ -38,36 +38,66 @@ add_action('after_setup_theme', 'fconline_setup');
 // ----------------------------------------------------------------------------------------------------
 // Enqueue scripts and styles for front and back end.
 // ----------------------------------------------------------------------------------------------------
-function fconline_scripts() {
-	// Dequeue default plugin stylesheets
+function fconline_dequeue_plugin_styles() {
 	wp_dequeue_style('bbp-default');
 	wp_dequeue_style('connections-user');
 	wp_dequeue_style('cn-public');
+	wp_deregister_style('cn-public');
 	wp_dequeue_style('cn-chosen');
+	wp_deregister_style('cn-chosen');
+	wp_dequeue_style('contact-form-7');
 	wp_dequeue_style('dlm-frontend');
 	wp_dequeue_style('ob_page_numbers');
 	wp_dequeue_style('validate-engine-css');
 	wp_dequeue_style('yarppWidgetCss');
-
-	$theme_font_url = add_query_arg('family', 'Lato:400,700,300italic,400italic', "//fonts.googleapis.com/css");
-	$template_directory_uri = get_template_directory_uri();
-	wp_enqueue_style('theme-font', $theme_font_url, array(), null);
-	wp_enqueue_style('fconline-style', get_stylesheet_uri(), array('theme-font'), '2.7.1');
-	wp_enqueue_script('smooth-scroll', $template_directory_uri . '/scripts/min/jquery.smooth-scroll.min.js', array('jquery'), '20140508', true);
-
-	wp_enqueue_script('photoswipe', $template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.min.js', array('jquery'), '4.1.2', true);
-	wp_enqueue_script('photoswipe-ui', $template_directory_uri . '/bower_components/photoswipe/dist/photoswipe-ui-default.min.js', array('jquery'), '4.1.2', true);
-
-	wp_enqueue_script('fconline-script', $template_directory_uri . '/scripts/min/functions-min.js', array('jquery', 'photoswipe'), '20170426', true);
-	wp_enqueue_script('fussballde-script', $template_directory_uri . '/scripts/min/fussballde-widget-min.js', array(), null, false);
-	wp_enqueue_script('analytics', $template_directory_uri . '/scripts/min/analytics-min.js', array(), '20140228', true);
 }
-add_action('wp_enqueue_scripts', 'fconline_scripts');
+
+function fconline_enqueue_styles($template_directory_uri) {
+	// $theme_font_url = add_query_arg('family', 'Lato:400,700,300italic,400italic', "//fonts.googleapis.com/css");
+	$theme_font_url = add_query_arg('family', 'Corbert', "//db.onlinewebfonts.com/c/5ce66afbbd1516da0d69cffddf4f8cf3");
+
+	wp_enqueue_style('theme-font',
+		$theme_font_url, array(), null);
+	wp_enqueue_style('fconline',
+		get_stylesheet_uri(), array('theme-font'), '2.7.2');
+	wp_enqueue_script('smooth-scroll',
+		$template_directory_uri . '/scripts/min/jquery.smooth-scroll.min.js', array('jquery'), '20140508', true);
+	wp_enqueue_style('photoswipe',
+		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.css', array(), '4.1.2');
+	wp_enqueue_style('photoswipe-skin',
+		$template_directory_uri . '/bower_components/photoswipe/dist/default-skin/default-skin.css', array(), '4.1.2');
+}
+
+function fconline_enqueue_scripts($template_directory_uri) {
+	wp_enqueue_script('photoswipe',
+		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.min.js', array(), '4.1.2', true);
+	wp_enqueue_script('photoswipe-ui',
+		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe-ui-default.min.js', array(), '4.1.2', true);
+	wp_enqueue_script('fconline-script',
+		$template_directory_uri . '/scripts/min/functions-min.js', array('jquery', 'photoswipe'), '20170903', true);
+	wp_enqueue_script('fussballde-script',
+		$template_directory_uri . '/scripts/min/fussballde-widget-min.js', array(), null, false);
+	wp_enqueue_script('analytics',
+		$template_directory_uri . '/scripts/min/analytics-min.js', array(), '20140228', true);
+}
+
+/**
+* Enqueues all neccessary styles and scripts for the theme.
+* Dequeues some default plugin styles which collidate with theme style entries. 
+*/
+function fconline_scripts() {
+	$template_directory_uri = get_template_directory_uri();
+
+	fconline_dequeue_plugin_styles();
+	fconline_enqueue_styles($template_directory_uri);
+	fconline_enqueue_scripts($template_directory_uri);
+}
+// add script with low priority (100) to ensure the default plugin styles are enqueued earlier.
+add_action('wp_enqueue_scripts', 'fconline_scripts', 100);
 
 
 
 function fconline_login_style() {
-	// Load the login page stylesheet
 	wp_enqueue_style('fc-online-login-style', get_template_directory_uri() . '/css/login.css', array(), '0.1');
 }
 add_action('login_enqueue_scripts', 'fconline_login_style');
@@ -131,6 +161,17 @@ function fconline_widgets_init() {
 }
 add_action('widgets_init', 'fconline_widgets_init');
 add_filter('widget_em_widget', 'do_shortcode');
+
+/**
+ * Gallery Default Settings
+ * @param Array $settings
+ * @return Array $settings
+*/
+function theme_gallery_defaults( $settings ) {
+    $settings['galleryDefaults']['columns'] = 4;
+    return $settings;
+}
+add_filter( 'media_view_settings', 'theme_gallery_defaults' );
 
 
 /* Shortcodes */
@@ -290,16 +331,107 @@ function fconline_text_link_shortcode($atts, $content = null) {
 		'link' => '#',
 		'target' => '_self'
 	), $atts));
-	return '<h5><a class="link" href="' . esc_url($link) . '" target="' . esc_attr($target) . '">' . $title . '</a></h5><p>' . $content . '</p>';
+	return '<h6><a class="link" href="' . esc_url($link) . '" target="' . esc_attr($target) . '">' . $title . '</a></h6><p>' . $content . '</p>';
 }
 add_shortcode('text_link', 'fconline_text_link_shortcode');
 add_filter('widget_text', 'do_shortcode');
 
 function remove_width_attribute($html) {
-   return preg_replace('/(width|height)="\d*"\s/', "", $html);
+	return preg_replace('/(width|height)="\d*"\s/', '', $html);
 }
 add_filter('post_thumbnail_html', 'remove_width_attribute', 10);
 add_filter('image_send_to_editor', 'remove_width_attribute', 10);
+
+function fconline_post_gallery($output, $attr) {
+    global $post, $wp_locale;
+
+    static $instance = 0;
+    $instance++;
+
+    if ( isset( $attr['orderby'] ) ) {
+        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+        if ( !$attr['orderby'] )
+            unset( $attr['orderby'] );
+    }
+
+    extract(shortcode_atts(array(
+        'order'      => 'ASC',
+        'orderby'    => 'menu_order ID',
+        'id'         => $post->ID,
+        'itemtag'    => 'dl',
+        'icontag'    => 'dt',
+        'captiontag' => 'dd',
+        'columns'    => 3,
+        'size'       => 'thumbnail',
+        'include'    => '',
+        'exclude'    => ''
+    ), $attr));
+
+    $id = intval($id);
+    if ( 'RAND' == $order )
+        $orderby = 'none';
+
+    if ( !empty($include) ) {
+        $include = preg_replace( '/[^0-9,]+/', '', $include );
+        $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+        $attachments = array();
+        foreach ( $_attachments as $key => $val ) {
+            $attachments[$val->ID] = $_attachments[$key];
+        }
+    } elseif ( !empty($exclude) ) {
+        $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
+        $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    } else {
+        $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    }
+
+    if ( empty($attachments) )
+        return '';
+
+    if ( is_feed() ) {
+        $output = "\n";
+        foreach ( $attachments as $att_id => $attachment )
+            $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+        return $output;
+    }
+
+    $itemtag = tag_escape($itemtag);
+    $captiontag = tag_escape($captiontag);
+    $columns = intval($columns);
+    $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+    $float = is_rtl() ? 'right' : 'left';
+
+    $selector = "gallery-{$instance}";
+
+    $output = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns}'>";
+
+    $i = 0;
+    foreach ( $attachments as $id => $attachment ) {
+        $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+        $meta = wp_get_attachment_metadata($id);
+        $width = $meta['width'];
+        $height = $meta['height'];
+
+        $output .= "<{$itemtag} class='gallery-item'>";
+        $output .= "
+            <{$icontag} class='gallery-icon' data-resolution='{$width}x{$height}'>
+                $link
+            </{$icontag}>";
+        if ( $captiontag && trim($attachment->post_excerpt) ) {
+            $output .= "
+                <{$captiontag} class='gallery-caption'>
+                " . wptexturize($attachment->post_excerpt) . "
+                </{$captiontag}>";
+        }
+        $output .= "</{$itemtag}>";
+    }
+
+    $output .= "</div>\n";
+
+    return $output;
+}
+add_filter( 'post_gallery', 'fconline_post_gallery', 10, 2 );
 
 function fconline_query_format_standard() {
 	$args = array(

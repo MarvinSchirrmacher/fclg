@@ -1,5 +1,3 @@
-/* Function to search through DOM strucutre */
-
 /*!
  * jQuery Next-In-Dom
  * http://techfoobar.com/jquery-next-in-dom/
@@ -11,20 +9,17 @@
  (function($) {
  
 	$.fn.nextInDOM = function(selector) {
-		// NOTE: if multiple elements specified, only the first is considered
 		var element = this;
 		if(this.length > 1) { element = this.first(); }
 		return nextInDOM(selector?selector:'*', element, $('*').length, $('*').last());
 	};
 	
 	$.fn.prevInDOM = function(selector) {
-		// NOTE: if multiple elements specified, only the first is considered
 		var element = this;
 		if(this.length > 1) { element = this.first(); }
 		return prevInDOM(selector?selector:'*', element, $('*').length, $('*').first());
 	};
 	
-	// next in dom implementation
 	function nextInDOM(_selector, _subject, _maxNodes, _lastNode) {
 		var nid = $(), next = getNext(_subject, _lastNode), iters = 1;
 		$('html, body').addClass('cSeen');
@@ -41,18 +36,6 @@
 	    return nid;
 	}
 	
-	/*
-	finding next (e) {
-		if e has children & !e.traversed
-			n = e.children.first
-		else if e has next
-			n = e.next
-		else if e has parent
-			e.parent.traversed = true
-			n = next(e.parent)
-		else n = null;
-	}
-	*/
 	function getNext(_subject, _lastNode) {
 		if(_subject[0] === _lastNode[0]) { return $(); }
 		if(!(_subject.hasClass('cSeen')) && _subject.children().length > 0 && _subject[0].tagName !== 'svg') {
@@ -68,7 +51,6 @@
 	    return $();
 	}
 	
-	// prev in dom implementation
 	function prevInDOM(_selector, _subject, _maxNodes, _firstNode) {
 	    var prev = getPrev(_subject, _firstNode), iters = 1;
 		while(prev.length !== 0) {
@@ -80,17 +62,6 @@
 	    return $();
 	}
 	
-	/*
-	if e has prev and e.prev has children {
-		n = deepest and farthest child of e.prev
-	}
-	else if e has prev {
-		n = e.prev
-	}
-	else if e has parent {
-		n = e.parent
-	}
-	*/
 	function getPrev(_subject, _firstNode) {
 		if(_subject[0] === _firstNode[0]) { return $(); }
 	    if(_subject.prev().length > 0 && _subject.prev().children().length > 0) {
@@ -109,8 +80,6 @@
 	
 })(jQuery);
 
-/* Add easing functions */
-
 jQuery.extend( jQuery.easing,
 {
 	easeInOutQuart: function (x, t, b, c, d) {
@@ -118,8 +87,6 @@ jQuery.extend( jQuery.easing,
 		return -c/2 * ((t-=2)*t*t*t - 2) + b;
 	}
 });
-
-/* Debounce */
 
 function debounce(func, wait, immediate) {
 	var timeout;
@@ -136,16 +103,189 @@ function debounce(func, wait, immediate) {
 	};
 }
 
+function getImageDimensions(url){   
+    var img = new Image();
+    var width;
+    var height;
+
+    img.addEventListener('load', function() {
+        width = this.naturalWidth;
+        height = this.naturalHeight;
+    });
+    img.src = url;
+
+    return [width, height];
+}
+
+function parseThumbnailElements(gallery) {
+    var galleryItems = gallery.childNodes;
+    var items = [];
+
+    for (var i = 0; i < galleryItems.length; i++) {
+    	var galleryItem = galleryItems[i];
+        if (galleryItem.nodeType !== 1) {
+            continue;
+        }
+
+        var icon = galleryItems[i].children[0];
+        var link = icon.children[0];
+        var image = link.children[0];
+        var resolution = icon.getAttribute('data-resolution').split('x');
+
+        var item = {
+            src: link.getAttribute('href'),
+            w: resolution[0],
+            h: resolution[1],
+            msrc: image.getAttribute('src')
+        };
+
+        item.el = galleryItems[i];
+        items.push(item);
+    }
+
+    return items;
+}
+
+// parse picture index and gallery index from URL (#&pid=1&gid=2)
+function photoswipeParseHash() {
+    var hash = window.location.hash.substring(1),
+    params = {};
+
+    if (hash.length < 5) {
+        return params;
+    }
+
+    for (var variable in hash.split('&')) {
+        if (!variable) {
+            continue;
+        }
+        var pair = variable.split('=');  
+        if (pair.length < 2) {
+            continue;
+        }           
+        params[pair[0]] = pair[1];
+    }
+
+    if (params.gid) {
+        params.gid = parseInt(params.gid, 10);
+    }
+
+    return params;
+}
+
+function openPhotoSwipe(index, gallery, disableAnimation, fromURL) {
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    var items = parseThumbnailElements(gallery);
+
+    var options = {
+        galleryUID: gallery.getAttribute('data-pswp-uid'),
+
+        getThumbBoundsFn: function(index) {
+            // See Options -> getThumbBoundsFn section of documentation for more info
+            var thumbnail = items[index].el.getElementsByTagName('img')[0];
+            var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+            var rect = thumbnail.getBoundingClientRect(); 
+
+            return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+        }
+    };
+
+    if (fromURL) {
+        if (options.galleryPIDs) {
+            for (var j = 0; j < items.length; j++) {
+                if (items[j].pid === index) {
+                    options.index = j;
+                    break;
+                }
+            }
+        } else {
+            options.index = parseInt(index, 10) - 1;
+        }
+    } else {
+        options.index = parseInt(index, 10);
+    }
+
+    if (isNaN(options.index)) {
+        return;
+    }
+
+    if (disableAnimation) {
+        options.showAnimationDuration = 0;
+    }
+
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+}
+
+function closest(el, fn) {
+    return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+}
+
+function initPhotoSwipeFromDOM(gallerySelector) {
+    var galleries = document.querySelectorAll(gallerySelector);
+	
+	var onThumbnailsClick = function(event) {
+	    event = event || window.event;
+	    event.preventDefault ? event.preventDefault() : event.returnValue = false;
+
+	    var target = event.target || event.srcElement;
+
+	    var clickedGalleryItem = closest(target, function(el) {
+	        return (el.tagName && el.tagName.toUpperCase() === 'DL');
+	    });
+
+	    if (!clickedGalleryItem) {
+	        return;
+	    }
+
+	    var clickedGallery = clickedGalleryItem.parentNode;
+	    var galleryItems = clickedGallery.childNodes;
+	    var nodeIndex = 0;
+	    var index = 0;
+
+	    for (index = 0; index < galleryItems.length; index++) {
+	        if (galleryItems[index].nodeType !== 1) { 
+	            continue;
+	        }
+
+	        if (galleryItems[index] === clickedGalleryItem) {
+	            index = nodeIndex;
+	            break;
+	        }
+	        nodeIndex++;
+	    }
+
+	    if (index >= 0) {
+	        openPhotoSwipe(index, clickedGallery);
+	    }
+	    return false;
+	};
+
+    for (var i = 0; i < galleries.length; i++) {
+        galleries[i].setAttribute('data-pswp-uid', i + 1);
+        galleries[i].onclick = onThumbnailsClick;
+    }
+
+    var hashData = photoswipeParseHash();
+    if (hashData.pid && hashData.gid) {
+        openPhotoSwipe(hashData.pid, galleries[hashData.gid - 1], true, true);
+    }
+}
+
 ( function( $ ) {
 	var _window = $( window );
 
 	$( function() {
 
+		if ($(".gallery")[0]) {
+			initPhotoSwipeFromDOM('.gallery');
+		}
+
 		/* Hide or display any wrapper when the corresponding toggle button was clicked. */
 
 		$('.toggle').on( 'click.fconline tap.fconline', function( event ) {
 			var that  = $( this );
-			var wrapper = that.nextInDOM( '#' + (event.target.id).replace( 'toggle', 'wrapper' ) ); // that.nextAll( '#' + (event.target.id).replace( 'toggle', 'wrapper' ) ).first(); // $( '#' + (event.target.id).replace( 'toggle', 'wrapper' ) );
+			var wrapper = that.nextInDOM( '#' + (event.target.id).replace( 'toggle', 'wrapper' ) );
 
 			that.toggleClass('active');
 			wrapper.toggleClass('hidden');
@@ -187,33 +327,32 @@ function debounce(func, wait, immediate) {
 		// 	}
 		// } );
 
-		/* Hide or display back-to-top link. */
-
 		debounce( _window.scroll( function() {
-			var toggle = $( '#navigation-toggle' );
-			var wrapper = $( '#navigation-wrapper' );
+			/* Hide or display back-to-top link. */
+			var toggle = $('#navigation-toggle');
+			var wrapper = $('#navigation-wrapper');
 
-			if ( ! wrapper.hasClass( 'hidden' ) ) {
-				wrapper.toggleClass( 'hidden' );
-				toggle.toggleClass( 'active' );
+			if (!wrapper.hasClass('hidden')) {
+				wrapper.toggleClass('hidden');
+				toggle.toggleClass('active');
 			}
 			
-			var that = $( this );
-			var link = $( '#back-to-top' );
+			var that = $(this);
+			var link = $('#back-to-top');
 			var offset = 2 * _window.height();
 
-			if ( that.scrollTop() > offset ) {
-				link.removeClass( 'hidden' );
+			if (that.scrollTop() > offset) {
+				link.removeClass('hidden');
 			} else {
-				link.addClass( 'hidden' );
+				link.addClass('hidden');
 			}
-		} ), 250 );
+		}), 250);
 
-		$( '#back-to-top' ).smoothScroll( {
+		$('#back-to-top').smoothScroll( {
 			easing: 'easeInOutQuart',
 			speed: 1000
-		} );
+		});
 
-	} );
+	});
 	
 } )( jQuery );

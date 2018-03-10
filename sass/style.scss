@@ -11,8 +11,17 @@ Tags:
 Text Domain: fconline
 */
 
+/* Compass */
+
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
+
+/* Bower */
+
+@import "../bower_components/photoswipe/src/css/main.scss";
+@import "../bower_components/photoswipe/src/css/default-skin/default-skin.scss";
+
+/* Theme */
 
 @import "_variables.scss";
 @import "_functions.scss";
@@ -20,7 +29,17 @@ Text Domain: fconline
 @import "_structure.scss";
 @import "_navigation.scss";
 @import "_patterns.scss";
-@import "_content.scss";
+@import "_list.scss";
+@import "_post.scss";
+@import "_gallery.scss";
+@import "_sitemap.scss";
+@import "_widget.scss";
 
-@import "../bower_components/photoswipe/src/css/main.scss";
-@import "../bower_components/photoswipe/src/css/default-skin/default-skin.scss";
+/* Plugins */
+
+// @import "plugins/_bb-press.scss";
+@import "plugins/_contact-form-7.scss";
+@import "plugins/_download-monitor.scss";
+@import "plugins/_events-manager.scss";
+@import "plugins/_connections.scss";
+@import "plugins/_wp-polls.scss";
