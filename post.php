@@ -58,6 +58,7 @@
 			) );
 		?>
 	</div>
+	<?php the_tags( '<footer class="post-meta"><div class="tags-list">', '', '</div></footer>' ); ?>
 	<?php else: ?>
 	<div class="post-summary">
 	<?php
@@ -69,6 +70,4 @@
 	?>
 	</div>
 	<?php endif; ?>
-
-	<?php // the_tags( '<footer class="post-meta"><span class="tag-links">', '', '</span></footer>' ); ?>
 </article>
