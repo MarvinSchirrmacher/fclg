@@ -12,6 +12,7 @@
 			</footer>
 		</section>
 
+		<?php include("photoswipe.php"); ?>
 		<?php wp_footer(); ?>
 	</body>
 </html>
