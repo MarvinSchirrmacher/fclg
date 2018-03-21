@@ -389,11 +389,19 @@ del {
 	color: #767676;
 }
 
+$line-color: lighten(black, 60%);
+$line-gradient: 2 * $primary-margin;
 hr {
-	background-color: rgba(0, 0, 0, 0.1);
+	// background-color: lighten(black, 40%);
 	border: 0;
 	height: 1px;
 	margin-bottom: 20px;
+	background-image: linear-gradient(
+		to right,
+		rgba($line-color, 0) 0%,
+		$line-color $line-gradient,
+		$line-color calc(100% - #{$line-gradient}),
+		rgba($line-color, 0) 100%);
 }
 
 ::selection {
