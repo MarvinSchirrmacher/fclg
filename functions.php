@@ -184,7 +184,7 @@ function fconline_grid_shortcode($atts, $content = null) {
 		'width' => '1-2',
 		'group' => false
 	), $atts));
-	return '<section' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="grid-' . $width . ($group ? ' group' : '') . '">' . do_shortcode($content) . '</section>';
+	return '<section' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="grid-' . $width . ($group ? ' grid' : '') . '">' . do_shortcode($content) . '</section>';
 }
 add_shortcode('grid', 'fconline_grid_shortcode');
 add_filter('grid', 'do_shortcode');
@@ -196,18 +196,11 @@ function fconline_module_shortcode($atts, $content = null) {
 		'id' => '',
 		'class' => '',
 		'heading' => '',
-		'width' => ''
+		'width' => '1-1'
 	), $atts));
 
-	if (! empty($width)) {
-		$grid_content = '';
-		$grid_content .= '[module id="' . $id . '" class="' . $class . '" heading="' . $heading . '"]';
-		$grid_content .= ($content != null ? $content : '');
-		$grid_content .= '[/module]';
-		return fconline_grid_shortcode(array('width' => $width), $grid_content);
-	} else {
-		return '<div' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="module' . ($class != '' ? ' ' . $class  : '') . '"' . ($heading != '' ? ' data-heading="' . $heading . '"' : '') . '>' . do_shortcode($content) . '</div>';
-	}
+	$module = '<div' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="module' . ($class != '' ? ' ' . $class  : '') . '"' . ($heading != '' ? ' data-heading="' . $heading . '"' : '') . '>' . do_shortcode($content) . '</div>';
+	return fconline_grid_shortcode(array('width' => $width), $module);
 }
 add_shortcode('module', 'fconline_module_shortcode');
 add_filter('module', 'do_shortcode');
@@ -268,60 +261,79 @@ function fconline_set_taxonomy(&$atts, $name, $values, $value_prefix = '') {
 	}
 }
 
+remove_filter( 'the_content', 'wpautop' );
+add_filter( 'the_content', 'wpautop' , 99);
+add_filter( 'the_content', 'shortcode_unautop',100 );
+
 function fconline_status_shortcode($atts) {
 	fconline_set_taxonomy($atts, 'post_format', 'status', 'post-format');
 	return fconline_post_excerpt_shortcode($atts, 'status');
 }
 add_shortcode('status', 'fconline_status_shortcode');
 
-function fconline_post_preview_shortcode($atts) {
-	$output = '';
+function fconline_construct_post_preview($atts) {
+	extract(shortcode_atts(array(
+		'link' => '',
+		'thumbnail' => '',
+		'title' => '',
+		'date' => '',
+		'location' => ''
+	), $atts));
 
-	if (!empty($atts['link'])) {
-		extract(shortcode_atts(array(
-			'link' => '',
-			'thumbnail' => '',
-			'title' => '',
-			'date' => '',
-			'location' => ''
-		), $atts));
+	$output = empty($link)
+		? '<div class="post post-preview">'
+		: '<a class="post post-preview" href="' . $link . '" title="' . $title . '">';
+	$output .= empty($thumbnail)
+		? ''
+		: '<div class="post-thumbnail">' . $thumbnail . '</div>';
 
-		$output .= ! empty($link) ? '<a class="post post-preview" href="' . $link . '" title="' . $title . '">' : '<div class="post post-preview">';
-		$output .= ! empty($thumbnail) ? '<div class="post-thumbnail">' . $thumbnail . '</div>' : '';
-		if (!empty($title) || !empty($date) || !empty($location)) {
-			$output .= '<figcaption class="post-meta">';
-			$output .= ! empty($title) ? '<span class="post-title">' . $title . '</span>' : '';
-			$output .= ! empty($date) ? '<span class="post-meta-date">' . $date . '</span>' : '';
-			$output .= ! empty($location) ? '<span class="post-meta-location">' . $location . '</span>' : '';
-			$output .= '</figcaption>';
-		}
-		$output .= ! empty($link) ? '</a>' : '</div>';
-	} else {
-		$posts = array();
-		if (!empty($atts['post_formats'])) {
-			fconline_set_taxonomy($atts, 'post_format', $atts['post_formats'], 'post-format');
-			unset($atts['post_formats']);
-		}
-
-		if (!empty($atts['section'])) {
-			fconline_set_taxonomy($atts, 'section', $atts['section']);
-			unset($atts['section']);
-		}
-
-		global $post;
-		$posts = get_posts($atts);
-
-		ob_start();
-
-		foreach ($posts as $post) : setup_postdata($post);
-			get_template_part('post', 'preview');
-		endforeach; wp_reset_postdata();
-
-		$output = ob_get_contents();
-		ob_end_clean();
+	if (!empty($title) || !empty($date) || !empty($location)) {
+		$output .= '<figcaption class="post-meta">';
+		$output .= ! empty($title) ? '<span class="post-title">' . $title . '</span>' : '';
+		$output .= ! empty($date) ? '<span class="post-meta-date">' . $date . '</span>' : '';
+		$output .= ! empty($location) ? '<span class="post-meta-location">' . $location . '</span>' : '';
+		$output .= '</figcaption>';
 	}
+	$output .= empty($link) ? '</div>' : '</a>';
 
 	return $output;
+}
+
+function fconline_construct_post_preview_with_post($atts) {
+	if (!empty($atts['post_formats'])) {
+		fconline_set_taxonomy($atts, 'post_format', $atts['post_formats'], 'post-format');
+		unset($atts['post_formats']);
+	}
+
+	if (!empty($atts['section'])) {
+		fconline_set_taxonomy($atts, 'section', $atts['section']);
+		unset($atts['section']);
+	}
+
+	if (!empty($atts['advertising_medium'])) {
+		fconline_set_taxonomy($atts, 'advertising_medium', $atts['advertising_medium']);
+		unset($atts['advertising_medium']);
+	}
+
+	global $post;
+	$posts = get_posts($atts);
+
+	ob_start();
+
+	foreach ($posts as $post) : setup_postdata($post);
+		get_template_part('post', 'preview');
+	endforeach; wp_reset_postdata();
+
+	$output = ob_get_contents();
+	ob_end_clean();
+
+	return $output;
+}
+
+function fconline_post_preview_shortcode($atts) {
+	return empty($atts['link'])
+		? fconline_construct_post_preview_with_post($atts)
+		: fconline_construct_post_preview($atts);
 }
 add_shortcode('post_preview', 'fconline_post_preview_shortcode');
 
