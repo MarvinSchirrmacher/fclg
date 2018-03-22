@@ -365,21 +365,22 @@ $module-title-height: 1.9rem;
 
 .grid {
 	padding-right: 0px;
+	padding-left: 30px;
+	@include breakpoint(L) {
+		padding-left: 20px;
+	}
+	@include breakpoint(XS) {
+		padding-left: 10px;
+	}
+	@include breakpoint(XXS) {
+		padding-left: 0px;
+	}
 	@include flexbox($width: 100%, $align: flex-start);
 	> br {
 		display: none;
 	}
-	&:not(& &) {
-		padding-left: 30px;
-		@include breakpoint(L) {
-			padding-left: 20px;
-		}
-		@include breakpoint(XS) {
-			padding-left: 10px;
-		}
-		@include breakpoint(XXS) {
-			padding-left: 0px;
-		}
+	> .grid {
+		padding-left: 0px !important;
 	}
 	> *:not(.grid) {
 		padding-right: 30px;
