@@ -261,9 +261,9 @@ function fconline_set_taxonomy(&$atts, $name, $values, $value_prefix = '') {
 	}
 }
 
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop' , 99);
-add_filter( 'the_content', 'shortcode_unautop',100 );
+// remove_filter( 'the_content', 'wpautop' );
+// add_filter( 'the_content', 'wpautop' , 99);
+// add_filter( 'the_content', 'shortcode_unautop',100 );
 
 function fconline_status_shortcode($atts) {
 	fconline_set_taxonomy($atts, 'post_format', 'status', 'post-format');
