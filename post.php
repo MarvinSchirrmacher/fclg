@@ -76,6 +76,7 @@ $is_sponsor = $post_type == 'sponsor';
 		<div class="grid-1-1">
 			<?php SponsorManagement::echoSponsorLocationMap(); ?>
 		</div>
+		<?php SponsorManagement::echoFooterImage('of-above-average-width'); ?>
 	</footer>
 	<?php else: ?>
 		<?php the_tags('<footer class="post-meta"><div class="tags-list">', '', '</div></footer>'); ?>
