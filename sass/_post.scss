@@ -4,8 +4,8 @@
 
 article.hentry, article.post {
 	> *:not(.post-thumbnail) {
-		margin-left: $primary-padding;
-		margin-right: $primary-padding;
+		padding-left: $primary-padding;
+		padding-right: $primary-padding;
 	}
 }
 
@@ -62,9 +62,11 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-subtitle,
 .post-meta,
 .comment-metadata {
-	color: lighten($theme-color, 50%);
-	font-size: 0.875em;
-	text-transform: uppercase;
+	span {
+		color: lighten($theme-color, 50%);
+		font-size: 0.875em;
+		text-transform: uppercase;
+	}
 }
 
 .post-meta {
@@ -149,27 +151,35 @@ table {
 	padding-left: 0 !important;
 }
 
+
+.post-meta [class*="grid-"] {
+	margin-bottom: $primary-margin;
+}
+
 /**
  * Tags
  */
 
 .tags-list {
 	a {
+		background: darken(white, 10%);
+		border: solid 1px darken(white, 15%);
+		color: $theme-color;
 		display: inline-block;
-		background: lighten(black, 30%);
-		color: white;
 		margin: 0 10px 10px 0;
-		padding: 10px 15px;
+		padding: 7px 12px;
 		@include border-radius(10px);
 		&:before {
 			content: "#";
 			text-shadow: 0 0 0px white;
 		}
 		&:hover {
-			background: lighten(black, 10%);
+			background: $theme-color;
+			border-color: $theme-color;
+			color: white;
 			&:before {
 				font-weight: bold;
-				text-shadow: 0 0 5px white;
+				text-shadow: 0 0 2px white;
 			}
 		}
 	}
@@ -200,6 +210,7 @@ table {
 
 .yarpp-related { margin: 0 !important; }
 
+
 .post-preview {
 	display: block;
 	margin: 0;
@@ -209,15 +220,29 @@ table {
 	> .post-thumbnail {
 		margin-bottom: 0;
 		&:not(:empty) + .post-meta {
+			background: rgba($theme-color, 0.75);
+			border: 1px solid rgba(white, 0.75);
+			padding: 0.5rem;
 			position: absolute;
-				bottom: 0;
-				left: 0px;
-			width: 100%;
+				bottom: 10px;
+				left: 10px;
+			width: calc(100% - 20px);
 			max-height: 100%;
-			background: rgba(white, 0.75);
-			border-top: solid 1px white;
-			padding-top: $primary-padding * 0.4;
-			padding-bottom: $primary-padding * 0.4;
+			@include border-radius(10px);
+			span {
+				color: white;
+				font-weight: normal;
+				line-height: 1;
+				margin: 0;
+				text-align: center;
+			}
+			.post-title {
+				font-size: 1.5rem;
+			}
+			.post-subtitle {
+				font-size: 1rem;
+				text-transform: none;
+			}
 		}
 	}
 	> .post-meta {
@@ -239,7 +264,13 @@ table {
 				@include transition(all 0.1s ease-in 0.0s);
 			}
 			&:not(:empty) + .post-meta {
-				background: rgba(white, 1);
+				background: rgba(white, 0.75);
+				border-color: rgba(white, 0);
+				// border-top-color: rgba(white, 0.75);
+				@include border-radius(0px);
+				span {
+					color: $theme-color;
+				}
 			}
 		}
 	}
