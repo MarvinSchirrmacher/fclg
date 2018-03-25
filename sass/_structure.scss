@@ -340,26 +340,6 @@ $module-title-height: 1.9rem;
 }
 
 /**
- * Columns
- */
-
-[class*="columns-"] {
-	@include flexbox($width: 100%);
-}
-.columns-2 > * { width: (100% / 2); }
-.columns-3 > * { width: (100% / 3); }
-.columns-4 > * { width: (100% / 4); }
-@include breakpoint(XS) {
-	.columns-3 > * { width: (100% / 2); }
-	.columns-4 > * { width: (100% / 3); }
-}
-@include breakpoint(XXS) {
-	.columns-2 > *,
-	.columns-3 > * { width: (100% / 1); }
-	.columns-4 > * { width: (100% / 2); }
-}
-
-/**
  * Grid
  */
 
@@ -382,7 +362,7 @@ $module-title-height: 1.9rem;
 	> .grid {
 		padding-left: 0px !important;
 	}
-	> *:not(.grid) {
+	&:not(.menu) > *:not(.grid) {
 		padding-right: 30px;
 		@include breakpoint(L) {
 			padding-right: 20px;
