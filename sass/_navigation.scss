@@ -373,18 +373,3 @@ $admin-bar-height-small-screen: 46px;
 		}
 	}
 }
-
-.customMetaWidget {
-	a {
-		@include icon("");
-		&[href*="wp-admin"] {
-			@include icon-content($icon-gauge);
-		}
-		&[href*="wp-login"] {
-			@include icon-content($icon-login);
-			&[href*="logout"] {
-				@include icon-content($icon-log-out);
-			}
-		}
-	}
-}
