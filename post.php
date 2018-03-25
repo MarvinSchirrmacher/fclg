@@ -1,4 +1,9 @@
-<?php $is_singular = (is_singular() and !is_search() and !is_front_page() and !is_page_template('page-modules.php')); ?>
+<?php
+$is_singular = (is_singular() and !is_search() and !is_front_page() and !is_page_template('page-modules.php'));
+$post_type = get_post_type();
+$is_post = $post_type == 'post';
+$is_sponsor = $post_type == 'sponsor';
+?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -24,7 +29,7 @@
 		<h1 class="post-title"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 	<?php endif; ?>
 
-	<?php if (get_post_type() == 'post') : ?>
+	<?php if ($is_post) : ?>
 		<div class="post-meta">
 
 			<span class="post-meta-category"><?php echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'fconline' ) ); ?></span>
@@ -48,17 +53,34 @@
 
 	<?php if ($is_singular): ?>
 	<div class="post-content">
-		<?php
-			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'fconline' ) );
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'fconline' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			) );
-		?>
+		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'fconline' ) );
+		wp_link_pages( array(
+			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'fconline' ) . '</span>',
+			'after'       => '</div>',
+			'link_before' => '<span>',
+			'link_after'  => '</span>'
+		) ); ?>
 	</div>
-	<?php the_tags( '<footer class="post-meta"><div class="tags-list">', '', '</div></footer>' ); ?>
+	<?php if ($is_sponsor): ?>
+	<footer class="post-meta grid">
+		<div class="grid-1-1"><hr /></div>
+		<div class="grid-1-1">
+			<?php SponsorManagement::echoSponsorGallery(); ?>
+		</div>
+		<div class="grid-1-2">
+			<?php SponsorManagement::echoSponsorMeta(); ?>
+		</div>
+		<div class="grid-1-2">
+			<?php SponsorManagement::echoSponsorAdvertisingMedia(); ?>
+		</div>
+		<div class="grid-1-1">
+			<?php SponsorManagement::echoSponsorLocationMap(); ?>
+		</div>
+		<?php SponsorManagement::echoFooterImage('of-above-average-width'); ?>
+	</footer>
+	<?php else: ?>
+		<?php the_tags('<footer class="post-meta"><div class="tags-list">', '', '</div></footer>'); ?>
+	<?php endif; ?>
 	<?php else: ?>
 	<div class="post-summary">
 	<?php

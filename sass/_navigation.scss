@@ -1,39 +1,69 @@
+$site-navigation-width: 220px;
+$menu-item-color: lighten($theme-color, 10%);
+$menu-item-border: solid 1px lighten($theme-color, 5%);
+$menu-item-hover-color: rgba($theme-color, 0.5);
+
 /* Menu */
 
 .menu {
 	list-style: none;
 	margin: 0;
-	padding: 0;
 	position: relative;
+	&:not(#navigation-menu) {
+		padding: 0;
+	}
 }
 
 /* Back to top link */
 
-$menu-item-border: solid 1px lighten(black, 20%);
-
-#back-to-top,
-#navigation-toggle {
-	background: lighten(black, 30%);
-	@include box-shadow( $primary-box-shadow );
-	position: fixed;
-	right: $primary-padding * 0.8;
-	z-index: 1000;
-	display: block;
-	padding: $primary-padding * 0.4;
+#navigation-toggle,
+#back-to-top {
+	background: $menu-item-color;
 	color: white;
+	display: block;
 	font-weight: bold;
 	font-size: 1.75rem;
 	line-height: 1rem;
+	padding: 10px;
+	position: fixed;
+	right: 20px;
+	z-index: 100;
 	@include border-radius(50%);
+	@include box-shadow($primary-box-shadow);
 	&:hover {
-		background: lighten(black, 20%);
+		background: $theme-color;
+	}
+	@include breakpoint(M) {
+		&.active {
+			right: $site-navigation-width + 10px;
+		}
+	}
+	@include breakpoint(XXS) {
+		right: 10px;
+	}
+}
+
+$nav_toggle_top: 20px;
+$nav_toggle_top_xxs: 10px;
+
+#navigation-toggle {
+	display: none;
+	top: $nav_toggle_top;
+	@include icon($icon-menu, false);
+	&.active {
+		@include icon-content($icon-cross);
+	}
+	@include breakpoint(M) {
+		display: block;
+	}
+	@include breakpoint(XXS) {
+		top: $nav_toggle_top_xxs;
 	}
 }
 
 #back-to-top {
-	bottom: $primary-padding * 0.8;
-	z-index: 100;
-	@include icon( $icon-chevron-up, false );
+	bottom: 20px;
+	@include icon($icon-chevron-up, false);
 	@include opacity(1);
 	@include transform( scale(1) );
 	&.hidden {
@@ -42,37 +72,11 @@ $menu-item-border: solid 1px lighten(black, 20%);
 		@include transform( scale(0.5) );
 	}
 	@include breakpoint(XXS) {
-		right: $primary-padding * 0.4;
-		bottom: $primary-padding * 0.4;
-	}
-}
-
-#navigation-toggle {
-	display: none;
-	top: $primary-padding * 0.8;
-	@include icon( $icon-menu, false );
-	&.active {
-		border-left: $menu-item-border;
-		border-bottom: $menu-item-border;
-		font-size: 1.4rem;
-		right: 0;
-		top: 0;
-		@include border-radius(0);
-		@include box-shadow(none);
-		@include icon-content( $icon-cross );
-	}
-	@include breakpoint(M) {
-		display: block;
-	}
-	@include breakpoint(XXS) {
-		right: $primary-padding * 0.4;
-		top: $primary-padding * 0.4;
+		bottom: 10px;
 	}
 }
 
 /* Navigation menu */
-
-$site-navigation-width: 220px;
 
 #navigation-wrapper {
 	background-color: lighten(black, 30%);
@@ -81,15 +85,15 @@ $site-navigation-width: 220px;
 		display: block;
 	}
 	@include breakpoint(M) {
+		height: 100%;
+		overflow: auto;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 		position: fixed;
-		right: 0;
-		top: 0;
-		overflow: auto;
+			right: 0;
+			top: 0;
 		width: $site-navigation-width;
-		height: 100%;
-		z-index: 450;
+		z-index: 100;
 		@include box-shadow(none);
 		&.hidden {
 			right: -$site-navigation-width;
@@ -100,33 +104,33 @@ $site-navigation-width: 220px;
 	}
 }
 
-$admin-bar-height-breakpoint1: 782px;
-$admin-bar-height-breakpoint2: 600px;
+$admin-bar-bp-medium: 782px;
+$admin-bar-bp-small: 600px;
 $admin-bar-height: 32px;
-$admin-bar-height-small-screen: 46px;
+$admin-bar-height-medium: 46px;
 .admin-bar {
 	#navigation-toggle {
-		top: $primary-padding * 0.8 + $admin-bar-height;
-		&.active { top: $admin-bar-height; }
+		top: $nav_toggle_top + $admin-bar-height;
+		// &.active { top: $admin-bar-height; }
 	}
 	@include breakpoint(M) {
 		#navigation-wrapper {
 			top: $admin-bar-height;
 		}
 	}
-	@include breakpoint($admin-bar-height-breakpoint1) {
+	@include breakpoint($admin-bar-bp-medium) {
 		#navigation-toggle {
-			top: $primary-padding * 0.8 + $admin-bar-height-small-screen;
-			&.active { top: $admin-bar-height-small-screen; }
+			top: $nav_toggle_top + $admin-bar-height-medium;
+			// &.active { top: $nav_toggle_top + $admin-bar-height-medium; }
 		}
 		#navigation-wrapper {
-			top: $admin-bar-height-small-screen;
+			top: $admin-bar-height-medium;
 		}
 	}
-	@include breakpoint($admin-bar-height-breakpoint2) {
+	@include breakpoint($admin-bar-bp-small) {
 		#navigation-toggle{
-			top: $primary-padding * 0.8;
-			&.active { top: 0px; }
+			top: $nav_toggle_top;
+			// &.active { top: $nav_toggle_top; }
 		}
 		#navigation-wrapper {
 			top: 0px;
@@ -134,7 +138,7 @@ $admin-bar-height-small-screen: 46px;
 	}
 	@include breakpoint(XXS) {
 		#navigation-toggle {
-			top: $primary-padding * 0.4;
+			top: $nav_toggle_top_xxs;
 		}
 	}
 	#wp-admin-bar-wpseo-menu {
@@ -154,8 +158,6 @@ $admin-bar-height-small-screen: 46px;
 		text-align: left;
 	}
 	
-	// * { @include transition(none); }
-	
 	&.grid {
 		padding-right: 20px;
 	}
@@ -165,52 +167,57 @@ $admin-bar-height-small-screen: 46px;
 	li {
 		&:hover,
 		&.current-menu-item,
-		&.current-menu-ancestor,
-		&.current-page-ancestor {
-			background: rgba(black, 0.25);
+		&.current-menu-ancestor {
+			background-color: $menu-item-hover-color;
+		}
+		&.current-menu-ancestor {
+			@include breakpoint(M) {
+				> .sub-menu-toggle {
+					display: none;
+				}
+				> .sub-menu {
+					display: block !important;
+				}
+			}
 		}
 		position: relative;
 	}
 	a, .sub-menu-toggle {
 		color: white;
 		display: block;
-		padding: $primary-padding * 0.4;
 	}
 	a {
-		@include breakpoint(M) {
-			padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
-		}
+		padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
 	}
 	.sub-menu-toggle {
 		font-size: 1.4rem;
 		line-height: 1;
+		padding: 5px;
 		position: absolute;
-		top: 0;
-		right: 0;
-		border-left: $menu-item-border;
+			top: 5px;
+			right: 5px;
 		display: none;
+		@include border-radius(50%);
 		@include icon( $icon-chevron-down, false );
 		&.active {
-			@include icon-content( $icon-chevron-up );
+			@include transform(rotateX(180deg));
 		}
 		&:hover {
-			background-color: rgba(black, 0.25);
+			background-color: $menu-item-hover-color;
 		}
 		@include breakpoint(M) {
 			display: block;
 		}
 	}
 	.sub-menu {
+		background-color: lighten($theme-color, 10%);
 		position: absolute;
-		top: 100%;
-		left: 0;
-		margin: 0;
+			top: 100%;
+			left: 0;
 		width: 100%;
-		background-color: rgba(77, 77, 77, 0.95);
-		font-weight: normal;
-		list-style-type: none;
 		word-wrap: break-word;
 		z-index: -1;
+		@include border-radius(0 0 10px 10px);
 		@include box-shadow($primary-box-shadow);
 		@include opacity(0);
 		@include transform(translateY(-10px));
@@ -221,15 +228,17 @@ $admin-bar-height-small-screen: 46px;
 			border-top: $menu-item-border;
 		}
 		@include breakpoint(M) {
+			background-color: none;
+			margin-left: 10px;
 			position: relative;
 			top: 0;
-			background: none;
-			padding-left: $primary-padding;
-			z-index: 450;
+			width: calc(100% - 10px);
+			z-index: 100;
+			@include border-radius(0px);
 			@include box-shadow(none);
 			@include opacity(1);
 			@include transform(translateY(0px));
-			&.hidden {
+			&.hidden:not(.current-menu-ancestor) {
 				display: none;
 			}
 			> li:first-child {
@@ -242,12 +251,12 @@ $admin-bar-height-small-screen: 46px;
 
 	> li {
 		> .sub-menu {
-			font-size: 0.875rem;
+			font-size: 0.875em;
 		}
 		@include breakpoint(M) {
 			width: 100%;
 			border: none;
-			border-bottom: $menu-item-border;;
+			border-bottom: $menu-item-border;
 		}
 		> a {
 			padding: ($primary-padding * 0.6) 0;
@@ -290,8 +299,7 @@ $admin-bar-height-small-screen: 46px;
 		&:nth-child(8) > a { @include icon-content($icon-login); }
 		&:hover,
 		&.current-menu-item,
-		&.current-menu-ancestor,
-		&.current-page-ancestor {
+		&.current-menu-ancestor {
 			> a {
 				padding: ( $primary-padding * 0.32 ) 0 ( $primary-padding * 0.88 );
 				@include breakpoint(M) {
@@ -307,7 +315,7 @@ $admin-bar-height-small-screen: 46px;
 			> .sub-menu {
 				@include transform(translateY(0px));
 				@include opacity(1);
-				z-index: 450;
+				z-index: 100;
 			}
 		}
 	}
@@ -370,21 +378,6 @@ $admin-bar-height-small-screen: 46px;
 		> a {
 			width: 100% !important;
 			text-align: left !important;
-		}
-	}
-}
-
-.customMetaWidget {
-	a {
-		@include icon("");
-		&[href*="wp-admin"] {
-			@include icon-content($icon-gauge);
-		}
-		&[href*="wp-login"] {
-			@include icon-content($icon-login);
-			&[href*="logout"] {
-				@include icon-content($icon-log-out);
-			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <?php /* Template Name: Single page with tertiary sidebar */ ?>
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4 group" role="main">
+<section id="content" class="grid-3-4" role="main">
 
 	<div class="module unpadded">
 	<?php

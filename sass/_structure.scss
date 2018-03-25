@@ -340,79 +340,44 @@ $module-title-height: 1.9rem;
 }
 
 /**
- * Columns
- */
-
-[class*="columns"] {
-	@include flexbox($width: 100%);
-}
-.columns-2 > * { width: (100% / 2); }
-.columns-3 > * { width: (100% / 3); }
-.columns-4 > * { width: (100% / 4); }
-@include breakpoint(XS) {
-	.columns-3 > * { width: (100% / 2); }
-	.columns-4 > * { width: (100% / 3); }
-}
-@include breakpoint(XXS) {
-	.columns-2 > *,
-	.columns-3 > * { width: (100% / 1); }
-	.columns-4 > * { width: (100% / 2); }
-}
-
-/**
  * Grid
  */
 
 .grid {
-	padding-left: 30px !important;
+	padding-right: 0px;
+	padding-left: 30px;
 	@include breakpoint(L) {
-		padding-left: 20px !important;
+		padding-left: 20px;
 	}
 	@include breakpoint(XS) {
-		padding-left: 10px !important;
+		padding-left: 10px;
 	}
 	@include breakpoint(XXS) {
-		padding-left: 0px !important;
+		padding-left: 0px;
 	}
-}
-
-[class*="grid-"] {
-	float: left;
-	padding-right: 30px;
-	&.group {
-		padding-right: 0px !important;
-		> *:not([class*="grid-"]) {
-			clear: left;
-			margin-right: 30px !important;
-		}
-	}
+	@include flexbox($width: 100%, $align: flex-start);
 	> br {
 		display: none;
 	}
-	@include breakpoint(L) {
-		padding-right: 20px;
-		&.group {
-			> *:not([class*="grid-"]) {
-				margin-right: 20px !important;
-			}
+	> .grid {
+		padding-left: 0px !important;
+	}
+	&:not(.menu) > *:not(.grid) {
+		padding-right: 30px;
+		@include breakpoint(L) {
+			padding-right: 20px;
+		}
+		@include breakpoint(XS) {
+			padding-right: 10px;
+		}
+		@include breakpoint(XXS) {
+			padding-right: 0px;
 		}
 	}
-	@include breakpoint(XS) {
-		padding-right: 10px;
-		&.group {
-			> *:not([class*="grid-"]) {
-				margin-right: 10px !important;
-			}
-		}
-	}
-	@include breakpoint(XXS) {
-		padding-right: 0px;
-		&.group {
-			> *:not([class*="grid-"]) {
-				margin-right: 0px !important;
-			}
-		}
-	}
+}
+
+.module .grid {
+	padding-right: 5px !important;
 }
 
 .grid-1-5 { width: (100% * 1/5); }

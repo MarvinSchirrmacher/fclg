@@ -2,7 +2,7 @@
 	&, &:before, &:after {
 		@include box-sizing(border-box);
 	}
-	&:not(html):not(body):not([class^="pswp"]) {
+	&:not(html):not(body) {
 		@include transition(all 0.3s ease-out 0.0s);
 		&:hover {
 			@include transition(all 0.1s ease-in 0.0s);
@@ -10,10 +10,11 @@
 	}
 }
 
-[class="em-location-map-container"],
-[class="flxmap-container"] {
+.pswp,
+.em-location-map-container,
+.flxmap-container {
 	&, & * {
-		@include transition(none);
+		@include transition(none !important);
 	}
 }
 
@@ -389,11 +390,19 @@ del {
 	color: #767676;
 }
 
+$line-color: lighten(black, 60%);
+$line-gradient: 2 * $primary-margin;
 hr {
-	background-color: rgba(0, 0, 0, 0.1);
+	// background-color: lighten(black, 40%);
 	border: 0;
 	height: 1px;
 	margin-bottom: 20px;
+	background-image: linear-gradient(
+		to right,
+		rgba($line-color, 0) 0%,
+		$line-color $line-gradient,
+		$line-color calc(100% - #{$line-gradient}),
+		rgba($line-color, 0) 100%);
 }
 
 ::selection {

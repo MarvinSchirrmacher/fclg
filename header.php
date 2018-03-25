@@ -51,7 +51,7 @@
 				'items_wrap'      => '<nav id="%1$s" class="%2$s">%3$s</nav>',
 				'depth'           => 0
 			);
-			echo preg_replace('/<ul\s+class=".*?sub-menu.*?">/', '<div id="sub-menu-toggle" class="toggle sub-menu-toggle"></div><ul id="sub-menu-wrapper" class="wrapper sub-menu hidden">', wp_nav_menu( $nav_menu_parameters ));
+			echo preg_replace('/<ul\s+class=".*?sub-menu.*?">/', '<div id="sub-menu-toggle" class="toggle sub-menu-toggle"></div><ul id="sub-menu-wrapper" class="wrapper menu sub-menu hidden">', wp_nav_menu( $nav_menu_parameters ));
 		}
 		?>
 
