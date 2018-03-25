@@ -210,7 +210,6 @@ table {
 
 .yarpp-related { margin: 0 !important; }
 
-
 .post-preview {
 	display: block;
 	margin: 0;
@@ -219,16 +218,19 @@ table {
 	position: relative;
 	> .post-thumbnail {
 		margin-bottom: 0;
+		position: static;
+		&:before {
+			@include box-shadow(inset 0px 0px 0px 0px rgba(white, 0.75));
+		}
 		&:not(:empty) + .post-meta {
 			background: rgba($theme-color, 0.75);
-			border: 1px solid rgba(white, 0.75);
-			padding: 0.5rem;
+			border-top: 1px solid rgba(white, 0.75);
+			padding: 0.5rem 20px;
 			position: absolute;
-				bottom: 10px;
-				left: 10px;
-			width: calc(100% - 20px);
+				bottom: 0px;
+				left: 0px;
+			width: 100%;
 			max-height: 100%;
-			@include border-radius(10px);
 			span {
 				color: white;
 				font-weight: normal;
@@ -248,7 +250,7 @@ table {
 	> .post-meta {
 		color: $theme-color;
 		margin: 0;
-		padding: ($primary-padding * 0.8) $primary-padding;
+		padding: 20px 25px;
 		> span {
 			display: block;
 		}
@@ -266,8 +268,11 @@ table {
 			&:not(:empty) + .post-meta {
 				background: rgba(white, 0.75);
 				border-color: rgba(white, 0);
-				// border-top-color: rgba(white, 0.75);
-				@include border-radius(0px);
+				left: 10px;
+				bottom: 10px;
+				padding-left: 10px;
+				padding-right: 10px;
+				width: calc(100% - 20px);
 				span {
 					color: $theme-color;
 				}
