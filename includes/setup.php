@@ -54,15 +54,14 @@ function fconline_dequeue_plugin_styles() {
 }
 
 function fconline_enqueue_styles($template_directory_uri) {
-	// $theme_font_url = add_query_arg('family', 'Lato:400,700,300italic,400italic', "//fonts.googleapis.com/css");
 	$theme_font_url = add_query_arg('family', 'Corbert', "//db.onlinewebfonts.com/c/5ce66afbbd1516da0d69cffddf4f8cf3");
 
 	wp_enqueue_style('theme-font',
 		$theme_font_url, array(), null);
 	wp_enqueue_style('fconline',
-		get_stylesheet_uri(), array('theme-font'), '2.8');
+		get_stylesheet_uri(), array('theme-font'), '2.8.1');
 	wp_enqueue_script('smooth-scroll',
-		$template_directory_uri . '/scripts/min/jquery.smooth-scroll.min.js', array('jquery'), '20140508', true);
+		$template_directory_uri . '/scripts/min/jquery.smooth-scroll-min.js', array('jquery'), '20140508', true);
 	wp_enqueue_style('photoswipe',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.css', array(), '4.1.2');
 	wp_enqueue_style('photoswipe-skin',
