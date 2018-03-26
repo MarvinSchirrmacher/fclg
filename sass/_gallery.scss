@@ -1,0 +1,46 @@
+.gallery, .columns {
+	margin-bottom: $primary-text-tag-margin;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	@include flexbox();
+	@for $i from 1 through 9 {
+		&.gallery-columns-#{$i} > * {
+			width: 100% / $i;
+			@if (($i - 1) > 0) { 
+				@include breakpoint(M) {
+					width: 100% / ($i - 1);
+				}
+			}
+			@if (($i - 2) > 0) { 
+				@include breakpoint(XS) {
+					width: 100% / ($i - 2);
+				}
+			}
+		}
+	}
+}
+
+.gallery-item {
+	padding: 1px;
+	float: none !important;
+	margin: 0px !important;
+}
+
+.gallery-icon {
+	display: block;
+	margin: 0 auto;
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+.of-above-average-width {
+	margin-left: -$primary-padding;
+	width: calc(100% + #{$primary-padding} * 2);
+	max-width: calc(100% + #{$primary-padding} * 2) !important;
+	&:last-child {
+		margin-bottom: -$primary-padding;
+	}
+}

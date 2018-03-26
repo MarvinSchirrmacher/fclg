@@ -1,0 +1,42 @@
+.module-definition-list {
+	margin: 0;
+	> dt,
+	> dd {
+		padding: 0px $primary-padding;
+		&:nth-of-type(even) {
+			background: darken(white, 5%);
+		}
+	}
+	> dt {
+		font-weight: 700;
+		padding-top: $primary-padding * 0.4;
+	}
+	> dd {
+		margin-bottom: 0;
+		padding-bottom: $primary-padding * 0.4;
+		> p{
+			margin-bottom: 0;
+		}
+	}
+}
+
+.buttons-list {
+	list-style-type: none;
+	margin-left: 0;
+	&.inline-items {
+		li {
+			display: inline-block;
+			margin-right: 5px;
+			margin-bottom: 5px;
+		}
+	}
+}
+
+.flexbox-list {
+	list-style: none;
+	margin: 0 -10px -10px 0;
+	@include flexbox();
+	li {
+		margin: 0 10px 10px 0;
+	}
+}

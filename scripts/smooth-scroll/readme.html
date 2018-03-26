@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<meta charset="utf-8"/>
 </head>
 <body>
+
 <h1 id="smoothscrollplugin">Smooth Scroll Plugin</h1>
 
 <h2 id="features">Features</h2>
@@ -69,20 +70,20 @@ options object as the second.</p>
 
 <ul>
 <li><p>Utility method works without a selector: <code>$.smoothScroll()</code></p></li>
-<li><p>Can be used to scroll any element (not just <code>document.documentElement</code> /
- <code>document.body</code>)</p></li>
+<li><p><p>Can be used to scroll any element (not just <code>document.documentElement</code> /
+<code>document.body</code>)</p></p></li>
 <li><p>Doesn&#8217;t automatically fire, so you need to bind it to some other user
- interaction. For example:</p>
+interaction. For example:</p>
 
-<pre><code>$('button.scrollsomething').on('click', function() {
-  $.smoothScroll({
+<pre><code>\(('button.scrollsomething').on('click', function() {
+  \).smoothScroll({
     scrollElement: $('div.scrollme'),
     scrollTarget: '#findme'
   });
   return false;
 });
 </code></pre></li>
-<li>The <code>$.smoothScroll</code> method can take one or two arguments.
+<li><p>The <code>$.smoothScroll</code> method can take one or two arguments.</p>
 
 <ul>
 <li>If the first argument is a number, the document is scrolled to that
@@ -108,21 +109,21 @@ for <code>$.smoothScroll</code>:</p>
 
 <ul>
 <li>Selects the matched element(s) that are scrollable. Acts just like a
- DOM traversal method such as <code>.find()</code> or <code>.next()</code>.</li>
+DOM traversal method such as <code>.find()</code> or <code>.next()</code>.</li>
 <li>The resulting jQuery set may consist of <strong>zero, one, or multiple</strong>
- elements.</li>
+elements.</li>
 </ul>
 
 <h3 id=".fn.firstscrollable">$.fn.firstScrollable</h3>
 
 <ul>
 <li>Selects the first matched element that is scrollable. Acts just like a
- DOM traversal method such as <code>.find()</code> or <code>.next()</code>.</li>
+DOM traversal method such as <code>.find()</code> or <code>.next()</code>.</li>
 <li>The resulting jQuery set may consist of <strong>zero or one</strong> element.</li>
 <li>This method is used <em>internally</em> by the plugin to determine which element
- to use for &#8220;document&#8221; scrolling:
- <code>$('html, body').firstScrollable().animate({scrollTop: someNumber},
-  someSpeed)</code></li>
+to use for &#8220;document&#8221; scrolling:
+<code>$('html, body').firstScrollable().animate({scrollTop: someNumber},
+someSpeed)</code></li>
 </ul>
 
 <h2 id="notes">Notes</h2>
@@ -144,3 +145,4 @@ means that nothing will happen).</li>
 
 </body>
 </html>
+

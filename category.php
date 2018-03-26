@@ -8,7 +8,7 @@
 	</div>
 	<?php endif; ?>
 
-	<div class="module">
+	<div class="module sitemap">
 		<header class="sitemap-header">
 			<h1 class="sitemap-header-title"><?php //_e('Category', 'fconline'); ?><?php single_cat_title(); ?></h1>
 		</header>

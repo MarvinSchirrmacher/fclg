@@ -1,0 +1,70 @@
+/**
+ * General
+ */
+
+.widget {
+	input,
+	.button {
+		width: 100%;
+	}
+}
+
+.textwidget {
+	p {
+		text-align: left;
+		& + h6 {
+			margin-top: 0;
+		}
+	}
+}
+
+/**
+ * Search
+ */
+
+.search-field {
+	width: 100%;
+}
+
+.search-submit {
+	display: none;
+}
+
+.widget_search {
+	#s {
+		margin-bottom: 10px;
+	}
+}
+
+/*
+ * fussball.de
+ */
+ 
+#widget1 {
+	overflow: auto;
+	> iframe {
+		width: 100% !important;
+		max-width: 100% !important;
+		border: none !important;
+		margin-bottom: 0 !important;
+	}
+	.header-meta-nav,
+	.container {
+		display: none !important;
+	}
+}
+
+.customMetaWidget {
+	a {
+		@include icon("");
+		&[href*="wp-admin"] {
+			@include icon-content($icon-gauge);
+		}
+		&[href*="wp-login"] {
+			@include icon-content($icon-login);
+			&[href*="logout"] {
+				@include icon-content($icon-log-out);
+			}
+		}
+	}
+}

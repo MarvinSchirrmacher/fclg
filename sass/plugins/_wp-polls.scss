@@ -1,0 +1,43 @@
+.wp-polls {
+	input[type="button"] {
+		margin-top: 10px;
+	}
+	.pollbar {
+		background: $theme-color-green !important;
+		border: none !important;
+	}
+}
+
+.wp-polls-question {
+	margin-top: 0;
+}
+
+.wp-polls-ul {
+	margin: 10px 0 0 !important;
+	> li {
+		margin-bottom: 10px;
+		overflow: hidden;
+		&:last-child {
+			margin-bottom: $primary-padding;
+		}
+		> input,
+		> label {
+			float: left;
+		}
+		> input {
+			margin-top: 0.25em;
+			width: 25px;
+		}
+		> label {
+			width: calc(100% - 25px);
+		}
+		small {
+			font-size: 0.75em;
+			color: lighten(black, 50%);
+		}
+	}
+}
+
+.wp-polls-loading {
+	display: none;
+}

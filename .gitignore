@@ -92,3 +92,13 @@ ehthumbs.db
 Thumbs.db
 .AppleDouble
 .LSOverride
+
+# CodeKit
+#-----------------------------
+config.codekit3
+style-min\.css
+*-min.js
+
+style\.css
+
+scripts/min/
