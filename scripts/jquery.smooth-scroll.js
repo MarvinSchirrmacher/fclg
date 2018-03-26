@@ -43,11 +43,11 @@ var version = '1.4.13',
     getScrollable = function(opts) {
       var scrollable = [],
           scrolled = false,
-          dir = opts.dir && opts.dir == 'left' ? 'scrollLeft' : 'scrollTop';
+          dir = opts.dir && opts.dir === 'left' ? 'scrollLeft' : 'scrollTop';
 
       this.each(function() {
 
-        if (this == document || this == window) { return; }
+        if (this === document || this === window) { return; }
         var el = $(this);
         if ( el[dir]() > 0 ) {
           scrollable.push(this);
@@ -179,13 +179,13 @@ $.smoothScroll = function(options, px) {
     opts = $.extend({link: null}, $.fn.smoothScroll.defaults, options || {}, optionOverrides);
     if (opts.scrollElement) {
       offPos = 'position';
-      if (opts.scrollElement.css('position') == 'static') {
+      if (opts.scrollElement.css('position') === 'static') {
         opts.scrollElement.css('position', 'relative');
       }
     }
   }
 
-  scrollDir = opts.direction == 'left' ? 'scrollLeft' : scrollDir;
+  scrollDir = opts.direction === 'left' ? 'scrollLeft' : scrollDir;
 
   if ( opts.scrollElement ) {
     $scroller = opts.scrollElement;
