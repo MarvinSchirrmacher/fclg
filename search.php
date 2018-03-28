@@ -28,11 +28,9 @@
 
 	</div>
 
-	<?php if( function_exists('ob_page_numbers') && have_posts() ) : ?>
 	<div class="module menu-module">
-		<?php ob_page_numbers(); ?>
+		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
-	<?php endif; ?>
 
 </section>
 

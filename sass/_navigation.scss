@@ -331,27 +331,6 @@ $admin-bar-height-medium: 46px;
 .widget_categories,
 .widget_archive {
 	background: darken(white, 10%);
-	> ul,
-	> #wp_page_numbers > ul {
-		margin: 0;
-		overflow: hidden;
-		padding: 0 ($primary-padding * 0.8);
-		text-align: center;
-		> li {
-			display: inline-block;
-			> a {
-				color: $theme-color;
-				padding: 0.2em ($primary-padding * 0.2);
-				display: inline-block;
-			}
-			&.active_page, &.current-cat {
-				a {
-					background: $theme-color;
-					color: white;
-				}
-			}
-		}
-	}
 	> p, a {
 		display: block;
 		height: 100%;
@@ -365,6 +344,30 @@ $admin-bar-height-medium: 46px;
 		}
 		&.prev { text-align: left; }
 		&.next { text-align: right; }
+	}
+}
+
+.menu-module > ul,
+.widget_categories > ul,
+.widget_archive > ul,
+.paging-nav {
+	margin: 0;
+	overflow: hidden;
+	padding: 0 ($primary-padding * 0.8);
+	text-align: center;
+	> li {
+		display: inline-block;
+		> a {
+			color: $theme-color;
+			padding: 0.2em ($primary-padding * 0.2);
+			display: inline-block;
+		}
+		&.active, &.current-cat {
+			a {
+				background: $theme-color;
+				color: white;
+			}
+		}
 	}
 }
 

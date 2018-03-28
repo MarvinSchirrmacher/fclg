@@ -27,7 +27,11 @@ function fconline_setup() {
 		'default-color' => '4d4d4d',
 	)));
 
+	add_theme_support('connections');
 	add_theme_support('events-manager');
+	add_theme_support('flexmap');
+	add_theme_support('post-preview');
+	add_theme_support('sports-club-manager');
 }
 endif;
 add_action('after_setup_theme', 'fconline_setup');
@@ -40,7 +44,7 @@ add_action('after_setup_theme', 'fconline_setup');
 function fconline_dequeue_plugin_styles() {
 	$plugin_slugs = array(
 		'bbp-default', 'connections-user', 'cn-public', 'cn-chosen',
-		'contact-form-7', 'dlm-frontend', 'ob_page_numbers',
+		'contact-form-7', 'dlm-frontend',
 		'validate-engine-css', 'yarppWidgetCss'
 	);
 	foreach ($plugin_slugs as $slug) {
