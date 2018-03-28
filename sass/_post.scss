@@ -1,11 +1,16 @@
-/**
- * Posts
- */
-
 article.hentry, article.post {
 	> *:not(.post-thumbnail) {
-		padding-left: $primary-padding;
-		padding-right: $primary-padding;
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+}
+
+.related-posts {
+	article.hentry, article.post {
+		> *:not(.post-thumbnail) {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
 	}
 }
 
