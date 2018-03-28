@@ -2,11 +2,9 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<?php if(function_exists('ob_page_numbers')) : ?>
 	<div class="module menu-module" data-heading="<?php _e('Archive', 'fconline'); ?>">
-		<?php ob_page_numbers(); ?>
+		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
-	<?php endif; ?>
 
 	<div class="module sitemap">
 		<table class="sitemap-table">
@@ -32,11 +30,9 @@
 		</table>
 	</div>
 
-	<?php if(function_exists('ob_page_numbers')) : ?>
 	<div class="module menu-module">
-		<?php ob_page_numbers(); ?>
+		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
-	<?php endif; ?>
 
 </section>
 

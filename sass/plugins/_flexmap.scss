@@ -1,0 +1,6 @@
+.flxmap-container {
+    height: 300px !important;
+    &:not(:last-child) {
+        margin-bottom: 12px;
+    }
+}

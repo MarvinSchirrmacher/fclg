@@ -38,13 +38,9 @@ $menu-item-hover-color: rgba($theme-color, 0.5);
 			right: $site-navigation-width + 10px;
 		}
 	}
-	@include breakpoint(XXS) {
-		right: 10px;
-	}
 }
 
 $nav_toggle_top: 20px;
-$nav_toggle_top_xxs: 10px;
 
 #navigation-toggle {
 	display: none;
@@ -55,9 +51,6 @@ $nav_toggle_top_xxs: 10px;
 	}
 	@include breakpoint(M) {
 		display: block;
-	}
-	@include breakpoint(XXS) {
-		top: $nav_toggle_top_xxs;
 	}
 }
 
@@ -70,9 +63,6 @@ $nav_toggle_top_xxs: 10px;
 		z-index: -1;
 		@include opacity(0);
 		@include transform( scale(0.5) );
-	}
-	@include breakpoint(XXS) {
-		bottom: 10px;
 	}
 }
 
@@ -130,15 +120,9 @@ $admin-bar-height-medium: 46px;
 	@include breakpoint($admin-bar-bp-small) {
 		#navigation-toggle{
 			top: $nav_toggle_top;
-			// &.active { top: $nav_toggle_top; }
 		}
 		#navigation-wrapper {
 			top: 0px;
-		}
-	}
-	@include breakpoint(XXS) {
-		#navigation-toggle {
-			top: $nav_toggle_top_xxs;
 		}
 	}
 	#wp-admin-bar-wpseo-menu {
@@ -331,27 +315,6 @@ $admin-bar-height-medium: 46px;
 .widget_categories,
 .widget_archive {
 	background: darken(white, 10%);
-	> ul,
-	> #wp_page_numbers > ul {
-		margin: 0;
-		overflow: hidden;
-		padding: 0 ($primary-padding * 0.8);
-		text-align: center;
-		> li {
-			display: inline-block;
-			> a {
-				color: $theme-color;
-				padding: 0.2em ($primary-padding * 0.2);
-				display: inline-block;
-			}
-			&.active_page, &.current-cat {
-				a {
-					background: $theme-color;
-					color: white;
-				}
-			}
-		}
-	}
 	> p, a {
 		display: block;
 		height: 100%;
@@ -365,6 +328,30 @@ $admin-bar-height-medium: 46px;
 		}
 		&.prev { text-align: left; }
 		&.next { text-align: right; }
+	}
+}
+
+.menu-module > ul,
+.widget_categories > ul,
+.widget_archive > ul,
+.paging-nav {
+	margin: 0;
+	overflow: hidden;
+	padding: 0 ($primary-padding * 0.8);
+	text-align: center;
+	> li {
+		display: inline-block;
+		> a {
+			color: $theme-color;
+			padding: 0.2em ($primary-padding * 0.2);
+			display: inline-block;
+		}
+		&.active, &.current-cat {
+			a {
+				background: $theme-color;
+				color: white;
+			}
+		}
 	}
 }
 
