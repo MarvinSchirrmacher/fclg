@@ -64,9 +64,6 @@ $is_sponsor = $post_type == 'sponsor';
 	<?php if ($is_sponsor): ?>
 	<footer class="post-meta grid">
 		<div class="grid-1-1"><hr /></div>
-		<div class="grid-1-1">
-			<?php SponsorManagement::echoSponsorGallery(); ?>
-		</div>
 		<div class="grid-1-2">
 			<?php SponsorManagement::echoSponsorMeta(); ?>
 		</div>
@@ -75,9 +72,10 @@ $is_sponsor = $post_type == 'sponsor';
 		</div>
 		<div class="grid-1-1">
 			<?php SponsorManagement::echoSponsorLocationMap(); ?>
+			<?php SponsorManagement::echoSponsorGallery(); ?>
 		</div>
-		<?php SponsorManagement::echoFooterImage('of-above-average-width'); ?>
 	</footer>
+	<?php SponsorManagement::echoFooterImage('of-above-average-width'); ?>
 	<?php else: ?>
 		<?php the_tags('<footer class="post-meta"><div class="tags-list">', '', '</div></footer>'); ?>
 	<?php endif; ?>
