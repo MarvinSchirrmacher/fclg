@@ -3,8 +3,6 @@ $menu-item-color: lighten($theme-color, 10%);
 $menu-item-border: solid 1px lighten($theme-color, 5%);
 $menu-item-hover-color: rgba($theme-color, 0.5);
 
-/* Menu */
-
 .menu {
 	list-style: none;
 	margin: 0;
@@ -13,8 +11,6 @@ $menu-item-hover-color: rgba($theme-color, 0.5);
 		padding: 0;
 	}
 }
-
-/* Back to top link */
 
 #navigation-toggle,
 #back-to-top {
@@ -37,6 +33,9 @@ $menu-item-hover-color: rgba($theme-color, 0.5);
 		&.active {
 			right: $site-navigation-width + 10px;
 		}
+	}
+	@include breakpoint(XS) {
+		right: 10px;
 	}
 }
 
@@ -101,7 +100,6 @@ $admin-bar-height-medium: 46px;
 .admin-bar {
 	#navigation-toggle {
 		top: $nav_toggle_top + $admin-bar-height;
-		// &.active { top: $admin-bar-height; }
 	}
 	@include breakpoint(M) {
 		#navigation-wrapper {
@@ -111,7 +109,6 @@ $admin-bar-height-medium: 46px;
 	@include breakpoint($admin-bar-bp-medium) {
 		#navigation-toggle {
 			top: $nav_toggle_top + $admin-bar-height-medium;
-			// &.active { top: $nav_toggle_top + $admin-bar-height-medium; }
 		}
 		#navigation-wrapper {
 			top: $admin-bar-height-medium;
@@ -357,8 +354,8 @@ $admin-bar-height-medium: 46px;
 
 .block-menu,
 .customMetaWidget > ul {
-	padding-top: ($primary-padding * 0.6) !important;
-	padding-bottom: ($primary-padding * 0.6) !important;
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
 	text-align: left !important;
 	> li {
 		display: block !important;
