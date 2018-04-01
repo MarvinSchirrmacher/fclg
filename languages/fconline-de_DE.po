@@ -163,7 +163,7 @@ msgstr "Seite nicht gefunden"
 
 #: 404.php:13
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Es sieht so aus, als könnten wir nicht finden, wonach du schaust. Vielleicht kann suchen helfen."
+msgstr "Es sieht so aus, als könnten wir nicht finden, wonach du schaust. Vielleicht kann die Suche helfen."
 
 #: yarpp-template-post.php:1
 msgid "Related"
