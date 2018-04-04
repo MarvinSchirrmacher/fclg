@@ -192,6 +192,7 @@ $admin-bar-height-medium: 46px;
 	}
 	.sub-menu {
 		background-color: lighten($theme-color, 10%);
+		overflow: hidden;
 		position: absolute;
 			top: 100%;
 			left: 0;
