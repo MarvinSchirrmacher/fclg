@@ -1,7 +1,11 @@
 .wpcf7 {
-	p > label {
+	label {
 		color: lighten(black, 60%);
 		text-transform: uppercase;
+	}
+	.wpcf7-list-item label {
+		color: $theme-color;
+		text-transform: none;
 	}
 }
 
@@ -24,7 +28,7 @@
 		text-align: center;
 		width: 36px;
 		height: calc(100% - 2px);
-		z-index: 100;
+		z-index: 10;
 		@include border-radius($primary-border-radius 0 0 $primary-border-radius);
 	}
 }
@@ -42,30 +46,36 @@
 		text-align: center;
 		width: 36px;
 		height: calc(100% - 2px);
-		z-index: 100;
+		z-index: 10;
 		@include border-radius($primary-border-radius 0 0 $primary-border-radius);
 	}
 	&[class*="name"]:not([class*="child"]):before { content: $icon-user; }
 	&[class*="child"]:before { content: $icon-users; }
 	&[class*="address"]:before { content: $icon-home; }
 	&[class*="birthday"]:before { content: $icon-calendar; }
+	&[class*="place"]:before { content: $icon-location; }
 	&[class*="time"]:before { content: $icon-clock; }
 	&[class*="mail"]:before { content: $icon-mail; }
 	&[class*="phone"]:before { content: $icon-phone; }
 	&[class*="iban"]:before { content: $icon-credit-card; }
 	&[class*="bic"]:before { content: $icon-credit-card; }
 	&[class*="company"]:before { content: $icon-shop; }
+	&[class*="job"]:before { content: $icon-suitcase; }
+	&[class*="date"]:before { content: $icon-calendar; }
+	&[class*="hobbies"]:before { content: $icon-palette; }
+	&[class*="club"]:before { content: $icon-shield; }
+	&[class*="reason"]:before { content: $icon-help-with-circle; }
 	input {
 		position: relative;
 	}
 	input:not([type="file"]):not([type="radio"]):not([type="checkbox"]) {
 		padding-left: 35px !important;
-		z-index: 99;
+		z-index: 9;
 	}
 	input[type="file"],
 	input[type="radio"],
 	input[type="checkbox"] {
-		z-index: 101;
+		z-index: 11;
 	}
 	& + & {
 		margin-left: 12px;
@@ -84,6 +94,10 @@
 
 .wpcf7-select:before {
 	content: $icon-folder;
+}
+
+.wpcf7-list-item {
+	margin-right: 12px;
 }
 
 div[data-class="wpcf7cf_group"]:not(:last-child) {

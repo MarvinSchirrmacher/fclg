@@ -94,7 +94,7 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-meta-author:before { content: $icon-user; }
 .post-meta-comments:before { content: $icon-message; }
 .post-meta-location:before { content: $icon-location; }
-.post-meta-edit:before { content: $icon-pencil; }
+.post-meta-edit:before { content: $icon-new-message; }
 .post-meta-export:before { content: $icon-export; }
 
 .post-content,
@@ -371,7 +371,7 @@ table {
 	@include icon-content( $icon-link );
 }
 .edit-link {
-	@include icon-content( $icon-pencil );
+	@include icon-content( $icon-new-message );
 }
 
 .comment-form-author,
