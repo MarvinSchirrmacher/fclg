@@ -393,10 +393,9 @@ del {
 $line-color: lighten(black, 60%);
 $line-gradient: 2 * $primary-margin;
 hr {
-	// background-color: lighten(black, 40%);
 	border: 0;
 	height: 1px;
-	margin-bottom: 20px;
+	margin: 36px 0px;
 	background-image: linear-gradient(
 		to right,
 		rgba($line-color, 0) 0%,

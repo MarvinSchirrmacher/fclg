@@ -60,14 +60,19 @@
 		@include icon-content($icon-images);
 	}
 }
+.type-page {
+	.sitemap-title{
+		@include icon-content($icon-browser);
+	}
+}
 .type-team {
 	.sitemap-title{
 		@include icon-content($icon-users);
 	}
 }
-.type-page {
+.type-sponsor {
 	.sitemap-title{
-		@include icon-content($icon-browser);
+		@include icon-content($icon-shop);
 	}
 }
 .type-event {

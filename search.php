@@ -1,22 +1,24 @@
-<?php get_header(); ?>
+<?php get_header();?>
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="module" data-heading="<?php _e('Search results', 'fconline'); ?>">
+	<div class="module" data-heading="<?php _e('Search results', 'fconline');?>">
 
 		<header class="sitemap-header">
-			<h1 class="sitemap-header-title"><?php _e('Search results for:', 'fconline'); ?> <em>"<?php the_search_query(); ?>"</em></h1>
+			<h1 class="sitemap-header-title">
+				<?php _e('Search results for:', 'fconline');?> <em>"<?php the_search_query();?>"</em>
+			</h1>
 		</header>
 
-		<?php if ( have_posts() ) : ?>
+		<?php if (have_posts()): ?>
 
 		<table class="sitemap-table">
 			<tbody>
 
 			<?php
-			while ( have_posts() ) : the_post();
+			while (have_posts()): the_post();
 
-				get_template_part( 'post', 'sitemap' );
+				get_template_part('post', 'sitemap');
 
 			endwhile;
 			?>
@@ -24,15 +26,15 @@
 			</tbody>
 		</table>
 
-		<?php else : get_template_part( 'post', 'none' ); endif; ?>
+		<?php else:get_template_part('post', 'none');endif;?>
 
 	</div>
 
 	<div class="module menu-module">
-		<?php FcOnlineModules::pageNavigation(); ?>
+		<?php FcOnlineModules::pageNavigation();?>
 	</div>
 
 </section>
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php get_sidebar();?>
+<?php get_footer();?>

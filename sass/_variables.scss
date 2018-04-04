@@ -26,46 +26,53 @@ $primary-box-shadow: 0 0 10px rgba(black, 0.25);
 $secondary-box-shadow: 0 0 5px rgba(black, 0.25);
 $tertiary-box-shadow: 0 0 3px rgba(black, 0.25);
 
-$icon-warning: "\e925";
-$icon-chevron-down: "\e900";
-$icon-chevron-left: "\e901";
-$icon-chevron-right: "\e902";
-$icon-chevron-up: "\e903";
-$icon-controller-paus: "\e904";
-$icon-controller-play: "\e905";
-$icon-controller-stop: "\e906";
-$icon-download: "\e907";
-$icon-browser: "\e908";
-$icon-calendar: "\e909";
-$icon-circular-graph: "\e90a";
-$icon-clipboard: "\e90b";
-$icon-clock: "\e90c";
-$icon-credit-card: "\e90d";
-$icon-cross: "\e90e";
-$icon-emoji-happy: "\e90f";
-$icon-export: "\e910";
-$icon-folder: "\e911";
-$icon-gauge: "\e912";
-$icon-help-with-circle: "\e926";
-$icon-home: "\e913";
-$icon-images: "\e914";
-$icon-info-with-circle: "\e927";
-$icon-link: "\e915";
-$icon-location: "\e916";
-$icon-log-out: "\e917";
-$icon-login: "\e918";
-$icon-mail: "\e919";
-$icon-menu: "\e91a";
-$icon-message: "\e91b";
-$icon-mobile: "\e91c";
-$icon-news: "\e91d";
-$icon-pencil: "\e91e";
-$icon-phone: "\e91f";
-$icon-shop: "\e920";
-$icon-shopping-cart: "\e921";
-$icon-user: "\e922";
-$icon-users: "\e923";
-$icon-v-card: "\e924";
+$icon-warning: "\e900";
+$icon-chevron-down: "\e901";
+$icon-chevron-left: "\e902";
+$icon-chevron-right: "\e903";
+$icon-chevron-up: "\e904";
+$icon-controller-paus: "\e905";
+$icon-controller-play: "\e906";
+$icon-controller-stop: "\e907";
+$icon-download: "\e908";
+$icon-upload: "\e909";
+$icon-briefcase: "\e90a";
+$icon-browser: "\e90b";
+$icon-calendar: "\e90c";
+$icon-circular-graph: "\e90d";
+$icon-clipboard: "\e90e";
+$icon-clock: "\e90f";
+$icon-credit-card: "\e910";
+$icon-cross: "\e911";
+$icon-emoji-happy: "\e912";
+$icon-emoji-neutral: "\e913";
+$icon-emoji-sad: "\e914";
+$icon-export: "\e915";
+$icon-folder: "\e916";
+$icon-help-with-circle: "\e917";
+$icon-home: "\e918";
+$icon-images: "\e919";
+$icon-info-with-circle: "\e91a";
+$icon-link: "\e91b";
+$icon-location: "\e91c";
+$icon-log-out: "\e91d";
+$icon-login: "\e91e";
+$icon-mail: "\e91f";
+$icon-menu: "\e920";
+$icon-message: "\e921";
+$icon-mobile: "\e922";
+$icon-network: "\e923";
+$icon-new-message: "\e924";
+$icon-news: "\e925";
+$icon-palette: "\e926";
+$icon-phone: "\e927";
+$icon-shield: "\e928";
+$icon-shop: "\e929";
+$icon-shopping-cart: "\e92a";
+$icon-suitcase: "\e92b";
+$icon-user: "\e92c";
+$icon-users: "\e92d";
+$icon-v-card: "\e92e";
 
 @font-face {
 	font-family: 'icomoon';
@@ -91,43 +98,50 @@ $icon-v-card: "\e924";
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-warning:before { content: "\e925"; }
-.icon-chevron-down:before { content: "\e900"; }
-.icon-chevron-left:before { content: "\e901"; }
-.icon-chevron-right:before { content: "\e902"; }
-.icon-chevron-up:before { content: "\e903"; }
-.icon-controller-paus:before { content: "\e904"; }
-.icon-controller-play:before { content: "\e905"; }
-.icon-controller-stop:before { content: "\e906"; }
-.icon-download:before { content: "\e907"; }
-.icon-browser:before { content: "\e908"; }
-.icon-calendar:before { content: "\e909"; }
-.icon-circular-graph:before { content: "\e90a"; }
-.icon-clipboard:before { content: "\e90b"; }
-.icon-clock:before { content: "\e90c"; }
-.icon-credit-card:before { content: "\e90d"; }
-.icon-cross:before { content: "\e90e"; }
-.icon-emoji-happy:before { content: "\e90f"; }
-.icon-export:before { content: "\e910"; }
-.icon-folder:before { content: "\e911"; }
-.icon-gauge:before { content: "\e912"; }
-.icon-help-with-circle:before { content: "\e926"; }
-.icon-home:before { content: "\e913"; }
-.icon-images:before { content: "\e914"; }
-.icon-info-with-circle:before { content: "\e927"; }
-.icon-link:before { content: "\e915"; }
-.icon-location:before { content: "\e916"; }
-.icon-log-out:before { content: "\e917"; }
-.icon-login:before { content: "\e918"; }
-.icon-mail:before { content: "\e919"; }
-.icon-menu:before { content: "\e91a"; }
-.icon-message:before { content: "\e91b"; }
-.icon-mobile:before { content: "\e91c"; }
-.icon-news:before { content: "\e91d"; }
-.icon-pencil:before { content: "\e91e"; }
-.icon-phone:before { content: "\e91f"; }
-.icon-shop:before { content: "\e920"; }
-.icon-shopping-cart:before { content: "\e921"; }
-.icon-user:before { content: "\e922"; }
-.icon-users:before { content: "\e923"; }
-.icon-v-card:before { content: "\e924"; }
+.icon-warning:before { content: "\e900"; }
+.icon-chevron-down:before { content: "\e901"; }
+.icon-chevron-left:before { content: "\e902"; }
+.icon-chevron-right:before { content: "\e903"; }
+.icon-chevron-up:before { content: "\e904"; }
+.icon-controller-paus:before { content: "\e905"; }
+.icon-controller-play:before { content: "\e906"; }
+.icon-controller-stop:before { content: "\e907"; }
+.icon-download:before { content: "\e908"; }
+.icon-upload:before { content: "\e909"; }
+.icon-briefcase:before { content: "\e90a"; }
+.icon-browser:before { content: "\e90b"; }
+.icon-calendar:before { content: "\e90c"; }
+.icon-circular-graph:before { content: "\e90d"; }
+.icon-clipboard:before { content: "\e90e"; }
+.icon-clock:before { content: "\e90f"; }
+.icon-credit-card:before { content: "\e910"; }
+.icon-cross:before { content: "\e911"; }
+.icon-emoji-happy:before { content: "\e912"; }
+.icon-emoji-neutral:before { content: "\e913"; }
+.icon-emoji-sad:before { content: "\e914"; }
+.icon-export:before { content: "\e915"; }
+.icon-folder:before { content: "\e916"; }
+.icon-help-with-circle:before { content: "\e917"; }
+.icon-home:before { content: "\e918"; }
+.icon-images:before { content: "\e919"; }
+.icon-info-with-circle:before { content: "\e91a"; }
+.icon-link:before { content: "\e91b"; }
+.icon-location:before { content: "\e91c"; }
+.icon-log-out:before { content: "\e91d"; }
+.icon-login:before { content: "\e91e"; }
+.icon-mail:before { content: "\e91f"; }
+.icon-menu:before { content: "\e920"; }
+.icon-message:before { content: "\e921"; }
+.icon-mobile:before { content: "\e922"; }
+.icon-network:before { content: "\e923"; }
+.icon-new-message:before { content: "\e924"; }
+.icon-news:before { content: "\e925"; }
+.icon-palette:before { content: "\e926"; }
+.icon-phone:before { content: "\e927"; }
+.icon-shield:before { content: "\e928"; }
+.icon-shop:before { content: "\e929"; }
+.icon-shopping-cart:before { content: "\e92a"; }
+.icon-suitcase:before { content: "\e92b"; }
+.icon-user:before { content: "\e92c"; }
+.icon-users:before { content: "\e92d"; }
+.icon-v-card:before { content: "\e92e"; }
