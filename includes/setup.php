@@ -63,7 +63,7 @@ function fconline_enqueue_styles($template_directory_uri) {
 	wp_enqueue_style('theme-font',
 		$theme_font_url, array(), null);
 	wp_enqueue_style('fconline',
-		get_stylesheet_uri(), array('theme-font'), '2.8.1');
+		get_stylesheet_uri(), array('theme-font'), FCO_VERSION);
 	wp_enqueue_script('smooth-scroll',
 		$template_directory_uri . '/scripts/min/jquery.smooth-scroll-min.js', array('jquery'), '20140508', true);
 	wp_enqueue_style('photoswipe',
