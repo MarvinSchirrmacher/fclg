@@ -64,7 +64,7 @@
 	&[class*="date"]:before { content: $icon-calendar; }
 	&[class*="hobbies"]:before { content: $icon-palette; }
 	&[class*="club"]:before { content: $icon-shield; }
-	&[class*="reason"]:before { content: $icon-help-with-circle; }
+	&[class*="reason"]:before { content: $icon-info-with-circle; }
 	input {
 		position: relative;
 	}
