@@ -1,28 +1,19 @@
 <?php
 if (! function_exists('fconline_setup')) :
 function fconline_setup() {
-	// Make theme available for translation.
 	load_theme_textdomain('fconline', get_template_directory() . '/languages');
 
-	// Register menus.
 	register_nav_menus(array(
 		'primary'   => __('Header menu', 'fconline')
 	));
 
-	// Enable post thumbnail support.
 	add_theme_support('post-thumbnails');
-	
-	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support('html5', array(
 		'search-form', 'comment-form', 'comment-list',
 	));
-	
-	// Enable support for post formats.
 	add_theme_support('post-formats', array(
 		'gallery', 'status'
 	));
-
-	// Enable support for custom background.
 	add_theme_support('custom-background', apply_filters('fconline_custom_background_args', array(
 		'default-color' => '4d4d4d',
 	)));
@@ -36,17 +27,15 @@ function fconline_setup() {
 endif;
 add_action('after_setup_theme', 'fconline_setup');
 
-
-
-// ----------------------------------------------------------------------------------------------------
-// Enqueue scripts and styles for front and back end.
-// ----------------------------------------------------------------------------------------------------
 function fconline_dequeue_plugin_styles() {
 	$plugin_slugs = array(
 		'bbp-default', 'connections-user', 'cn-public', 'cn-chosen',
 		'contact-form-7', 'dlm-frontend',
-		'validate-engine-css', 'yarppWidgetCss'
+		'validate-engine-css',
+		'woocommerce-general', 'woocommerce-layout', 'woocommerce-gzd-layout', 'woocommerce-smallscreen',
+		'yarppWidgetCss'
 	);
+	
 	foreach ($plugin_slugs as $slug) {
 		wp_dequeue_style($slug);
 	}
