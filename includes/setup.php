@@ -31,6 +31,7 @@ function fconline_dequeue_plugin_styles() {
 	$plugin_slugs = array(
 		'bbp-default', 'connections-user', 'cn-public', 'cn-chosen',
 		'contact-form-7', 'dlm-frontend',
+		'basecss', // eu-cookie-law
 		'validate-engine-css',
 		'woocommerce-general', 'woocommerce-layout', 'woocommerce-gzd-layout', 'woocommerce-smallscreen',
 		'yarppWidgetCss'
@@ -38,10 +39,6 @@ function fconline_dequeue_plugin_styles() {
 	
 	foreach ($plugin_slugs as $slug) {
 		wp_dequeue_style($slug);
-	}
-
-	$plugin_slugs = array('cn-public', 'cn-chosen');
-	foreach ($plugin_slugs as $slug) {
 		wp_deregister_style($slug);
 	}
 }
