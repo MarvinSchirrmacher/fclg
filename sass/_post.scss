@@ -245,13 +245,13 @@ table {
 					line-height: 1;
 					margin: 0;
 					text-align: center;
+					text-transform: none;
 				}
 				.post-title {
 					font-size: 1.5rem;
 				}
 				.post-subtitle {
 					font-size: 1rem;
-					text-transform: none;
 				}
 			}
 		}
@@ -309,12 +309,12 @@ table {
 				color: $theme-color;
 			}
 		}
-		&.type-sponsor .post-thumbnail:not(:empty) + .post-meta {
-			.post-title {
-				background: rgba(white, 0.25);
-				padding: 0.5rem 0;
-			}
-		}
+		// &.type-sponsor .post-thumbnail:not(:empty) + .post-meta {
+		// 	.post-title {
+		// 		background: rgba(white, 0.25);
+		// 		padding: 0.5rem 0;
+		// 	}
+		// }
 	}
 }
 
