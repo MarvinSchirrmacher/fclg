@@ -14,14 +14,14 @@
 					<span class="post-meta-date">
 						<time datetime="<?php esc_attr( get_the_date( 'c' ) ); ?>">#_EVENTDATES #_EVENTTIMES</time>
 					</span>
-					<span class="post-meta-location">#_LOCATIONNAME</span>
+					{has_location}<span class="post-meta-location">#_LOCATIONNAME</span>{/has_location}
 				</div>
 
 			</header>
 
 			<div class="post-content">
 				#_EVENTNOTES
-				#_LOCATIONMAP
+				{has_location}#_LOCATIONMAP{/has_location}
 			</div>
 
 		</article>
