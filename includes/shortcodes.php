@@ -167,6 +167,60 @@ function fconline_text_link_shortcode($atts, $content = null) {
 add_shortcode('text_link', 'fconline_text_link_shortcode');
 add_filter('widget_text', 'do_shortcode');
 
+/**
+ * Parses and shows the inner content only if the current user's role is allowed to see it.
+ * 
+ * Available rules are:
+ *  - only-these (default)
+ *  - all-but-these
+ * 
+ * For the last two options the first entry in roles will be used as orientation
+ * 
+ * @param atts Inlcudes the access rule and the linked roles.
+ * @param content The content to display if the current user's role matches the rule.  
+ */
+function fconline_limit_visibility($atts, $content = null) {
+	extract(shortcode_atts(array(
+		'rule' => 'only-these',
+		'roles' => ''
+	), $atts));
+
+	$roles = explode(',', preg_replace('/\s+/', '', $roles));
+	$roles = array_map(function($item) { return strtolower($item); }, $roles);
+	$available_roles = fconline_determine_available_roles();
+
+	foreach ($roles as $role) {
+		if (array_key_exists($role, $available_roles)) { continue; }
+		echo('The content of [visible] will not be parsed because the role "' . $role . '" is unknown');
+		return;
+	}
+
+	$current_role = fconline_get_user_role();
+	$allowed_roles = array();
+
+	switch ($rule) {
+		case 'only-these':
+			$allowed_roles = $roles;
+			break;
+		case 'all-but-these':
+			$allowed_roles = $available_roles;
+			foreach ($roles as $role) {
+				unset($allowed_roles[$role]);
+			}
+			break;
+		default:
+			echo '[visible] The rule "' . $rule . '" is unknown\n';
+			break;
+	}
+
+	if (!in_array($current_role, $allowed_roles)) {
+		return;
+	}
+
+	return do_shortcode($content);
+}
+add_shortcode('visible', 'fconline_limit_visibility');
+
 function startsWith($haystack, $needle) {
     // search backwards starting from haystack length characters from the end
     return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
