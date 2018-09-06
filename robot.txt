@@ -1,0 +1,6 @@
+Sitemap: https://www.fclg.de/sitemap.xml
+Sitemap: https://www.fclg.de/news-sitemap.xml
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /artikel/kategorien/intern/
+Allow: /wp-admin/admin-ajax.php
