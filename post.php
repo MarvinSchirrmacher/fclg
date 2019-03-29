@@ -10,7 +10,10 @@ $is_sponsor = $post_type == 'sponsor';
 	<?php if (!post_password_required() and has_post_thumbnail()): ?>
 
 		<?php if ($is_singular): ?>
-		<div class="post-thumbnail"><a href="<?php the_post_thumbnail_url(); ?>"><?php the_post_thumbnail(); ?></a></div>
+		<div class="post-thumbnail">
+			<a href="<?php the_post_thumbnail_url(); ?>"><?php the_post_thumbnail(); ?></a>
+			<?php if ($is_sponsor) { SponsorManagement::echoCompanyLogo(); } ?>
+		</div>
 		<?php else: ?>
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 		<?php endif; ?>
