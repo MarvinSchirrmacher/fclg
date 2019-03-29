@@ -15,14 +15,41 @@ add_filter('grid', 'do_shortcode');
 
 function fconline_module_shortcode($atts, $content = null) {
 	extract(shortcode_atts(array(
-		'id' => '',
-		'class' => '',
-		'heading' => '',
+		'id' => null,
+		'class' => null,
+		'heading' => null,
+		'use_post_meta' => null,
 		'width' => '1-1'
 	), $atts));
 
-	$module = '<div' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="module' . ($class != '' ? ' ' . $class  : '') . '"' . ($heading != '' ? ' data-heading="' . $heading . '"' : '') . '>' . do_shortcode($content) . '</div>';
-	return fconline_grid_shortcode(array('width' => $width), $module);
+	$use_post_meta = isset($use_post_meta);
+
+	$output = '<div';
+	if (isset($id))
+		$output .= ' id="'.$id.'"';
+
+	$output .= ' class="module';
+	if (isset($class))
+		$output .= ' '.$class;
+	$output .= '"';
+
+	if (isset($heading))
+		$output .= ' data-heading="'.$heading.'"';
+	$output .= '>';
+
+	if ($use_post_meta) {
+		$output .= '<article class="hentry"><div class="post-thumbnail">'.get_the_post_thumbnail().'</div>';
+		$output .= '<header class="post-header"><h1 class="post-title">'.get_the_post_title().'</h1></header>';
+		$output .= '<div class="post-content">';
+	}
+
+	$output .= do_shortcode($content);
+
+	if ($use_post_meta)
+		$output .= '</div></article>';
+	$output .= '</div>';
+
+	return fconline_grid_shortcode(array('width' => $width), $output);
 }
 add_shortcode('module', 'fconline_module_shortcode');
 add_filter('module', 'do_shortcode');
@@ -49,12 +76,16 @@ function fconline_post_excerpt_shortcode($atts, $template = '') {
 add_shortcode('post_excerpt', 'fconline_post_excerpt_shortcode');
 
 function fconline_set_taxonomy(&$atts, $name, $values, $value_prefix = '') {
+	if (empty($atts)) {
+		$atts = array();
+	}
+
 	$values = explode(',', $values);
 	$values_to_include = array();
 	$values_to_exclude = array();
 
 	foreach ($values as $value) {
-		if (startsWith($value, '-')) {
+		if (starts_with($value, '-')) {
 			$value = ltrim($value, '-');
 			$values_to_exclude[] = $value_prefix . '-' . $value;
 		} else {
@@ -91,6 +122,7 @@ add_shortcode('status', 'fconline_status_shortcode');
 
 function fconline_construct_post_preview($atts) {
 	extract(shortcode_atts(array(
+		'class' => '',
 		'link' => '',
 		'thumbnail' => '',
 		'title' => '',
@@ -98,7 +130,7 @@ function fconline_construct_post_preview($atts) {
 		'location' => ''
 	), $atts));
 
-	$classes = 'post post-preview'; 
+	$classes = 'post post-preview '.$class; 
 	$output = empty($link)
 		? '<div class="' . $classes . '">'
 		: '<a class="' . $classes . '" href="' . $link . '" title="' . $title . '">';
@@ -221,13 +253,60 @@ function fconline_limit_visibility($atts, $content = null) {
 }
 add_shortcode('visible', 'fconline_limit_visibility');
 
-function startsWith($haystack, $needle) {
-    // search backwards starting from haystack length characters from the end
-    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
-}
+/**
+ * Links the content to a heading which has to be clicked to make the content visible.
+ * 
+ * @param atts Inlcudes the heading text and optionals styles.
+ * @param content The content to display if the heading is clicked.  
+ */
+function fconline_block($atts, $content = null) {
+	extract(shortcode_atts(array(
+		'heading' => '',
+		'type' => 'h5',
+		'visible' => ''
+	), $atts));
 
-function endsWith($haystack, $needle) {
-    // search forward starting from end minus needle length characters
-    return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+	$heading_start = '<' . $type . ' class="toggle" id="block-toggle">';
+	$heading_end = '</' . $type . '>';
+	$hidden = empty($visible) ? ' hidden' : '';
+
+	$output .= $heading_start . $heading . $heading_end;
+	$output .= '<div class="wrapper' . $hidden . '" id="block-wrapper">' . $content . '</div>';
+
+	return do_shortcode($output);
 }
+add_shortcode('block', 'fconline_block');
+
+/**
+ * Assembles shop product entry.
+ * 
+ * @param atts Inlcudes title, image id, price and box width (default 1-3).
+ * @param content The content to include.  
+ */
+function fconline_shop_product($atts, $content = null) {
+	extract(shortcode_atts(array(
+		'title' => null,
+		'image' => null,
+		'image_size' => 'medium',
+		'price' => null,
+		'width' => '1-3'
+	), $atts));
+
+	$output = '<div class="grid-'.$width.'"><table><tbody>';
+	if (isset($image))
+		$output .= '<tr><td>'.wp_get_attachment_image($image, $image_size).'</td></tr>';
+
+	$output .= '<tr><td>';
+	if (isset($title))
+		$output = '<h6><strong>'.$title.'</strong></h6>';
+
+	$output .= $content.'</td></tr>';
+
+	if (isset($price))
+		$output .= '<tr><td style="background-color:#e1e1e1;"><p style="text-align: right;"><span style="color: #333333;"><strong>'.$price.'</strong></span></p></td></tr>';
+	$output .= '</tbody></table></div>';
+
+	return do_shortcode($output);
+}
+add_shortcode('shop_product', 'fconline_shop_product');
 ?>
