@@ -1,3 +1,5 @@
+@import "_toggle.scss";
+
 /**
  * Links
  */
@@ -74,50 +76,63 @@ select,
 	cursor: pointer;
 }
 
-/**
- * Buttons
- */
-
-button:not([class*="pswp__button"]):not([draggable="false"]),
-.button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-.subscription-toggle {
-	background-color: $theme-color-green !important;
-	border: 0 !important;
-	color: white;
-	cursor: pointer;
-	display: block;
-	padding: 10px 15px;
-	@include border-radius($primary-border-radius);
-	&:not(.download-link) {
-		line-height: $primary-line-height * 1.1;
-		font-weight: $primary-font-weight + 300;
-		text-align: center;
+/* Tables */
+table.transparent {
+	&, td, th {
+		border: none;
 	}
-	&:hover, &:focus, &:active, &.active {
-		color: white;
-		background-color: darken($theme-color-green, 10%) !important;
-	}
-	&:disabled {
-		background-color: darken(white, 20%) !important;
+	td, th {
+		padding: 0 10px 10px 0;
 	}
 }
 
-.button {
-	&:after {
+/**
+ * Buttons within modules (to exclude header and footer)
+ */
+
+.module {
+	button:not([draggable="false"]),
+	.button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+	.subscription-toggle {
+		background-color: $theme-color-green !important;
+		border: 0 !important;
+		color: white;
+		cursor: pointer;
 		display: block;
-		font-size: 0.75em;
-		font-weight: 400;
+		padding: 10px 15px;
+		@include border-radius($primary-border-radius);
+		@include box-shadow($tertiary-box-shadow);
+		&:not([data-meta]):not(.download-link) {
+			line-height: $primary-line-height * 1.1;
+			font-weight: $primary-font-weight + 300;
+			text-align: center;
+		}
+		&:hover, &:focus, &:active, &.active {
+			color: white;
+			background-color: darken($theme-color-green, 10%) !important;
+		}
+		&:disabled {
+			background-color: darken(white, 20%) !important;
+		}
 	}
-	&[data-meta]:after {
-		content: attr(data-meta);
-	}
-	&.link-button {
-		font-weight: normal;
-		text-align: left;
-		@include icon($icon-link);
+	
+	.button {
+		&:after {
+			display: block;
+			font-size: 0.75em;
+			font-weight: 400;
+		}
+		&[data-meta]:after {
+			content: attr(data-meta);
+		}
+		&.link-button {
+			font-weight: normal;
+			text-align: left;
+			@include icon($icon-link);
+		}
 	}
 }
 
