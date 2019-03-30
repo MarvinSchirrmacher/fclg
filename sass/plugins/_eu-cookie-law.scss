@@ -32,6 +32,7 @@
 }
 
 .pea_cook_more_info_popover {
+    display: none;
     left: 20px;
 }
 
@@ -44,6 +45,10 @@
     #pea_cook_btn {
         display: inline-block;
         margin-left: 10px;
+        @include breakpoint(XXS) {
+            display: block;
+            margin: 10px auto 0px;
+        }
     }
 }
 
@@ -76,5 +81,6 @@
 }
 
 #pea_cook_btn {
+    background: white;
     padding: 5px 15px;
 }
