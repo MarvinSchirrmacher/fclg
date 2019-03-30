@@ -298,7 +298,7 @@ function fconline_shop_product($atts, $content = null) {
 
 	$output .= '<tr><td>';
 	if (isset($title))
-		$output = '<h6><strong>'.$title.'</strong></h6>';
+		$output .= '<h6><strong>'.$title.'</strong></h6>';
 
 	$output .= $content.'</td></tr>';
 
