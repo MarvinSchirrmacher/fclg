@@ -60,6 +60,11 @@
 		@include icon-content($icon-images);
 	}
 }
+.format-status {
+	.sitemap-title{
+		@include icon-content($icon-message);
+	}
+}
 .type-page {
 	.sitemap-title{
 		@include icon-content($icon-browser);
