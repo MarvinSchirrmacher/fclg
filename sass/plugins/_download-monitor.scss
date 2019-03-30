@@ -1,12 +1,13 @@
 .dlm-downloads {
 	list-style-type: none;
 	margin-left: 0;
+	margin-bottom: 0;
 	> br {
 		display: none;
 	}
 }
 
-.download-link {
+.download-link.button {
 	margin-bottom: $primary-margin * 0.5;
 	@include icon($icon-download);
 	&:after {
