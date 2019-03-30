@@ -13,19 +13,25 @@ $menu-item-hover-color: rgba($theme-color, 0.5);
 }
 
 #navigation-toggle,
-#back-to-top {
-	background: $menu-item-color;
-	color: white;
+#back-to-top,
+#search-toggle,
+#login-button {
+	border-radius: 50%;
 	display: block;
 	font-weight: bold;
-	font-size: 1.75rem;
 	line-height: 1rem;
+}
+
+#navigation-toggle,
+#back-to-top {
+	background: $menu-item-color;
+	box-shadow: $primary-box-shadow;
+	color: white;
+	font-size: 1.75rem;
 	padding: 10px;
 	position: fixed;
 	right: 20px;
 	z-index: 100;
-	@include border-radius(50%);
-	@include box-shadow($primary-box-shadow);
 	&:hover {
 		background: $theme-color;
 	}
@@ -55,12 +61,12 @@ $nav_toggle_top: 20px;
 
 #back-to-top {
 	bottom: 20px;
+	opacity: 1;
 	@include icon($icon-chevron-up, false);
-	@include opacity(1);
 	@include transform( scale(1) );
 	&.hidden {
 		z-index: -1;
-		@include opacity(0);
+		opacity: 0;
 		@include transform( scale(0.5) );
 	}
 }
@@ -69,7 +75,7 @@ $nav_toggle_top: 20px;
 
 #navigation-wrapper {
 	background-color: lighten(black, 30%);
-	@include box-shadow($primary-box-shadow);
+	box-shadow: $primary-box-shadow;
 	&, &.hidden {
 		display: block;
 	}
@@ -131,16 +137,13 @@ $admin-bar-height-medium: 46px;
 	color: white;
 	font-family: $theme-font-header;
 	font-size: 1rem;
+	padding: 0px 20px;
 	text-align: center;
 	text-transform: uppercase;
-	@include flexbox($width: 12.5%);
+	@include flexbox();
 	@include breakpoint(M) {
-		padding: 0 !important;
+		padding: 0;
 		text-align: left;
-	}
-	
-	&.grid {
-		padding-right: 20px;
 	}
 
 	/* general list item style */
@@ -171,14 +174,16 @@ $admin-bar-height-medium: 46px;
 		padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
 	}
 	.sub-menu-toggle {
+		background-clip: padding-box;
+		border: solid 5px transparent;
+		border-radius: 50%;
 		font-size: 1.4rem;
 		line-height: 1;
 		padding: 5px;
 		position: absolute;
-			top: 5px;
-			right: 5px;
+			top: 0px;
+			right: 0px;
 		display: none;
-		@include border-radius(50%);
 		@include icon( $icon-chevron-down, false );
 		&.active {
 			@include transform(rotateX(180deg));
@@ -232,8 +237,9 @@ $admin-bar-height-medium: 46px;
 	/* first level list item style */
 
 	> li {
+		width: 12.5%;
 		> .sub-menu {
-			font-size: 0.875em;
+			font-size: 0.875rem;
 		}
 		@include breakpoint(M) {
 			width: 100%;
@@ -267,6 +273,9 @@ $admin-bar-height-medium: 46px;
 		}
 		&[id^="menu-item-"] > a {
 			@include icon("", true, false, 0.3em);
+			&:before {
+				color: darken(white, 20%);
+			}
 			@include breakpoint(M) {
 				&:before { margin-right: 0.6em; }
 			}
@@ -274,11 +283,11 @@ $admin-bar-height-medium: 46px;
 		&:nth-child(1) > a { @include icon-content($icon-home); }
 		&:nth-child(2) > a { @include icon-content($icon-news); }
 		&:nth-child(3) > a { @include icon-content($icon-calendar); }
-		&:nth-child(4) > a { @include icon-content($icon-v-card); }
+		&:nth-child(4) > a { @include icon-content($icon-shield); }
 		&:nth-child(5) > a { @include icon-content($icon-users); }
 		&:nth-child(6) > a { @include icon-content($icon-users); }
-		&:nth-child(7) > a { @include icon-content($icon-shop); }
-		&:nth-child(8) > a { @include icon-content($icon-login); }
+		&:nth-child(7) > a { @include icon-content($icon-heart); }
+		&:nth-child(8) > a { @include icon-content($icon-network); }
 		&:hover,
 		&.current-menu-item,
 		&.current-menu-ancestor {
@@ -305,6 +314,131 @@ $admin-bar-height-medium: 46px;
 
 .logged-in #navigation-menu > li:nth-child(8) > a {
 	@include icon-content($icon-clipboard);
+}
+
+/* Login & Search */
+
+#login-button,
+#search-toggle,
+#search-wrapper {
+	top: -106px;
+	position: absolute;
+}
+
+$search-color: darken(white, 30%);
+$search-bg: darken(white, 5%);
+#login-button,
+#search-toggle {
+	background: $search-bg;
+	border: solid 1px transparent;
+	color: $search-color;
+	font-size: 1.25rem;
+	padding: 6px;
+	text-align: center;
+	z-index: 100;
+	&:hover {
+		color: darken(white, 50%);
+	}
+	&.active {
+		background: rgba($search-bg, 0);
+	}
+}
+
+#login-button {
+	right: 20px;
+	@include icon($icon-user, false);
+}
+
+body.logged-in #login-button {
+	&:before {
+		margin-left: 1px;
+		margin-right: -1px;
+	}
+	@include icon-content($icon-log-out);
+}
+
+#search-toggle,
+#search-wrapper {
+	right: 64px;
+}
+
+#search-toggle {
+	@include icon($icon-magnifying-glass, false);
+	&.active {
+		@include icon-content($icon-cross);
+	}
+	&:hover + #search-wrapper #s {
+		background: darken(white, 2.5%);
+	}
+}
+
+#search-wrapper {
+	z-index: 99;
+	#s {
+		background: $search-bg;
+		border-color: $search-bg;
+		border-radius: calc(6px + 1.25rem);
+		display: block;
+		height: calc(14px + 1.25rem);
+		opacity: 1;
+		padding: 5px 10px;
+		width: 256px;
+		z-index: inherit;
+		&:hover {
+			background: darken(white, 2.5%);
+		}
+		&:focus {
+			border-color: darken(white, 20%)
+		}
+	}
+	#search-submit {
+		display: none;
+	}
+	&.hidden {
+		display: block;
+		#s {
+			opacity: 0;
+			width: 128px;
+			z-index: -1;
+		}
+	}
+}
+
+@include breakpoint(M) {
+	#login-button,
+	#search-toggle,
+	#search-wrapper {
+		position: static;
+	}
+	#navigation-wrapper .inside {
+		@include flexbox();
+	}
+	#search-toggle {
+		display: none;
+	}
+	#search-wrapper {
+		padding: 3px;
+		width: calc(100% - 1.5rem - 15px);
+		#s {
+			border-radius: 0;
+			height: auto;
+			padding: 7px 10px;
+		}
+		&.hidden {
+			#s {
+				opacity: 1;
+				width: 100%;
+			}
+		}
+	}
+	#login-button {
+		border-radius: 0;
+		margin: 3px 3px 3px 0px;
+		width: calc(1.5rem + 12px);
+	}
+	#navigation-menu {
+		width: 100%;
+	}
 }
 
 /* Menu module */
