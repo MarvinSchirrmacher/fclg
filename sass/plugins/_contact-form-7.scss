@@ -15,27 +15,10 @@
 	position: relative;
 }
 
-.wpcf7-form-control-wrap,
-.wpcf7-select {
-	&:before {
-		color: lighten(black, 60%);
-		display: block;
-		line-height: $primary-line-height;
-		padding: 5px 0px;
-		position: absolute;
-			top: 1px;
-			left: 1px;
-		text-align: center;
-		width: 36px;
-		height: calc(100% - 2px);
-		z-index: 10;
-		@include border-radius($primary-border-radius 0 0 $primary-border-radius);
-	}
-}
-
-.wpcf7-form-control-wrap {
+.wpcf7-form-control-wrap:not(.math-quiz) {
 	@include icon("", false);
 	&:before {
+		border-radius: $primary-border-radius 0 0 $primary-border-radius;
 		color: lighten(black, 60%);
 		display: block;
 		line-height: $primary-line-height;
@@ -47,7 +30,6 @@
 		width: 36px;
 		height: calc(100% - 2px);
 		z-index: 10;
-		@include border-radius($primary-border-radius 0 0 $primary-border-radius);
 	}
 	&[class*="name"]:not([class*="child"]):before { content: $icon-user; }
 	&[class*="child"]:before { content: $icon-users; }
@@ -65,10 +47,14 @@
 	&[class*="hobbies"]:before { content: $icon-palette; }
 	&[class*="club"]:before { content: $icon-shield; }
 	&[class*="reason"]:before { content: $icon-info-with-circle; }
+	&[class*="prefered"]:before { content: $icon-heart; }
+	&[class*="type"]:before { content: $icon-list; }
+	&[class*="number"]:before { content: $icon-sound-mix; }
+	&[class*="size"]:before { content: $icon-ruler; }
 	input {
 		position: relative;
 	}
-	input:not([type="file"]):not([type="radio"]):not([type="checkbox"]) {
+	select, input:not([type="file"]):not([type="radio"]):not([type="checkbox"]) {
 		padding-left: 35px !important;
 		z-index: 9;
 	}
@@ -94,6 +80,10 @@
 
 .wpcf7-select:before {
 	content: $icon-folder;
+}
+
+.wpcf7-quiz-label + .wpcf7-quiz {
+	margin-left: 4px;
 }
 
 .wpcf7-list-item {
