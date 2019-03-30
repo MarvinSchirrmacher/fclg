@@ -17,6 +17,7 @@ article.hentry, article.post {
 .post-thumbnail {
 	display: block;
 	overflow: hidden;
+	position: relative;
 	text-align: center;
 	> img {
 		position: static !important;
@@ -41,6 +42,13 @@ a.post-thumbnail, a > .post-thumbnail {
 			@include transition(all 0.1s ease-in 0.0s);
 		}
 	}
+}
+
+.post-sub-thumbnail {
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	max-width: 40%;
 }
 
 .post-header {
