@@ -38,8 +38,10 @@ function fconline_module_shortcode($atts, $content = null) {
 	$output .= '>';
 
 	if ($use_post_meta) {
-		$output .= '<article class="hentry"><div class="post-thumbnail">'.get_the_post_thumbnail().'</div>';
-		$output .= '<header class="post-header"><h1 class="post-title">'.get_the_post_title().'</h1></header>';
+		$output .= '<article class="hentry">';
+		if (has_post_thumbnail())
+			$output .= '<div class="post-thumbnail">'.get_the_post_thumbnail().'</div>';
+		$output .= '<header class="post-header"><h1 class="post-title">'.get_the_title().'</h1></header>';
 		$output .= '<div class="post-content">';
 	}
 
