@@ -9,6 +9,13 @@
 	}
 }
 
+.module {
+    .wpcf7-form.grid {
+        margin-left: -25px;
+        margin-right: -50px;
+    }
+}
+
 .wpcf7-form-control,
 .wpcf7-form-control-wrap {
 	display: inline-block;
@@ -148,3 +155,10 @@ input[type="file"].wpcf7-not-valid {
 .screen-reader-response {
 	display: none;
 }
+
+// it's enough to mention google recaptcha in the privacy policy
+.grecaptcha-badge {
+	display: none !important;
+}
+
+// TODO: Multi-Steps with Tabs
