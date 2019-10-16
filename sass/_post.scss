@@ -198,19 +198,7 @@ table {
 	}
 }
 
-/**
- * Related posts
- */
-
 .related-posts {
-	padding-left: 0;
-	.post {
-		padding-left: $primary-padding;
-		> * {
-			margin-left: 0 !important;
-			margin-right: 0 !important;
-		}
-	}
 	.post-summary {
 		color: lighten($theme-color, 40%);
 		font-size: 0.8rem;
@@ -231,8 +219,25 @@ table {
 	position: relative;
 	.post-meta {
 		margin: 0;
+		padding: 0.5rem 20px;
+		width: 100%;
 		span {
+			color: $theme-color;
 			display: block;
+			font-weight: normal;
+			line-height: 1;
+			margin: 0;
+			text-align: center;
+			text-transform: none;
+		}
+		.post-title {
+			font-size: 1.5rem;
+		}
+		.post-subtitle {
+			font-size: 1rem;
+		}
+		&:hover span {
+			color: $theme-color-green;
 		}
 	}
 	.post-thumbnail {
@@ -247,55 +252,14 @@ table {
 				position: absolute;
 					bottom: 0px;
 					left: 0px;
-				span {
-					color: white;
-					font-weight: normal;
-					line-height: 1;
-					margin: 0;
-					text-align: center;
-					text-transform: none;
-				}
-				.post-title {
-					font-size: 1.5rem;
-				}
-				.post-subtitle {
-					font-size: 1rem;
-				}
 			}
 		}
 	}
-	&:not(.type-sponsor) .post-thumbnail:not(:empty) + .post-meta {
+	.post-thumbnail:not(:empty) + .post-meta { // &:not(.type-sponsor) 
 		background: rgba($theme-color, 0.75);
 		border-top: 1px solid rgba(white, 0.75);
-		padding: 0.5rem 20px;
-		width: 100%;
-	}
-	&.type-sponsor .post-thumbnail:not(:empty) + .post-meta {
-		height: 100%;
-		left: 50%;
 		span {
-			margin: 0 auto;
-			position: relative;
-			left: -50%;
-		}
-		.post-title {
-			border-top: 1px solid white;
-			border-bottom: 1px solid white;
-			padding: 0.1rem 0;
-			text-shadow: 0 0 1.5rem $theme-color;
-			margin-top: calc(50%);
-		}
-		.post-subtitle {
-			margin-top: 0.5rem;
-			text-shadow: 0 0 1rem $theme-color;
-		}
-	}
-	.post-thumbnail:empty .post-meta {
-		color: $theme-color;
-		padding: 20px 25px;
-		.post-title {
-			font-weight: 700;
-			margin-top: 0;
+			color: white;
 		}
 	}
 	&:hover {
@@ -305,115 +269,17 @@ table {
 				@include transition(all 0.1s ease-in 0.0s);
 			}
 		}
-		&:not(.type-sponsor) .post-thumbnail:not(:empty) + .post-meta {
-			background: rgba(white, 0.75);
+		.post-thumbnail:not(:empty) + .post-meta { // &:not(.type-sponsor)
+			background: rgba(white, 0.9);
 			border-color: rgba(white, 0);
-			left: 10px;
-			bottom: 10px;
-			padding-left: 10px;
-			padding-right: 10px;
-			width: calc(100% - 20px);
+			// left: 10px;
+			// bottom: 10px;
+			// padding-left: 10px;
+			// padding-right: 10px;
+			// width: calc(100% - 20px);
 			span {
 				color: $theme-color;
 			}
 		}
-		// &.type-sponsor .post-thumbnail:not(:empty) + .post-meta {
-		// 	.post-title {
-		// 		background: rgba(white, 0.25);
-		// 		padding: 0.5rem 0;
-		// 	}
-		// }
 	}
-}
-
-/**
- * Comments
- */
-
-.comment-list {
-	list-style-type: none;
-	margin-left: 0;
-}
-
-.comment-meta {
-	padding: 0 !important;
-	margin-bottom: $primary-text-tag-margin * 0.5;
-	.avatar {
-		float: left;
-		margin-right: $primary-padding !important;
-		width: 64px;
-	}
-	.says,
-	br {
-		display: none;
-	}
-}
-
-.comment-body{
-	border-bottom: solid 1px rgba(black, 0.1);
-	margin-bottom: $primary-margin;
-	padding-bottom: $primary-margin !important;
-}
-
-.comment-content,
-.comment-metadata,
-.comment-body > .reply {
-	margin-left: 64px + $primary-padding;
-	@include breakpoint(XXS) {
-		margin-left: 0;
-	}
-}
-
-.comment-metadata,
-.comment-link,
-.edit-link {
-	@include icon('');
-}
-.comment-metadata {
-	@include icon-content( $icon-clock );
-	> * {
-		margin-right: $primary-padding * 0.2;
-	}
-}
-.comment-link {
-	@include icon-content( $icon-link );
-}
-.edit-link {
-	@include icon-content( $icon-new-message );
-}
-
-.comment-form-author,
-.comment-form-email {
-	float: left;
-	margin-right: $primary-text-tag-margin;
-	@include breakpoint(XXS) {
-		float: none;
-		margin-right: 0;
-	} 
-}
-
-.comment-form-comment {
-	clear: both;
-}
-
-.comment-form {
-	.logged-in-as {
-		text-align: left;
-	}
-}
-
-.form-submit {
-	margin-bottom: 0;
-}
-
-.comment-progress {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(white, 0.9);
-	text-align: center;
-	font-weight: bold;
-	padding: $primary-padding;
 }
