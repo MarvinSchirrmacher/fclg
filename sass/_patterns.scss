@@ -5,7 +5,6 @@
  */
 
 .link {
-	@include icon($icon-link);
 	border-bottom: solid 1px transparent;
 	color: $theme-color;
 	&:before {
@@ -14,7 +13,6 @@
 	&:hover, &:active {
 		border-color: $theme-color;
 		color: $theme-color;
-		@include transform(scale(1.25));
 	}
 }
 
