@@ -1,10 +1,3 @@
-$toggle_color: lighten(black, 40%);
-
-#block-toggle,
-#block-wrapper {
-    border-left: solid 0px $toggle_color;
-}
-
 #block-toggle{
     margin-bottom: 0px;
     padding-bottom: 12px;
@@ -25,8 +18,4 @@ $toggle_color: lighten(black, 40%);
             border-width: 5px;
         }
     }
-}
-
-#block-wrapper {
-    padding-left: 10px;
 }
