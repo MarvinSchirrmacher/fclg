@@ -151,10 +151,12 @@ $admin-bar-height-medium: 46px;
 	li {
 		&:hover,
 		&.current-menu-item,
-		&.current-menu-ancestor {
+		&.current-menu-ancestor,
+		&.current-page-ancestor {
 			background-color: $menu-item-hover-color;
 		}
-		&.current-menu-ancestor {
+		&.current-menu-ancestor,
+		&.current-page-ancestor {
 			@include breakpoint(M) {
 				> .sub-menu-toggle {
 					display: none;
@@ -225,7 +227,7 @@ $admin-bar-height-medium: 46px;
 			@include box-shadow(none);
 			@include opacity(1);
 			@include transform(translateY(0px));
-			&.hidden:not(.current-menu-ancestor) {
+			&.hidden:not(.current-menu-ancestor):not(.current-page-ancestor) {
 				display: none;
 			}
 			> li:first-child {
@@ -290,7 +292,8 @@ $admin-bar-height-medium: 46px;
 		&:nth-child(8) > a { @include icon-content($icon-network); }
 		&:hover,
 		&.current-menu-item,
-		&.current-menu-ancestor {
+		&.current-menu-ancestor,
+		&.current-page-ancestor {
 			> a {
 				padding: ( $primary-padding * 0.32 ) 0 ( $primary-padding * 0.88 );
 				@include breakpoint(M) {
