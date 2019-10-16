@@ -99,12 +99,14 @@ table.transparent {
 	.subscription-toggle {
 		background-color: $theme-color-green !important;
 		border: 0 !important;
+		border-radius: $primary-border-radius;
+		box-shadow: $tertiary-box-shadow;
 		color: white;
 		cursor: pointer;
 		display: block;
+		margin: 0 auto;
 		padding: 10px 15px;
-		@include border-radius($primary-border-radius);
-		@include box-shadow($tertiary-box-shadow);
+		// max-width: 50%;
 		&:not([data-meta]):not(.download-link) {
 			line-height: $primary-line-height * 1.1;
 			font-weight: $primary-font-weight + 300;
