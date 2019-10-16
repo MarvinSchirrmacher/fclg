@@ -1,17 +1,17 @@
 @font-face {
-	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?y70bgd');
-	src:url('fonts/icomoon.eot?y70bgd#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.woff?y70bgd') format('woff'),
-		url('fonts/icomoon.ttf?y70bgd') format('truetype'),
-		url('fonts/icomoon.svg?y70bgd#icomoon') format('svg');
+	font-family: 'theme-icons';
+	src:url('fonts/theme-icons.eot?y70bgd');
+	src:url('fonts/theme-icons.eot?y70bgd#iefix') format('embedded-opentype'),
+		url('fonts/theme-icons.woff?y70bgd') format('woff'),
+		url('fonts/theme-icons.ttf?y70bgd') format('truetype'),
+		url('fonts/theme-icons.svg?y70bgd#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"],
 [class^="post-meta-"]:before, .sitemap-meta > *:before {
-	font-family: 'icomoon';
+	font-family: 'theme-icons';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
