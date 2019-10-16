@@ -3,7 +3,7 @@
 @mixin icon( $character, $add_margin: true, $after_element: false, $margin: 5px ) {
 	@if $after_element {
 		&::after {
-			font-family: 'icomoon';
+			font-family: 'theme-icons';
 			speak: none;
 			font-style: normal;
 			font-weight: normal;
@@ -18,7 +18,7 @@
 		} 
 	} @else {
 		&::before {
-			font-family: 'icomoon';
+			font-family: 'theme-icons';
 			speak: none;
 			font-style: normal;
 			font-weight: normal;
