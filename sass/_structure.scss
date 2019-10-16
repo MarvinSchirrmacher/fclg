@@ -196,10 +196,10 @@ $logo-border: 5px;
 #footer-sidebar {
 	overflow: hidden;
 	margin-top: 30px;
-	&, .link {
+	&, a {
 		color: white;
 	}
-	.link:hover, .link:active {
+	a:hover, a:active {
 		border-color: white;
 	}
 	@include breakpoint(L) {
@@ -209,20 +209,16 @@ $logo-border: 5px;
 		@include flexbox();
 	}
 	.widget {
-		width: 25%;
+		padding: 20px;
+		width: 20%;
+		@include breakpoint(M) { width: 25%; }
 		@include breakpoint(S) { width: 50%; }
 		@include breakpoint(XXS) { width: 100%; }
 		&:hover {
-			background: black;
-			background: rgba(black, 0.25);
+			background: rgba($theme-color, 0.2);
 		}
-		&:nth-child(4n-3):hover { background: rgba( 59,  89, 182, 0.25); } // Facebook
-		&:nth-child(4n-2):hover { background: rgba(245,  96,  64, 0.25); } // Instagram
-		&:nth-child(4n-1):hover { background: rgba(  0,  46,  95, 0.25); } // FuPa
-		&:nth-child(4n-0):hover { background: rgba(153, 204,  51, 0.25); } // Fussball
 	}
 	.textwidget {
-		padding: $primary-padding * 0.8;
 		font-size: 1.0rem;
 		h5 {
 			margin: 0 0 10px;
@@ -376,32 +372,15 @@ $module-title-height: 1.9rem;
 	}
 }
 
-// Remove any padding left and right if it is a grid within a module
 .module .grid {
-	padding-left: 0px;
-	margin-right: -30px;
-	margin-bottom: -30px;
+	padding-right: 25px !important;
+	padding-left: 25px !important;
+	margin-right: -25px;
+	margin-bottom: -25px;
 	align-items: stretch;
 	> *:not(.grid) {
-		padding-bottom: 30px;
-	}
-	@include breakpoint(L) {
-		margin-right: -20px;
-		margin-bottom: -20px;
-		> *:not(.grid) {
-			padding-bottom: 20px;
-		}
-	}
-	@include breakpoint(XS) {
-		margin-right: -10px;
-		margin-bottom: -10px;
-		> *:not(.grid) {
-			padding-bottom: 10px;
-		}
-	}
-	@include breakpoint(XXS) {
-		margin-right: 0px;
-		margin-bottom: 0px;
+		padding-right: 25px;
+		padding-bottom: 25px;
 	}
 }
 
