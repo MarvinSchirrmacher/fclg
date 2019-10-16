@@ -65,17 +65,18 @@ $is_sponsor = $post_type == 'sponsor';
 		) ); ?>
 	</div>
 	<?php if ($is_sponsor): ?>
-	<footer class="post-meta grid">
+	<footer class="sponsor-meta grid">
+		<div class="grid-1-1"><?php SponsorManagement::echoSponsorGallery(); ?></div>
 		<div class="grid-1-1"><hr /></div>
-		<div class="grid-1-2">
+		<div class="grid-1-3">
 			<?php SponsorManagement::echoSponsorMeta(); ?>
 		</div>
-		<div class="grid-1-2">
-			<?php SponsorManagement::echoSponsorAdvertisingMedia(); ?>
+		<div class="grid-2-3">
+			<?php SponsorManagement::echoContactForm(); ?>
 		</div>
 		<div class="grid-1-1">
 			<?php SponsorManagement::echoSponsorLocationMap(); ?>
-			<?php SponsorManagement::echoSponsorGallery(); ?>
+			<?php SponsorManagement::echoSponsorAdvertisingMedia(); ?>
 		</div>
 	</footer>
 	<?php SponsorManagement::echoFooterImage('of-above-average-width'); ?>
