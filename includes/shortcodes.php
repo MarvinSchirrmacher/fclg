@@ -168,9 +168,13 @@ function fconline_construct_post_preview_with_post($atts) {
 		unset($atts['advertising_medium']);
 	}
 
+	if (!empty($atts['post__in'])) {
+		$atts['post__in'] = explode(',', $atts['post__in']);
+	}
+
 	global $post;
 	$posts = get_posts($atts);
-
+	
 	ob_start();
 
 	foreach ($posts as $post) : setup_postdata($post);
@@ -255,29 +259,31 @@ function fconline_limit_visibility($atts, $content = null) {
 }
 add_shortcode('visible', 'fconline_limit_visibility');
 
+function fconline_definitions($atts, $content = null) {
+	return do_shortcode('<dl class="collapsable">'.do_shortcode($content).'</dl>');
+}
+add_shortcode('definitions', 'fconline_definitions');
+
 /**
  * Links the content to a heading which has to be clicked to make the content visible.
  * 
  * @param atts Inlcudes the heading text and optionals styles.
  * @param content The content to display if the heading is clicked.  
  */
-function fconline_block($atts, $content = null) {
+function fconline_definition($atts, $content = null) {
 	extract(shortcode_atts(array(
 		'heading' => '',
-		'type' => 'h5',
 		'visible' => ''
 	), $atts));
 
-	$heading_start = '<' . $type . ' class="toggle" id="block-toggle">';
-	$heading_end = '</' . $type . '>';
 	$hidden = empty($visible) ? ' hidden' : '';
 
-	$output .= $heading_start . $heading . $heading_end;
-	$output .= '<div class="wrapper' . $hidden . '" id="block-wrapper">' . $content . '</div>';
+	$output .= '<dt class="toggle" id="definition-toggle">' . $heading . '</dt>';
+	$output .= '<dd class="wrapper' . $hidden . '" id="definition-wrapper">' . $content . '</dd>';
 
 	return do_shortcode($output);
 }
-add_shortcode('block', 'fconline_block');
+add_shortcode('definition', 'fconline_definition');
 
 /**
  * Assembles shop product entry.
@@ -311,4 +317,27 @@ function fconline_shop_product($atts, $content = null) {
 	return do_shortcode($output);
 }
 add_shortcode('shop_product', 'fconline_shop_product');
+
+/**
+ * Assembles a radial progress bar.
+ * 
+ * @param atts Inlcudes progress in percent.
+ * @param content The content to include.  
+ */
+function fconline_progress_bar($atts, $content = null) {
+	extract(shortcode_atts(array(
+		'progress' => null
+	), $atts));
+
+	$output = '<div class="pie-wrapper progress-'.$progress.'">';
+    $output .= '<span class="label">'.$progress.'<span class="smaller">%</span></span>';
+    $output .= '<div class="pie">';
+    $output .= '<div class="left-side half-circle"></div>';
+    $output .= '<div class="right-side half-circle"></div>';
+    $output .= '</div>';
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode('progress', 'fconline_progress_bar');
 ?>
