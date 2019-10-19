@@ -326,15 +326,25 @@ add_shortcode('shop_product', 'fconline_shop_product');
  */
 function fconline_progress_bar($atts, $content = null) {
 	extract(shortcode_atts(array(
-		'progress' => null
+		'progress' => null,
+		'class' => null
 	), $atts));
 
-	$output = '<div class="pie-wrapper progress-'.$progress.'">';
-    $output .= '<span class="label">'.$progress.'<span class="smaller">%</span></span>';
-    $output .= '<div class="pie">';
-    $output .= '<div class="left-side half-circle"></div>';
-    $output .= '<div class="right-side half-circle"></div>';
+	$pie_style = '';
+	$left_circle_style = 'transform: rotate(calc('.$progress.'*3.6deg))';
+	$right_circle_style = 'display: none';
+	if (intval($progress) > 50) {
+		$pie_style = ' style="clip: rect(auto, auto, auto, auto)"';
+		$right_circle_style = 'transform: rotate(180deg)';
+	}
+
+	$class = isset($class) ? ' '.$class : '';
+	$output = '<div class="pie-wrapper'.$class.'">';
+    $output .= '<div class="pie"'.$pie_style.'>';
+    $output .= '<div class="left-side half-circle" style="'.$left_circle_style.'"></div>';
+    $output .= '<div class="right-side half-circle" style="'.$right_circle_style.'"></div>';
     $output .= '</div>';
+    $output .= '<div class="label">'.$progress.'<sub class="smaller">%</sub></div>';
 	$output .= '</div>';
 
 	return $output;
