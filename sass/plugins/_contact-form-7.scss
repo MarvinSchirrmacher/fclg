@@ -9,11 +9,15 @@
 	}
 }
 
-.module {
-    .wpcf7-form.grid {
-        margin-left: -25px;
-        margin-right: -50px;
-    }
+.wpcf7-form.grid {
+	margin-left: -25px;
+	margin-right: -50px;
+	
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"] {
+		width: 100%;
+	}
 }
 
 .wpcf7-form-control,
