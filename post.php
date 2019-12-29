@@ -11,8 +11,8 @@ $is_sponsor = $post_type == 'sponsor';
 
 		<?php if ($is_singular): ?>
 		<div class="post-thumbnail">
-			<a href="<?php the_post_thumbnail_url(); ?>"><?php the_post_thumbnail(); ?></a>
-			<?php if ($is_sponsor) { SponsorManagement::echoCompanyLogo(); } ?>
+			<?php the_post_thumbnail(); ?>
+			<?php if ($is_sponsor) { Sponsor::echoCompanyLogo(); } ?>
 		</div>
 		<?php else: ?>
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
@@ -66,20 +66,20 @@ $is_sponsor = $post_type == 'sponsor';
 	</div>
 	<?php if ($is_sponsor): ?>
 	<footer class="sponsor-meta grid">
-		<div class="grid-1-1"><?php SponsorManagement::echoSponsorGallery(); ?></div>
+		<div class="grid-1-1"><?php Sponsor::echoSponsorGallery(); ?></div>
 		<div class="grid-1-1"><hr /></div>
 		<div class="grid-1-3">
-			<?php SponsorManagement::echoSponsorMeta(); ?>
+			<?php Sponsor::echoSponsorMeta(); ?>
 		</div>
 		<div class="grid-2-3">
-			<?php SponsorManagement::echoContactForm(); ?>
+			<?php Sponsor::echoContactForm(); ?>
 		</div>
 		<div class="grid-1-1">
-			<?php SponsorManagement::echoSponsorLocationMap(); ?>
-			<?php SponsorManagement::echoSponsorAdvertisingMedia(); ?>
+			<?php Sponsor::echoSponsorLocationMap(); ?>
+			<?php Sponsor::echoSponsorAdvertisingMedia(); ?>
 		</div>
 	</footer>
-	<?php SponsorManagement::echoFooterImage('of-above-average-width'); ?>
+	<?php Sponsor::echoFooterImage('of-above-average-width'); ?>
 	<?php else: ?>
 		<?php the_tags('<footer class="post-meta"><div class="tags-list">', '', '</div></footer>'); ?>
 	<?php endif; ?>
