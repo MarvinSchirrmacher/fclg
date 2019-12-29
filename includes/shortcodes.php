@@ -57,11 +57,8 @@ add_shortcode('module', 'fconline_module_shortcode');
 add_filter('module', 'do_shortcode');
 
 function fconline_post_excerpt_shortcode($atts, $template = '') {
+	fconline_parse_custom_atts($atts);
 	global $post;
-	if (!empty($atts['post_formats'])) {
-		fconline_set_taxonomy($atts, 'post_format', $atts['post_formats'], 'post-format');
-		unset($atts['post_formats']);
-	}
 	$posts = get_posts($atts);
 
 	ob_start();
@@ -152,7 +149,7 @@ function fconline_construct_post_preview($atts) {
 	return $output;
 }
 
-function fconline_construct_post_preview_with_post($atts) {
+function fconline_parse_custom_atts(&$atts) {
 	if (!empty($atts['post_formats'])) {
 		fconline_set_taxonomy($atts, 'post_format', $atts['post_formats'], 'post-format');
 		unset($atts['post_formats']);
@@ -172,6 +169,23 @@ function fconline_construct_post_preview_with_post($atts) {
 		$atts['post__in'] = explode(',', $atts['post__in']);
 	}
 
+	$has_before = !empty($atts['before']);
+	$has_after = !empty($atts['after']);
+	if ($has_before || $has_after) {
+		$date_query = array();
+		if ($has_before) {
+			$date_query['before'] = $atts['before'];
+		}
+		if ($has_after) {
+			$date_query['after'] = $atts['after'];
+		}
+
+		$atts['date_query'] = array($date_query);
+	}
+}
+
+function fconline_construct_post_preview_with_post($atts) {
+	fconline_parse_custom_atts($atts);
 	global $post;
 	$posts = get_posts($atts);
 	
