@@ -96,7 +96,7 @@ h4,
 h5,
 h6 {
 	clear: both;
-	font-family: Verdana, Corbert, sans-serif;
+	font-family: $theme-font-header;
 	font-weight: $primary-font-weight + 300;
 	line-height: $primary-line-height * 0.7;
 	margin: ($primary-text-tag-margin * 3) 0 $primary-text-tag-margin;

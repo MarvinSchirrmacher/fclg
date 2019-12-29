@@ -44,7 +44,10 @@ function fconline_dequeue_plugin_styles() {
 }
 
 function fconline_enqueue_styles($template_directory_uri) {
-	$theme_font_url = add_query_arg('family', 'Corbert', "//db.onlinewebfonts.com/c/5ce66afbbd1516da0d69cffddf4f8cf3");
+	$theme_font_url = add_query_arg(array(
+		'family' => 'Source+Sans+Pro',
+		'display' => 'swap',
+	), "https://fonts.googleapis.com/css");
 
 	wp_enqueue_style('theme-font',
 		$theme_font_url, array(), null);
