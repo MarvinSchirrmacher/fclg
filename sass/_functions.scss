@@ -1,5 +1,7 @@
-/* Typography */
-
+@mixin size($width, $height) {
+	height: $height;
+	width: $width;
+}
 @mixin icon( $character, $add_margin: true, $after_element: false, $margin: 5px ) {
 	@if $after_element {
 		&::after {

@@ -21,14 +21,15 @@ $pie-size: 200px;
     }
   }
 
-  $inner-circle: calc(#{$pie-size} * 0.8);
+  $inner-circle: $pie-size * 0.8;
   .label {
+    @include size($inner-circle, $inner-circle);
     position: absolute;
-    left: $pie-size / 10;
-    top: $pie-size / 10;
+    left: $pie-size * 0.1;
+    top: $pie-size * 0.1;
     background: lighten($theme-color, 10%);
     border-radius: 50%;
-    @include size($inner-circle, $inner-circle);
+    box-shadow: $secondary-box-shadow;
     color: lighten($theme-color, 80%);
     font-size: 3rem;
     font-weight: bold;
