@@ -13,9 +13,10 @@
 	margin-left: -25px;
 	margin-right: -50px;
 	
-	input[type="text"],
-	input[type="email"],
-	input[type="tel"] {
+	input[type=text],
+	input[type=email],
+	input[type=tel],
+	input[type=number] {
 		width: 100%;
 	}
 }
