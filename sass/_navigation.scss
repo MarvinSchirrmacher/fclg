@@ -63,11 +63,11 @@ $nav_toggle_top: 20px;
 	bottom: 20px;
 	opacity: 1;
 	@include icon($icon-chevron-up, false);
-	@include transform( scale(1) );
+	transform: scale(1);
 	&.hidden {
 		z-index: -1;
 		opacity: 0;
-		@include transform( scale(0.5) );
+		transform: scale(0.5);
 	}
 }
 
@@ -89,7 +89,7 @@ $nav_toggle_top: 20px;
 			top: 0;
 		width: $site-navigation-width;
 		z-index: 100;
-		@include box-shadow(none);
+		box-shadow: none;
 		&.hidden {
 			right: -$site-navigation-width;
 		}
@@ -188,7 +188,7 @@ $admin-bar-height-medium: 46px;
 		display: none;
 		@include icon( $icon-chevron-down, false );
 		&.active {
-			@include transform(rotateX(180deg));
+			transform: rotateX(180deg);
 		}
 		&:hover {
 			background-color: $menu-item-hover-color;
@@ -206,10 +206,10 @@ $admin-bar-height-medium: 46px;
 		width: 100%;
 		word-wrap: break-word;
 		z-index: -1;
-		@include border-radius(0 0 10px 10px);
-		@include box-shadow($primary-box-shadow);
-		@include opacity(0);
-		@include transform(translateY(-10px));
+		border-radius: 0 0 10px 10px;
+		box-shadow: $primary-box-shadow;
+		opacity: 0;
+		transform: translateY(-10px);
 		&.hidden {
 			display: block;
 		}
@@ -223,10 +223,10 @@ $admin-bar-height-medium: 46px;
 			top: 0;
 			width: calc(100% - 10px);
 			z-index: 100;
-			@include border-radius(0px);
-			@include box-shadow(none);
-			@include opacity(1);
-			@include transform(translateY(0px));
+			border-radius: 0px;
+			box-shadow: none;
+			opacity: 1;
+			transform: translateY(0px);
 			&.hidden:not(.current-menu-ancestor):not(.current-page-ancestor) {
 				display: none;
 			}
@@ -262,11 +262,11 @@ $admin-bar-height-medium: 46px;
 				display: block;
 				font-size: 0.7rem;
 				margin-top: -5px;
-				@include opacity(0);
-				@include scale(0.9);
+				opacity: 0;
+				transform: scale(0.9);
 				@include breakpoint(M) {
-					@include scale(1);
-					@include opacity(0.5);
+					transform: scale(1);
+					opacity: 0.5;
 				}
 				@include breakpoint(M) {
 					display: none;
@@ -300,15 +300,15 @@ $admin-bar-height-medium: 46px;
 					padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
 				}
 				span {
-					@include opacity(1);
-					@include scale(1);
+					opacity: 1;
+					transform: scale(1);
 				}
 			}
 		}
 		&:hover {
 			> .sub-menu {
-				@include transform(translateY(0px));
-				@include opacity(1);
+				transform: translateY(0px);
+				opacity: 1;
 				z-index: 100;
 			}
 		}

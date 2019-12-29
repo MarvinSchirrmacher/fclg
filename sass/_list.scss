@@ -34,7 +34,7 @@ dl.collapsable {
 			color: $theme-color-green;
 		}
 		&.active:before {
-			@include transform(rotateX(180deg));
+			transform: rotateX(180deg);
 			padding-bottom: 0px;
 		}
 	}

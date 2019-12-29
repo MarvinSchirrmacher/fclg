@@ -35,7 +35,7 @@
 .strip {
 	color: white;
 	background-color: lighten(black, 30%);
-	@include box-shadow($primary-box-shadow);
+	box-shadow: $primary-box-shadow;
 	@include three-dimensional();
 	> * { position: relative; }
 }
@@ -111,8 +111,8 @@ $logo-border: 5px;
 	margin: -$logo-diameter + 10px auto -10px;
 	overflow: hidden;
 	position: relative;
-	@include border-radius($logo-radius);
-	@include box-shadow($primary-box-shadow, inset $primary-box-shadow);
+	border-radius: $logo-radius;
+	box-shadow: $primary-box-shadow, inset $primary-box-shadow;
 	@include breakpoint(XS) {
 		margin-top: -130px;
 		margin-bottom: -10px;
@@ -125,8 +125,8 @@ $logo-border: 5px;
 		width: calc(100% + 2 * #{$logo-border});
 		height: calc(100% + 2 * #{$logo-border});
 		overflow: hidden;
-		@include box-sizing(border);
-		@include border-radius($logo-radius);
+		box-sizing: border;
+		border-radius: $logo-radius;
 	}
 	&:before, &:after {
 		content: "";
@@ -138,15 +138,15 @@ $logo-border: 5px;
 		background-position: 50% 57%;
 		background-size: 65% 65%;
 		background-repeat: no-repeat;
-		@include opacity(1);
-		@include transition(all 0.3s ease-out 0.0s);
+		opacity: 1;
+		transition: all 0.3s ease-out 0.0s;
 	}
 	/* Home icon */
 	span {
 		z-index: 22;
 		@include icon($icon-home, false);
-		@include opacity(0);
-		@include transform(scale(1.25));
+		opacity: 0;
+		transform: scale(1.25);
 		&:before {
 			position: absolute;
 			left: 50%;
@@ -175,12 +175,12 @@ $logo-border: 5px;
 	}
 	&:hover {
 		&:before {
-			@include opacity(0);
-			@include transition(all 0.1s ease-in 0.0s);
+			opacity: 0;
+			transition: all 0.1s ease-in 0.0s;
 		}
 		span {
-			@include opacity(1);
-			@include transform(scale(1));
+			opacity: 1;
+			transform: scale(1);
 		}
 	}
 }
@@ -280,7 +280,7 @@ $module-title-height: 1.9rem;
 	overflow: hidden;
 	padding: $primary-padding;
 	position: relative;
-	@include box-shadow($secondary-box-shadow);
+	box-shadow: $secondary-box-shadow;
 	&[data-heading]:not([data-heading=""]) {
 		padding-top: calc(#{$module-title-height} + #{$primary-padding});
 		&:before {
@@ -297,7 +297,7 @@ $module-title-height: 1.9rem;
 			top: 0;
 			width: 100%;
 			z-index: 1;
-			@include box-shadow($secondary-box-shadow);
+			box-shadow: $secondary-box-shadow;
 		}
 	}
 	&.unpadded,

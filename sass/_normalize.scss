@@ -1,6 +1,6 @@
 * {
 	&, &:before, &:after {
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 	}
 	&:not(html):not(body) {
 		@include transition(all 0.3s ease-out 0.0s);
@@ -299,7 +299,7 @@ button,
 input,
 select,
 textarea {
-	@include box-sizing(border-box);
+	box-sizing: border-box;
 	border: none;
 	font-size: 100%;
 	margin: 0;
