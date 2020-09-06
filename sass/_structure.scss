@@ -333,6 +333,9 @@ $module-title-height: 1.9rem;
 	@include breakpoint(L) {
 		margin-bottom: 20px !important;
 	}
+	> *::last-child {
+		margin-bottom: 0;
+	}
 }
 
 /**
