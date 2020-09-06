@@ -142,9 +142,6 @@ ins {
 
 p {
 	margin-bottom: $primary-text-tag-margin;
-	&:last-child {
-		margin-bottom: 0;
-	}
 	&:empty {
 		display: none !important;
 	}
