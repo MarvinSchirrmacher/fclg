@@ -102,3 +102,7 @@ style-min\.css
 style\.css
 
 scripts/min/
+
+# Node
+#-----------------------------
+node_modules
