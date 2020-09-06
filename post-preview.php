@@ -1,9 +1,10 @@
-<?php if (is_single()): ?>
+<?php $is_own_page = is_single(get_the_id()); ?>
+<?php if ($is_own_page): ?>
 <div <?php post_class('post-preview'); ?>>
 <?php else : ?>
 <a <?php post_class('post-preview'); ?> href="<?php echo esc_url(get_permalink()); ?>">
 <?php endif; ?>
-	<div class="post-thumbnail">
+	<div class="post-thumbnail" data="<?php echo ($is_own_page ? 'true' : 'false') . ' ' . get_the_id(); ?>">
 		<?php the_post_thumbnail( 'medium' ); ?>
 	</div>
 	<figcaption class="post-meta">
@@ -17,7 +18,7 @@
 		</span>
 		<?php endif; ?>
 	</figcaption>
-<?php if (is_single()): ?>
+<?php if ($is_own_page): ?>
 </div>
 <?php else : ?>
 </a>
