@@ -1,0 +1,42 @@
+body {
+    background: #f8f8ff;
+}
+
+a {
+    color: #88ad0c;
+}
+
+a:hover, .login #backtoblog a:hover, .login #nav a:hover {
+    color: #97BF0D;
+}
+
+#login h1 a, .login h1 a {
+    background-image: url(../images/coat-of-arms.svg);
+    height: 90px;
+    width: 320px;
+    background-size: 320px 90px;
+    background-repeat: no-repeat;
+}
+
+.login form {
+    border: none;
+    box-shadow: 0 0 10px #CCCCCC;
+}
+
+.wp-core-ui .button-primary {
+    background: #88ad0c;
+    border-color: #88ad0c;
+}
+
+.wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus {
+    background: #97BF0D;
+    border-color: #97BF0D;
+}
+
+.wp-core-ui .button-secondary {
+    color: #88ad0c;
+}
+
+.wp-core-ui .button-secondary:hover, .wp-core-ui .button-secondary:active {
+    color: #97BF0D;
+}
