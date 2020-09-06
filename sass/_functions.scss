@@ -125,6 +125,33 @@
 	}
 }
 
+@mixin breakpoint-mf( $point ) {
+	@if $point == XXL {
+		@media (min-width: 123.75rem) { @content; } // 1920px
+	}
+	@if $point == XL {
+		@media (min-width: 105rem) { @content; } // 1680px
+	}
+	@if $point == L {
+		@media (min-width: 86.25rem) { @content; } // 1380px
+	}
+	@if $point == M {
+		@media (min-width: 72rem) { @content; } // 1152px
+	}
+	@if $point == S {
+		@media (min-width: 60rem) { @content; } // 960px
+	}
+	@if $point == XS {
+		@media (min-width: 45rem) { @content; } // 720px
+	}
+	@if $point == XXS {
+		@media (min-width: 27.5rem) { @content; } // 440px
+	}
+	@else {
+		@media (min-width: $point) { @content; } // any
+	}
+}
+
 @mixin pixel-ratio($ratio) {
   @if $ratio == 1.5 {
 	@media (-moz-min-device-pixel-ratio: 1.5),
