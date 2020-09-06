@@ -56,12 +56,6 @@ textarea {
 	padding: 7px 10px;
 }
 
-input:not([type="file"]):not([type="radio"]),
-textarea,
-label {
-	border-radius: $primary-border-radius;
-}
-
 .gm-style button {
 	border-radius: 0;
 }
