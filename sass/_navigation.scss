@@ -419,11 +419,14 @@ body.logged-in #login-button {
 	#search-toggle {
 		display: none;
 	}
+	#search-wrapper #s,
+	#login-button {
+		border-radius: 3px;
+	}
 	#search-wrapper {
 		padding: 3px;
 		width: calc(100% - 1.5rem - 15px);
 		#s {
-			border-radius: 0;
 			height: auto;
 			padding: 7px 10px;
 		}
@@ -435,7 +438,6 @@ body.logged-in #login-button {
 		}
 	}
 	#login-button {
-		border-radius: 0;
 		margin: 3px 3px 3px 0px;
 		width: calc(1.5rem + 12px);
 	}
