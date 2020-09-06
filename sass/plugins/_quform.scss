@@ -1,0 +1,185 @@
+.quform-page-progress-tabs {
+    @include flexbox($justify:center);
+}
+
+.quform-page-progress-tab {
+    border: none;
+    color: transparent;
+    height: 20px;
+    margin: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    padding: 25px 0 0;
+    position: relative;
+    text-align: center;
+
+    // node
+    &::before {
+        background: $theme-color-green;
+        border: solid 4px $theme-color-green;
+        content: "";
+        display: block;
+        position: absolute;
+            top: 0;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+        z-index: 10;
+    }
+    
+    // edge
+    &:not(:first-child)::after {
+        background: $theme-color-green;
+        content: "";
+        display: block;
+        position: absolute;
+            top: 8px;
+            left: -50%;
+            width: 100%;
+            height: 4px;
+        z-index: 9;
+    }
+
+    @include breakpoint-mf(XS) {
+        height: auto;
+        color: inherit;
+    }
+
+    &.quform-current-tab {
+        & ~ .quform-page-progress-tab {
+            &::before {
+                background: white;
+                border-color: darken(white, 10%);
+            }
+            &::after {
+                background: darken(white, 10%);
+            }
+        }
+    }
+
+    &:only-child {
+        width: 100%;
+    }
+
+    @for $i from 2 through 10 {
+        &:first-child:nth-last-child(#{$i}),
+        &:first-child:nth-last-child(#{$i}) ~ & {
+            width: calc(100% / #{$i} - 1px);
+        }
+    }
+}
+
+.quform-upload-button {
+    border-color: darken(white, 20%);
+}
+
+.quform-options-style-button {
+
+    $button-option-color: lighten($theme-color, 20%);
+    $button-option-color-active: lighten($theme-color, 40%);
+    $button-option-color-checked: $theme-color-green;
+    .quform-option-label {
+        background: $button-option-color;
+        border: solid 1px $button-option-color;
+        color: white;
+        padding: 0 15px;
+        width: 100%;
+        z-index: 9;
+        &:hover, &:active {
+            background: $button-option-color-active;
+            border-color: $button-option-color-active;
+        }
+    }
+
+    .quform-field-radio {
+        &:checked {
+            & + .quform-option-label {
+                background: $button-option-color-checked;
+                border-color: $button-option-color-checked;
+            }
+        }
+    }
+
+    .quform-option-text {
+        font-weight: bold;
+        line-height: 1.2rem;
+        > span {
+            background: white;
+            color: $theme-color;
+            display: block;
+            // font-size: 0.8rem;safa
+            font-weight: normal;
+            margin-top: 3px;
+            margin-left: -15px;
+            padding: 10px 15px;
+            width: calc(100% + 30px);
+            > strong {
+                display: block;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.quform .quform-has-field-icon-left {
+    > .quform-field-captcha,
+    > .quform-field-date,
+    > .quform-field-email,
+    > .quform-field-password,
+    > .quform-field-text,
+    > .quform-field-textarea,
+    > .quform-field-time,
+    > span > span > .quform-field-date,
+    > span > span > .quform-field-time {
+        padding-left: 34px !important;
+    }
+}
+
+.quform-input {
+    margin: 0 !important;
+}
+
+.quform-error {
+    padding: 0 !important;
+}
+
+.quform-inner-name .quform-spacer {
+    padding-bottom: 10px !important;
+    @include breakpoint-mf(XS) {
+        padding-bottom: 0px !important;
+    }
+}
+
+.quform-button-back,
+.quform-button-next {
+    float: left !important;
+    width: calc(50% - 5px) !important;
+    &:not(:first-child) {
+        margin-left: 10px;
+    }
+    @include breakpoint-mf(XS) {
+        width: auto !important;
+        &:not(:first-child) {
+            margin-left: auto;
+        }
+    }
+}
+
+.quform-button-back + .quform-button-submit {
+    margin-top: 10px;
+    @include breakpoint-mf(XS) {
+        margin-top: auto;
+    }
+}
+
+
+// fix: the plugin style does not consider the error fields on small screens
+@include breakpoint(767px) {
+    .quform-responsive-elements-phone-landscape .quform-error-inner {
+        max-width: 100% !important;
+        width: 100% !important;
+        min-width: 10px;
+    }
+}
