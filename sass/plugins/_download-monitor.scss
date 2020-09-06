@@ -21,13 +21,7 @@
 	&[data-filetype][data-filesize]:after {
 		content: attr(data-filetype) " / " attr(data-filesize);
 	}
-	&:hover {
-		color: white;
-	}
 	&.invalid {
 		cursor: default;
-	}
-	&:not(.invalid):hover {
-		background-color: darken( $theme-color-green, 10% );
 	}
 }
