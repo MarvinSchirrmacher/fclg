@@ -1,7 +1,3 @@
-/*
- * fussball.de widgetAPI
- */
-
 var egmWidget2 = {};
 
 egmWidget2.url = '//www.fussball.de/widget2';
