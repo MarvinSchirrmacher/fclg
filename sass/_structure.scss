@@ -372,17 +372,21 @@ $module-title-height: 1.9rem;
 	}
 }
 
-.module .grid {
-	padding-right: 25px !important;
-	padding-left: 25px !important;
+.module > .grid {
+	margin-left: -25px;
 	margin-right: -25px;
-	margin-bottom: -25px;
+}
+
+.module .grid {
+	padding-right: 0px !important;
+	padding-left: 25px !important;
 	align-items: stretch;
 	> *:not(.grid) {
 		padding-right: 25px;
 		padding-bottom: 25px;
 	}
 }
+
 
 [class*="grid-"] > *:last-child {
 	margin-bottom: 0;
