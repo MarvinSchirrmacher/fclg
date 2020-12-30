@@ -20,6 +20,26 @@
 	}
 }
 
+dl.collapsable {
+	dt {
+		border-top: solid 1px lighten($theme-color, 50%); 
+		padding: 10px 0px;
+		position: relative;
+		@include icon($icon-chevron-down, false);
+		&:before {
+			float: right;
+			line-height: inherit;
+		}
+		&:hover {
+			color: $theme-color-green;
+		}
+		&.active:before {
+			transform: rotateX(180deg);
+			padding-bottom: 0px;
+		}
+	}
+}
+
 .buttons-list {
 	list-style-type: none;
 	margin-left: 0;

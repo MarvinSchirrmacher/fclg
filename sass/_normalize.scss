@@ -1,10 +1,10 @@
 * {
 	&, &:before, &:after {
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 	}
 	&:not(html):not(body) {
 		@include transition(all 0.3s ease-out 0.0s);
-		&:hover {
+		&:hover:not(#navigation-toggle) {
 			@include transition(all 0.1s ease-in 0.0s);
 		}
 	}
@@ -68,7 +68,7 @@ select,
 textarea {
 	color: $theme-color;
 	font-family: $theme-font;
-	font-size: calc(16px + 0.15vw);
+	font-size: calc(15px + 0.15vw);
 	font-weight: $primary-font-weight;
 	line-height: $primary-line-height;
 }
@@ -96,7 +96,7 @@ h4,
 h5,
 h6 {
 	clear: both;
-	font-family: Verdana, Corbert, sans-serif;
+	font-family: $theme-font-header;
 	font-weight: $primary-font-weight + 300;
 	line-height: $primary-line-height * 0.7;
 	margin: ($primary-text-tag-margin * 3) 0 $primary-text-tag-margin;
@@ -142,9 +142,6 @@ ins {
 
 p {
 	margin-bottom: $primary-text-tag-margin;
-	&:last-child {
-		margin-bottom: 0;
-	}
 	&:empty {
 		display: none !important;
 	}
@@ -299,7 +296,7 @@ button,
 input,
 select,
 textarea {
-	@include box-sizing(border-box);
+	box-sizing: border-box;
 	border: none;
 	font-size: 100%;
 	margin: 0;
@@ -382,7 +379,7 @@ th {
 
 th, td {
 	overflow: hidden;
-	padding: $primary-padding * 0.4 $primary-padding * 0.6;
+	padding: 10px 15px;
 	text-overflow: ellipsis;
 }
 

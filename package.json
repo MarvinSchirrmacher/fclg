@@ -1,0 +1,16 @@
+{
+  "name": "sport-club-manager",
+  "version": "1.0.0",
+  "description": "CodeKit created this starter package.json file. You should customize it appropriately.",
+  "scripts": {},
+  "author": "Marvin Schirrmacher",
+  "license": "MIT",
+  "repository": {},
+  "devDependencies": {
+    "@types/jquery": "^3.3.33"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "underscore": "^1.12.0"
+  }
+}

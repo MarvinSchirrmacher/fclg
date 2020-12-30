@@ -260,7 +260,7 @@ function initPhotoSwipeFromDOM(gallerySelector) {
 	 * Toggles the class 'active' of the toggle and the class 'hidden' of the
 	 * corresponding wrapper. In this way both classes should be set opposedly,
 	 * when 'hidden' is set for the wrapper initially.
-	 * Any style changes has to be done by css.
+	 * Any style changes have to be done by css.
 	 * 
 	 * @since 2.8.0
 	 * 
@@ -279,7 +279,7 @@ function initPhotoSwipeFromDOM(gallerySelector) {
 		}
 
 		if (that.is(searchToggle) && that.is('.active')) {
-			wrapper.find('.search-field').focus();
+			wrapper.find('#s').focus();
 		}
 	}
 
@@ -387,6 +387,7 @@ function initPhotoSwipeFromDOM(gallerySelector) {
 		var clickEvent = 'click.fconline';
 		$('.toggle').on(clickEvent, toggleWrapperVisibility);
 		_window.on(clickEvent, hideNavigation);
+		_window.on('swiperight', hideNavigation);
 
 		_window.scroll(_.debounce(function () {
 			setBackLinkVisibility();

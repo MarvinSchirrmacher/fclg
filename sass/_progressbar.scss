@@ -1,0 +1,46 @@
+$pie-size: 200px;
+
+.pie-wrapper {
+  @include size($pie-size, $pie-size);
+  position: relative;
+
+  .pie {
+    clip: rect(0, $pie-size, $pie-size, $pie-size / 2);
+
+    &, .half-circle {
+      @include size(100%, 100%);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .half-circle {
+      border: ($pie-size / 10) solid $theme-color-green;
+      border-radius: 50%;
+      clip: rect(0, $pie-size / 2, $pie-size, 0);
+    }
+  }
+
+  $inner-circle: $pie-size * 0.8;
+  .label {
+    @include size($inner-circle, $inner-circle);
+    position: absolute;
+    left: $pie-size * 0.1;
+    top: $pie-size * 0.1;
+    background: lighten($theme-color, 10%);
+    border-radius: 50%;
+    box-shadow: $secondary-box-shadow;
+    color: lighten($theme-color, 80%);
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: $inner-circle;
+    text-align: center;
+
+    .smaller {
+      color: lighten($theme-color, 60%);
+      font-size: 0.45em;
+      vertical-align: super;
+      top: 0;
+    }
+  }
+}

@@ -1,18 +1,23 @@
+@import "_toggle.scss";
+
+.justify {
+	text-align: justify;
+	hyphens: auto;
+}
+
 /**
  * Links
  */
 
 .link {
-	@include icon($icon-link);
 	border-bottom: solid 1px transparent;
 	color: $theme-color;
 	&:before {
-		@include border-radius(50%);
+		border-radius: 50%;
 	}
 	&:hover, &:active {
 		border-color: $theme-color;
 		color: $theme-color;
-		@include transform(scale(1.25));
 	}
 }
 
@@ -23,20 +28,24 @@
 input:not([type="file"]),
 select,
 textarea {
-	background: darken(white, 5%);
-	border: 1px solid darken(white, 10%);
+	border: 1px solid darken(white, 20%);
+	border-radius: 0;
 	&:not([type="radio"]):not([type="checkbox"]) {
 		-webkit-appearance: none;
 	}
-	&:hover, &:focus, &:active {
-		background: white;
-	}
 	&:focus, &:active {
-		border: 1px solid darken(white, 20%);
+		border-color: darken(white, 30%);
 		outline: 0;
 	}
 	&:disabled {
 		cursor: default;
+	}
+	&::-webkit-input-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder,
+	&:-moz-placeholder,
+	&::placeholder {
+		color: lighten(black, 80%);;
 	}
 }
 
@@ -47,14 +56,8 @@ textarea {
 	padding: 7px 10px;
 }
 
-input:not([type="file"]):not([type="radio"]),
-textarea,
-label {
-	@include border-radius($primary-border-radius);
-}
-
 .gm-style button {
-	@include border-radius(0);
+	border-radius: 0;
 }
 
 input[type="date"] {
@@ -74,34 +77,64 @@ select,
 	cursor: pointer;
 }
 
+/* Tables */
+table.transparent {
+	&, td, th {
+		border: none;
+	}
+	td, th {
+		padding: 0 10px 10px 0;
+	}
+}
+
 /**
- * Buttons
+ * Buttons within modules (to exclude header and footer)
  */
 
-button:not([class*="pswp__button"]):not([draggable="false"]),
-.button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-.subscription-toggle {
-	background-color: $theme-color-green !important;
-	border: 0 !important;
-	color: white;
-	cursor: pointer;
-	display: block;
-	padding: 10px 15px;
-	@include border-radius($primary-border-radius);
-	&:not(.download-link) {
-		line-height: $primary-line-height * 1.1;
-		font-weight: $primary-font-weight + 300;
-		text-align: center;
-	}
-	&:hover, &:focus, &:active, &.active {
+.module {
+	button:not([draggable="false"]),
+	.button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+	.subscription-toggle {
+		background: $theme-color-green;
 		color: white;
-		background-color: darken($theme-color-green, 10%) !important;
+		cursor: pointer;
+		display: block;
+		margin: 0 auto;
+		padding: 6px 12px;
+		&:not([data-meta]):not(.download-link) {
+			line-height: $primary-line-height * 1.1;
+			font-weight: $primary-font-weight + 300;
+			text-align: center;
+		}
+		&:hover, &:focus, &:active, &.active {
+			&:not(:disabled) {
+				background: darken($theme-color-green, 5%);
+			}
+		}
+		&:disabled {
+			background: darken(white, 20%);
+			color: white;
+			cursor: inherit;
+		}
 	}
-	&:disabled {
-		background-color: darken(white, 20%) !important;
+	
+	.button {
+		&:after {
+			display: block;
+			font-size: 0.75em;
+			font-weight: 400;
+		}
+		&[data-meta]:after {
+			content: attr(data-meta);
+		}
+		&.link-button {
+			font-weight: normal;
+			text-align: left;
+			@include icon($icon-link);
+		}
 	}
 }
 

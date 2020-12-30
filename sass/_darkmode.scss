@@ -1,0 +1,70 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: $theme-color;
+    }
+
+    body,
+    button,
+    input,
+    select,
+    textarea {
+        color: $background-color;
+    }
+
+    input[type="text"],
+    textarea {
+        background: lighten(black, 20%);
+    }
+
+    table,
+    th,
+    td {
+        border-color: lighten(black, 10%);
+    }
+
+    th {
+        background: lighten(black, 10%);
+    }
+
+    .module {
+        background: lighten(black, 10%);
+
+        &[data-heading]:not([data-heading=""]) {
+            &:before {
+                background: lighten(black, 5%);
+                color: white;
+            }
+        }
+
+        button:not([draggable="false"]),
+        .button,
+        input[type="button"],
+        input[type="reset"],
+        input[type="submit"],
+        .subscription-toggle {
+            color: $theme-color;
+        }
+    }
+
+    .post-title, .sitemap-table {
+        > a {
+            color: $background-color;
+        }
+    }
+
+    input:not([type="file"]),
+    select,
+    textarea {
+        border-color: lighten(black, 20%);
+        &:focus, &:active {
+            border-color: lighten(black, 30%);
+        }
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &:-moz-placeholder,
+        &::placeholder {
+            color: lighten(black, 20%);;
+        }
+    }
+}

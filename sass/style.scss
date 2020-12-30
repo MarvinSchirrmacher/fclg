@@ -24,6 +24,7 @@ Text Domain: fconline
 /* Theme */
 
 @import "_variables.scss";
+@import "_icons.scss";
 @import "_functions.scss";
 @import "_normalize.scss";
 @import "_structure.scss";
@@ -31,9 +32,12 @@ Text Domain: fconline
 @import "_patterns.scss";
 @import "_list.scss";
 @import "_post.scss";
+@import "_comment.scss";
 @import "_gallery.scss";
 @import "_sitemap.scss";
 @import "_widget.scss";
+@import "_progressbar.scss";
+@import "_darkmode.scss";
 
 /* Plugins */
 
@@ -41,6 +45,9 @@ Text Domain: fconline
 @import "plugins/_connections.scss";
 @import "plugins/_contact-form-7.scss";
 @import "plugins/_download-monitor.scss";
+@import "plugins/_eu-cookie-law.scss";
 @import "plugins/_events-manager.scss";
 @import "plugins/_flexmap.scss";
+@import "plugins/_quform.scss";
+@import "plugins/_sports-club-manager.scss";
 @import "plugins/_wp-polls.scss";

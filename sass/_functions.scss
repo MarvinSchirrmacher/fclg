@@ -1,9 +1,11 @@
-/* Typography */
-
+@mixin size($width, $height) {
+	height: $height;
+	width: $width;
+}
 @mixin icon( $character, $add_margin: true, $after_element: false, $margin: 5px ) {
 	@if $after_element {
 		&::after {
-			font-family: 'icomoon';
+			font-family: 'theme-icons';
 			speak: none;
 			font-style: normal;
 			font-weight: normal;
@@ -18,7 +20,7 @@
 		} 
 	} @else {
 		&::before {
-			font-family: 'icomoon';
+			font-family: 'theme-icons';
 			speak: none;
 			font-style: normal;
 			font-weight: normal;
@@ -87,70 +89,17 @@
 	$direction: row,
 	$wrap: wrap,
 	$justify: flex-start,
-	$align: stretch
-)
+	$align: stretch)
 {
-	display: box;
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
 	display: flex;
-
-	   -moz-flex-direction: $direction;
-	    -ms-flex-direction: $direction;
-	-webkit-flex-direction: $direction;
-	        flex-direction: $direction;
-
-	   -moz-flex-wrap: $wrap;
-	    -ms-flex-wrap: $wrap;
-	-webkit-flex-wrap: $wrap;
-	        flex-wrap: $wrap;
-
-	   -moz-justify-content: $justify;
-	    -ms-justify-content: $justify;
-	-webkit-justify-content: $justify;
-	        justify-content: $justify;
-
-	   -moz-align-items: $align;
-	    -ms-align-items: $align;
-	-webkit-align-items: $align;
-	        align-items: $align;
-
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $justify;
+	align-items: $align;
+	
 	@if ($width) {
-		> * {
-			width: $width;
-		}
+	> * { width: $width; }
 	}
-}
-
-@mixin flex-direction( $direction ) {
-	   -moz-flex-direction: $direction;
-	    -ms-flex-direction: $direction;
-	-webkit-flex-direction: $direction;
-	        flex-direction: $direction;
-}
-
-@mixin flex-align( $align ) {
-	   -moz-align-items: $align;
-	    -ms-align-items: $align;
-	-webkit-align-items: $align;
-	        align-items: $align;
-}
-@mixin flex( $values ) {
-	-webkit-box-flex: $values;
-	-moz-box-flex:  $values;
-	-webkit-flex:  $values;
-	-ms-flex:  $values;
-	flex:  $values;
-}
-
-@mixin order( $val ) {
-	-webkit-box-ordinal-group: $val;  
-	-moz-box-ordinal-group: $val;     
-	-ms-flex-order: $val;     
-	-webkit-order: $val;  
-	order: $val;
 }
 
 /* Screen */
@@ -173,6 +122,33 @@
 	}
 	@else {
 		@media (max-width: $point) { @content; } // any
+	}
+}
+
+@mixin breakpoint-mf( $point ) {
+	@if $point == XXL {
+		@media (min-width: 123.75rem) { @content; } // 1920px
+	}
+	@if $point == XL {
+		@media (min-width: 105rem) { @content; } // 1680px
+	}
+	@if $point == L {
+		@media (min-width: 86.25rem) { @content; } // 1380px
+	}
+	@if $point == M {
+		@media (min-width: 72rem) { @content; } // 1152px
+	}
+	@if $point == S {
+		@media (min-width: 60rem) { @content; } // 960px
+	}
+	@if $point == XS {
+		@media (min-width: 45rem) { @content; } // 720px
+	}
+	@if $point == XXS {
+		@media (min-width: 27.5rem) { @content; } // 440px
+	}
+	@else {
+		@media (min-width: $point) { @content; } // any
 	}
 }
 

@@ -1,0 +1,87 @@
+ .comment-list {
+	list-style-type: none;
+	margin-left: 0;
+}
+
+.comment-meta {
+	padding: 0 !important;
+	margin-bottom: $primary-text-tag-margin * 0.5;
+	.avatar {
+		float: left;
+		margin-right: $primary-padding !important;
+		width: 64px;
+	}
+	.says,
+	br {
+		display: none;
+	}
+}
+
+.comment-body{
+	border-bottom: solid 1px rgba(black, 0.1);
+	margin-bottom: $primary-margin;
+	padding-bottom: $primary-margin !important;
+}
+
+.comment-content,
+.comment-metadata,
+.comment-body > .reply {
+	margin-left: 64px + $primary-padding;
+	@include breakpoint(XXS) {
+		margin-left: 0;
+	}
+}
+
+.comment-metadata,
+.comment-link,
+.edit-link {
+	@include icon('');
+}
+.comment-metadata {
+	@include icon-content( $icon-clock );
+	> * {
+		margin-right: $primary-padding * 0.2;
+	}
+}
+.comment-link {
+	@include icon-content( $icon-link );
+}
+.edit-link {
+	@include icon-content( $icon-new-message );
+}
+
+.comment-form-author,
+.comment-form-email {
+	float: left;
+	margin-right: $primary-text-tag-margin;
+	@include breakpoint(XXS) {
+		float: none;
+		margin-right: 0;
+	} 
+}
+
+.comment-form-comment {
+	clear: both;
+}
+
+.comment-form {
+	.logged-in-as {
+		text-align: left;
+	}
+}
+
+.form-submit {
+	margin-bottom: 0;
+}
+
+.comment-progress {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(white, 0.9);
+	text-align: center;
+	font-weight: bold;
+	padding: $primary-padding;
+}

@@ -1,32 +1,26 @@
 <?php
+function fconline_register_sidebar($name, $id, $description = null) {
+	if (empty($description)) {
+		$description = __('Sidebar that appears on the right of a page.', 'fconline');
+	}
+
+	register_sidebar(array(
+		'name'          => $name,
+		'id'            => $id,
+		'description'   => $description,
+		'before_widget' => '<div class="grid-1-1"><div id="%1$s" class="module widget %2$s"',
+		'after_widget'  => '</div></div>',
+		'before_title'  => ' data-heading="',
+		'after_title'   => '">',
+	));
+}
+
 function fconline_widgets_init() {
-	register_sidebar(array(
-		'name'          => __('Primary Sidebar', 'fconline'),
-		'id'            => 'sidebar-1',
-		'description'   => __('Primary sidebar that appears on the right on every page.', 'fconline'),
-		'before_widget' => '<div class="grid-1-1"><div id="%1$s" class="module widget %2$s"',
-		'after_widget'  => '</div></div>',
-		'before_title'  => ' data-heading="',
-		'after_title'   => '">',
-	));
-	register_sidebar(array(
-		'name'          => __('Secondary Sidebar', 'fconline'),
-		'id'            => 'sidebar-2',
-		'description'   => __('Alternative sidebar, which will be displayed instead of the primary one when the corresponding template is selected.', 'fconline'),
-		'before_widget' => '<div class="grid-1-1"><div id="%1$s" class="module widget %2$s"',
-		'after_widget'  => '</div></div>',
-		'before_title'  => ' data-heading="',
-		'after_title'   => '">',
-	));
-	register_sidebar(array(
-		'name'          => __('Tertiary Sidebar', 'fconline'),
-		'id'            => 'sidebar-3',
-		'description'   => __('Alternative sidebar, which will be displayed instead of the primary one when the corresponding template is selected.', 'fconline'),
-		'before_widget' => '<div class="grid-1-1"><div id="%1$s" class="module widget %2$s"',
-		'after_widget'  => '</div></div>',
-		'before_title'  => ' data-heading="',
-		'after_title'   => '">',
-	));
+	fconline_register_sidebar(__('Primary Sidebar', 'fconline'), 'sidebar-1');
+	fconline_register_sidebar(__('Secondary Sidebar', 'fconline'), 'sidebar-2');
+	fconline_register_sidebar(__('Tertiary Sidebar', 'fconline'), 'sidebar-3');
+	fconline_register_sidebar(__('Fourth Sidebar', 'fconline'), 'sidebar-4');
+	
 	register_sidebar(array(
 		'name'          => __('Footer Sidebar', 'fconline'),
 		'id'            => 'footer',

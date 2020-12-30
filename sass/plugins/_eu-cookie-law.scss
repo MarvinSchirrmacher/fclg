@@ -1,0 +1,86 @@
+.pea_cook_wrapper,
+.pea_cook_more_info_popover {
+    position: fixed;
+    z-index: 1024;
+    p {
+        text-align: center;
+    }
+    a {
+        text-decoration: underline;
+    }
+}
+
+.pea_cook_wrapper:not(.pea_cook_topcenter):not(.pea_cook_bottomcenter) {
+    width: calc(100% - 40px);
+}
+
+.pea_cook_wrapper,
+.pea_cook_more_info_popover_inner {
+    padding: 15px;
+}
+
+.pea_cook_wrapper:not(.pea_cook_topcenter):not(.pea_cook_bottomcenter) {
+    padding: 15px;
+    @include border-radius(15px);
+    #pea_cook_btn {
+        margin: 10px auto 0;
+    }
+}
+
+.pea_cook_wrapper {
+    max-width: 512px;
+}
+
+.pea_cook_more_info_popover {
+    display: none;
+    left: 20px;
+}
+
+.pea_cook_topcenter,
+.pea_cook_bottomcenter,
+.pea_cook_more_info_popover {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    #pea_cook_btn {
+        display: inline-block;
+        margin-left: 10px;
+        @include breakpoint(XXS) {
+            display: block;
+            margin: 10px auto 0px;
+        }
+    }
+}
+
+.pea_cook_topcenter {
+    top: 0;
+}
+
+.pea_cook_bottomcenter,
+.pea_cook_more_info_popover {
+    bottom: 0;
+}
+
+.pea_cook_topleft {
+    top: 20px;
+    left: 20px;
+}
+
+.pea_cook_topright {
+    top: 20px;
+    right: 20px;
+}
+
+.pea_cook_bottomleft {
+    bottom: 0;
+}
+
+.pea_cook_bottomright {
+    right: 20px;
+    bottom: 20px;
+}
+
+#pea_cook_btn {
+    background: white;
+    padding: 5px 15px;
+}

@@ -1,0 +1,21 @@
+#block-toggle{
+    margin-bottom: 0px;
+    padding-bottom: 12px;
+    position: relative;
+    @include icon($icon-chevron-down, false);
+    &:before {
+        background: white;
+        border-radius: 50%;
+        float: right;
+    }
+    &:hover {
+        color: darken($theme-color-green, 10%);
+    }
+    &.active {
+        padding-left: 10px;
+        @include icon-content($icon-chevron-up);
+        &, & + #block-wrapper {
+            border-width: 5px;
+        }
+    }
+}

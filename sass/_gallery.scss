@@ -4,6 +4,9 @@
 		margin-bottom: 0;
 	}
 	@include flexbox();
+}
+
+.gallery {
 	@for $i from 1 through 9 {
 		&.gallery-columns-#{$i} > * {
 			width: 100% / $i;
@@ -15,6 +18,28 @@
 			@if (($i - 2) > 0) { 
 				@include breakpoint(XS) {
 					width: 100% / ($i - 2);
+				}
+			}
+		}
+	}
+}
+
+$column-gap: 20px;
+.columns {
+	margin-right: -$column-gap;
+	@for $i from 1 through 9 {
+		&.gallery-columns-#{$i} > * {
+			margin-right: $column-gap;
+			margin-bottom: $column-gap;
+			width: calc(100% / #{$i} - #{$column-gap});
+			@if (($i - 1) > 0) { 
+				@include breakpoint(M) {
+					width: calc(100% / (#{$i} - 1) - #{$column-gap});
+				}
+			}
+			@if (($i - 2) > 0) { 
+				@include breakpoint(XS) {
+					width: calc(100% / (#{$i} - 2) - #{$column-gap});
 				}
 			}
 		}

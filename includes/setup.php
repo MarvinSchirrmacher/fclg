@@ -1,28 +1,19 @@
 <?php
 if (! function_exists('fconline_setup')) :
 function fconline_setup() {
-	// Make theme available for translation.
 	load_theme_textdomain('fconline', get_template_directory() . '/languages');
 
-	// Register menus.
 	register_nav_menus(array(
 		'primary'   => __('Header menu', 'fconline')
 	));
 
-	// Enable post thumbnail support.
 	add_theme_support('post-thumbnails');
-	
-	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support('html5', array(
 		'search-form', 'comment-form', 'comment-list',
 	));
-	
-	// Enable support for post formats.
 	add_theme_support('post-formats', array(
 		'gallery', 'status'
 	));
-
-	// Enable support for custom background.
 	add_theme_support('custom-background', apply_filters('fconline_custom_background_args', array(
 		'default-color' => '4d4d4d',
 	)));
@@ -36,29 +27,27 @@ function fconline_setup() {
 endif;
 add_action('after_setup_theme', 'fconline_setup');
 
-
-
-// ----------------------------------------------------------------------------------------------------
-// Enqueue scripts and styles for front and back end.
-// ----------------------------------------------------------------------------------------------------
 function fconline_dequeue_plugin_styles() {
 	$plugin_slugs = array(
 		'bbp-default', 'connections-user', 'cn-public', 'cn-chosen',
 		'contact-form-7', 'dlm-frontend',
-		'validate-engine-css', 'yarppWidgetCss'
+		'basecss', // eu-cookie-law
+		'validate-engine-css',
+		'woocommerce-general', 'woocommerce-layout', 'woocommerce-gzd-layout', 'woocommerce-smallscreen',
+		'yarppWidgetCss'
 	);
+	
 	foreach ($plugin_slugs as $slug) {
 		wp_dequeue_style($slug);
-	}
-
-	$plugin_slugs = array('cn-public', 'cn-chosen');
-	foreach ($plugin_slugs as $slug) {
 		wp_deregister_style($slug);
 	}
 }
 
 function fconline_enqueue_styles($template_directory_uri) {
-	$theme_font_url = add_query_arg('family', 'Corbert', "//db.onlinewebfonts.com/c/5ce66afbbd1516da0d69cffddf4f8cf3");
+	$theme_font_url = add_query_arg(array(
+		'family' => 'Source+Sans+Pro',
+		'display' => 'swap',
+	), "https://fonts.googleapis.com/css");
 
 	wp_enqueue_style('theme-font',
 		$theme_font_url, array(), null);
@@ -72,6 +61,15 @@ function fconline_enqueue_styles($template_directory_uri) {
 		$template_directory_uri . '/bower_components/photoswipe/dist/default-skin/default-skin.css', array(), '4.1.2');
 }
 
+// function fconline_add_type_attribute($tag, $handle, $src) {
+//     if ( 'quform-addon-script' !== $handle ) {
+//         return $tag;
+//     }
+//     $tag = '<script type="systemjs-module" src="' . esc_url( $src ) . '"></script>';
+//     return $tag;
+// }
+// add_filter('script_loader_tag', 'fconline_add_type_attribute' , 10, 3);
+
 function fconline_enqueue_scripts($template_directory_uri) {
 	wp_enqueue_script('underscore',
 		$template_directory_uri . '/bower_components/underscore-amd/underscore-min.js', array(), '1.5.2', true);
@@ -80,11 +78,15 @@ function fconline_enqueue_scripts($template_directory_uri) {
 	wp_enqueue_script('photoswipe-ui',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe-ui-default.min.js', array(), '4.1.2', true);
 	wp_enqueue_script('fconline-script',
-		$template_directory_uri . '/scripts/min/functions-min.js', array('jquery', 'underscore', 'photoswipe'), '20170903', true);
+		$template_directory_uri . '/scripts/min/functions.min.js', array('jquery', 'underscore', 'photoswipe'), '20170903', true);
 	wp_enqueue_script('fussballde-script',
-		$template_directory_uri . '/scripts/min/fussballde-widget-min.js', array(), null, false);
-	wp_enqueue_script('analytics',
-		$template_directory_uri . '/scripts/min/analytics-min.js', array(), '20140228', true);
+		$template_directory_uri . '/scripts/min/fussballde.min.js', array(), null, false);
+	// wp_enqueue_script('systemjs',
+	// 	$template_directory_uri . '/scripts/min/s.min.js', array(), null, true);
+	// wp_enqueue_script('systemjs-named-register',
+	// '//cdn.jsdelivr.net/npm/systemjs/dist/extras/named-register.js', array(), null, true);
+	// wp_enqueue_script('systemjs',
+	// 	'//cdn.jsdelivr.net/npm/systemjs/dist/system.js', array('systemjs-named-register'), null, true);
 }
 
 /**
