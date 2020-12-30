@@ -67,4 +67,13 @@
             color: lighten(black, 20%);;
         }
     }
+
+    .cn-card {
+        a {
+            color: $background-color;
+            &:hover {
+                color: darken($theme-color-green, 10%);
+            }
+        }
+    }
 }
