@@ -20,6 +20,7 @@ output_style = :compressed
 line_comments = false
 color_output = false
 preferred_syntax = :scss
+sass_options = { :cache_location => '/tmp/sass_cache' }
 
 require 'fileutils'
 on_stylesheet_saved do |file|
