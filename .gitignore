@@ -15,13 +15,6 @@ wp-content/backups/
 sitemap.xml
 sitemap.xml.gz
 
-# Fonts
-#-----------------------------
-*.eot
-*.svg
-*.ttf
-*.woff
-
 # SublimeText project
 #-----------------------------
 *.sublime-workspace
@@ -37,15 +30,6 @@ sitemap.xml.gz
 *.eps
 *.indd
 *.psd
-
-# Media
-#-----------------------------
-*.png
-*.jpg
-*.gif
-*.pdf
-*.ico
-*.mp4
 
 # Files that might appear on external disk
 .Spotlight-V100
