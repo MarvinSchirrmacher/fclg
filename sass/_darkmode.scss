@@ -68,6 +68,32 @@
         }
     }
 
+    .strip {
+        background-color: lighten(black, 20%);
+    }
+
+    #top-strip {
+        background: lighten(black, 20%) !important;
+    }
+
+    #middle-strip {
+        background: darken($tertiary-color, 15%) !important;
+    }
+
+    #bottom-strip {
+        background: darken($theme-color-green, 15%) !important;
+    }
+
+    #page-title,
+    #page-claim {
+        fill: $background-color;
+    }
+
+    #site-logo {
+        background: darken($tertiary-color, 30%);
+	    border-color: lighten(black, 30%);
+    }
+
     .cn-card {
         a {
             color: $background-color;
