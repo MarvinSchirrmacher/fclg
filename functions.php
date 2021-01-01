@@ -1,5 +1,5 @@
 <?php
-define( 'FCO_VERSION', '2.10.0' );
+define( 'FCO_VERSION', '2.10.1' );
 define( 'FCO_REQUIRED_WP_VERSION', '5.0' );
 define( 'FCO_THEME', __FILE__ );
 define( 'FCO_THEME_DIR', untrailingslashit( dirname( FCO_THEME ) ) );
