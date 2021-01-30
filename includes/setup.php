@@ -53,8 +53,6 @@ function fconline_enqueue_styles($template_directory_uri) {
 		$theme_font_url, array(), null);
 	wp_enqueue_style('fconline',
 		get_stylesheet_uri(), array('theme-font'), FCO_VERSION);
-	wp_enqueue_script('smooth-scroll',
-		$template_directory_uri . '/scripts/jquery.smooth-scroll-min.js', array('jquery'), '20140508', true);
 	wp_enqueue_style('photoswipe',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.css', array(), '4.1.2');
 	wp_enqueue_style('photoswipe-skin',
@@ -73,14 +71,16 @@ function fconline_enqueue_styles($template_directory_uri) {
 function fconline_enqueue_scripts($template_directory_uri) {
 	wp_enqueue_script('underscore',
 		$template_directory_uri . '/bower_components/underscore-amd/underscore-min.js', array(), '1.5.2', true);
+	wp_enqueue_script('smooth-scroll',
+		$template_directory_uri . '/scripts/jquery.smooth-scroll-min.js', array('jquery'), '1.4.13', true);
 	wp_enqueue_script('photoswipe',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.min.js', array(), '4.1.2', true);
 	wp_enqueue_script('photoswipe-ui',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe-ui-default.min.js', array(), '4.1.2', true);
 	wp_enqueue_script('fconline-script',
-		$template_directory_uri . '/scripts/min/functions.min.js', array('jquery', 'underscore', 'photoswipe'), '20170903', true);
+		$template_directory_uri . '/scripts/functions-min.js', array('jquery', 'underscore', 'photoswipe'), '20170903', true);
 	wp_enqueue_script('fussballde-script',
-		$template_directory_uri . '/scripts/min/fussballde.min.js', array(), null, false);
+		$template_directory_uri . '/scripts/fussballde-min.js', array(), null, false);
 	// wp_enqueue_script('systemjs',
 	// 	$template_directory_uri . '/scripts/min/s.min.js', array(), null, true);
 	// wp_enqueue_script('systemjs-named-register',
