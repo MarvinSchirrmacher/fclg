@@ -54,7 +54,7 @@ function fconline_enqueue_styles($template_directory_uri) {
 	wp_enqueue_style('fconline',
 		get_stylesheet_uri(), array('theme-font'), FCO_VERSION);
 	wp_enqueue_script('smooth-scroll',
-		$template_directory_uri . '/scripts/min/jquery.smooth-scroll-min.js', array('jquery'), '20140508', true);
+		$template_directory_uri . '/scripts/jquery.smooth-scroll-min.js', array('jquery'), '20140508', true);
 	wp_enqueue_style('photoswipe',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.css', array(), '4.1.2');
 	wp_enqueue_style('photoswipe-skin',
