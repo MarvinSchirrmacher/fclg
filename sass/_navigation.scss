@@ -354,6 +354,7 @@ $search-bg: darken(white, 5%);
 	}
 	&.active {
 		background: rgba($search-bg, 0);
+		border-color: transparent;
 	}
 }
 
