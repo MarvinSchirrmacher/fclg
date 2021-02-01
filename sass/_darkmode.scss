@@ -47,8 +47,8 @@
             &:hover, &:focus, &:active, &.active {
                 &:not(:disabled) {
                     background: darken($theme-color-green, 15%);
-        }
-    }
+                }
+            }
         }
     }
 
@@ -111,5 +111,27 @@
                 color: darken($theme-color-green, 10%);
             }
         }
+    }
+
+    .em-calendar {
+        tr.first,
+        .days-names {
+            background: lighten(black, 10%) !important;
+        }
+        .days {
+            color: $background-color !important;
+            > td {
+                &[class*="pre"], &[class*="post"] {
+                    color: lighten(black, 30%) !important;
+                    a {
+                        color: lighten(black, 30%) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .em-loading {
+        background: lighten(black, 5%) !important;
     }
 }
