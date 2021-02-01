@@ -338,11 +338,12 @@ $admin-bar-height-medium: 46px;
 }
 
 $search-color: darken(white, 30%);
+$search-border: darken(white, 20%);
 $search-bg: darken(white, 5%);
 #login-button,
 #search-toggle {
 	background: $search-bg;
-	border: solid 1px transparent;
+	border: solid 1px $search-border;
 	color: $search-color;
 	font-size: 1.25rem;
 	padding: 6px;
@@ -400,7 +401,7 @@ body.logged-in #login-button {
 			background: darken(white, 2.5%);
 		}
 		&:focus {
-			border-color: darken(white, 20%)
+			border-color: $search-border;
 		}
 	}
 	#search-submit {
