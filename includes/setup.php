@@ -78,7 +78,7 @@ function fconline_enqueue_scripts($template_directory_uri) {
 	wp_enqueue_script('photoswipe-ui',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe-ui-default.min.js', array(), '4.1.2', true);
 	wp_enqueue_script('fconline-script',
-		$template_directory_uri . '/scripts/functions-min.js', array('jquery', 'underscore', 'photoswipe'), '20170903', true);
+		$template_directory_uri . '/scripts/functions-min.js', array('jquery', 'underscore', 'photoswipe'), FCO_VERSION, true);
 	wp_enqueue_script('fussballde-script',
 		$template_directory_uri . '/scripts/fussballde-min.js', array(), null, false);
 	// wp_enqueue_script('systemjs',
