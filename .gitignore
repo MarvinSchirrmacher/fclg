@@ -82,6 +82,7 @@ Thumbs.db
 config.codekit3
 style-min\.css
 *-min.js
+*-min.css
 
 style\.css
 
