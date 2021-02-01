@@ -198,7 +198,7 @@ $admin-bar-height-medium: 46px;
 		}
 	}
 	.sub-menu {
-		background-color: lighten($theme-color, 10%);
+		background-color: $menu-item-color;
 		overflow: hidden;
 		position: absolute;
 			top: 100%;
@@ -207,9 +207,9 @@ $admin-bar-height-medium: 46px;
 		word-wrap: break-word;
 		z-index: -1;
 		border-radius: 0 0 10px 10px;
-		box-shadow: $primary-box-shadow;
+		// Move the shadow 10 px down so that the submenu appears to belong to the menu tab.
+		box-shadow: 0 10px 10px rgba(black, 0.25);
 		opacity: 0;
-		transform: translateY(-10px);
 		&.hidden {
 			display: block;
 		}
@@ -239,6 +239,10 @@ $admin-bar-height-medium: 46px;
 	/* first level list item style */
 
 	> li {
+		&:hover {
+			background-color: $menu-item-color;
+			box-shadow: $primary-box-shadow;
+		}
 		width: 12.5%;
 		> .sub-menu {
 			font-size: 0.875rem;
@@ -247,6 +251,11 @@ $admin-bar-height-medium: 46px;
 			width: 100%;
 			border: none;
 			border-bottom: $menu-item-border;
+			box-shadow: none;
+			&:hover {
+				background-color: $menu-item-hover-color;
+				box-shadow: none;
+			}
 		}
 		> a {
 			padding: ($primary-padding * 0.6) 0;
