@@ -42,7 +42,13 @@
         input[type="reset"],
         input[type="submit"],
         .subscription-toggle {
+            background: darken($theme-color-green, 10%);
             color: $theme-color;
+            &:hover, &:focus, &:active, &.active {
+                &:not(:disabled) {
+                    background: darken($theme-color-green, 15%);
+        }
+    }
         }
     }
 
@@ -92,6 +98,10 @@
     #site-logo {
         background: darken($tertiary-color, 30%);
 	    border-color: lighten(black, 30%);
+    }
+
+    #navigation-wrapper {
+        background-color: lighten(black, 20%);
     }
 
     .cn-card {
