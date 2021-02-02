@@ -30,7 +30,7 @@
 
 	</div>
 
-	<div class="module menu-module">
+	<div class="module menu-mod">
 		<?php FcOnlineModules::pageNavigation();?>
 	</div>
 

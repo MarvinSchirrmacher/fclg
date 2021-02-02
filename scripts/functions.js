@@ -80,13 +80,12 @@
 
 })(jQuery);
 
-jQuery.extend(jQuery.easing,
-	{
-		easeInOutQuart: function (x, t, b, c, d) {
-			if ((t /= d / 2) < 1) { return c / 2 * t * t * t * t + b; }
-			return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
-		}
-	});
+jQuery.extend(jQuery.easing, {
+	easeInOutQuart: function (x, t, b, c, d) {
+		if ((t /= d / 2) < 1) { return c / 2 * t * t * t * t + b; }
+		return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+	}
+});
 
 function parseThumbnailElements(gallery) {
 	var galleryItems = gallery.childNodes;
@@ -249,10 +248,10 @@ function initPhotoSwipeFromDOM(gallerySelector) {
 
 (function ($) {
 	var _window = $(window);
-	var navToggle = $('#navigation-toggle');
-	var navWrapper = $('#navigation-wrapper');
-	var searchToggle = $('#search-toggle');
-	var backLink = $('#back-to-top');
+	var navToggle = $('#nav-tog');
+	var navWrapper = $('#nav-wrp');
+	var searchToggle = $('#srch-tog');
+	var backLink = $('#top-lnk');
 
 	/**
 	 * Toggles the visibility of a toggle button and its corresponding wrapper.

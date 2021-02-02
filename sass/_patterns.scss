@@ -1,5 +1,9 @@
 @import "_toggle.scss";
 
+.flexbox {
+	@include flexbox();
+}
+
 .justify {
 	text-align: justify;
 	hyphens: auto;

@@ -3,15 +3,15 @@ $menu-item-color: lighten($theme-color, 10%);
 $menu-item-border: solid 1px lighten($theme-color, 5%);
 $menu-item-hover-color: rgba($theme-color, 0.5);
 
-.round-button {
+.rnd-btn {
 	border-radius: 50%;
 	display: block;
 	font-weight: bold;
 	line-height: 1rem;
 }
 
-#navigation-toggle,
-#back-to-top {
+#nav-tog,
+#top-lnk {
 	background: $menu-item-color;
 	box-shadow: $primary-box-shadow;
 	color: white;
@@ -35,7 +35,7 @@ $menu-item-hover-color: rgba($theme-color, 0.5);
 
 $nav_toggle_top: 20px;
 
-#navigation-toggle {
+#nav-tog {
 	display: none;
 	top: $nav_toggle_top;
 	@include icon($icon-menu, false);
@@ -47,7 +47,7 @@ $nav_toggle_top: 20px;
 	}
 }
 
-#back-to-top {
+#top-lnk {
 	bottom: 20px;
 	opacity: 1;
 	@include icon($icon-chevron-up, false);
@@ -61,7 +61,7 @@ $nav_toggle_top: 20px;
 
 /* Navigation menu */
 
-#navigation-wrapper {
+#nav-wrp {
 	background-color: lighten(black, 30%);
 	box-shadow: $primary-box-shadow;
 	&, &.hidden {
@@ -92,27 +92,27 @@ $admin-bar-bp-small: 600px;
 $admin-bar-height: 32px;
 $admin-bar-height-medium: 46px;
 .admin-bar {
-	#navigation-toggle {
+	#nav-tog {
 		top: $nav_toggle_top + $admin-bar-height;
 	}
 	@include breakpoint(M) {
-		#navigation-wrapper {
+		#nav-wrp {
 			top: $admin-bar-height;
 		}
 	}
 	@include breakpoint($admin-bar-bp-medium) {
-		#navigation-toggle {
+		#nav-tog {
 			top: $nav_toggle_top + $admin-bar-height-medium;
 		}
-		#navigation-wrapper {
+		#nav-wrp {
 			top: $admin-bar-height-medium;
 		}
 	}
 	@include breakpoint($admin-bar-bp-small) {
-		#navigation-toggle{
+		#nav-tog{
 			top: $nav_toggle_top;
 		}
-		#navigation-wrapper {
+		#nav-wrp {
 			top: 0px;
 		}
 	}
@@ -121,7 +121,7 @@ $admin-bar-height-medium: 46px;
 	}
 }
 
-#navigation-menu {
+#nav-menu {
 	color: white;
 	font-family: $theme-font-header;
 	font-size: 1rem;
@@ -146,7 +146,7 @@ $admin-bar-height-medium: 46px;
 		&.current-menu-ancestor,
 		&.current-page-ancestor {
 			@include breakpoint(M) {
-				> .sub-menu-toggle {
+				> .sub-tog {
 					display: none;
 				}
 				> .sub-menu {
@@ -156,14 +156,14 @@ $admin-bar-height-medium: 46px;
 		}
 		position: relative;
 	}
-	a, .sub-menu-toggle {
+	a, .sub-tog {
 		color: white;
 		display: block;
 	}
 	a {
 		padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
 	}
-	.sub-menu-toggle {
+	.sub-tog {
 		background-clip: padding-box;
 		border: solid 5px transparent;
 		border-radius: 50%;
@@ -312,135 +312,15 @@ $admin-bar-height-medium: 46px;
 	}
 }
 
-.logged-in #navigation-menu > li:nth-child(8) > a {
+.logged-in #nav-menu > li:nth-child(8) > a {
 	@include icon-content($icon-clipboard);
 }
 
-/* Login & Search */
-
-#login-button,
-#search-toggle,
-#search-wrapper {
-	top: -106px;
-	position: absolute;
-}
-
-$search-color: darken(white, 30%);
-$search-border: darken(white, 20%);
-$search-bg: darken(white, 5%);
-#login-button,
-#search-toggle {
-	background: $search-bg;
-	border: solid 1px $search-border;
-	color: $search-color;
-	font-size: 1.25rem;
-	padding: 6px;
-	text-align: center;
-	z-index: 100;
-	&:hover {
-		color: darken(white, 50%);
-	}
-	&.active {
-		background: rgba($search-bg, 0);
-		border-color: transparent;
-	}
-}
-
-#login-button {
-	right: 20px;
-	@include icon($icon-user, false);
-}
-
-body.logged-in #login-button {
-	&:before {
-		margin-left: 1px;
-		margin-right: -1px;
-	}
-	@include icon-content($icon-log-out);
-}
-
-#search-toggle,
-#search-wrapper {
-	right: 64px;
-}
-
-#search-toggle {
-	@include icon($icon-magnifying-glass, false);
-	&.active {
-		@include icon-content($icon-cross);
-	}
-	&:hover + #search-wrapper #s {
-		background: darken(white, 2.5%);
-	}
-}
-
-#search-wrapper {
-	z-index: 99;
-	#s {
-		background: $search-bg;
-		border-color: $search-bg;
-		border-radius: calc(6px + 1.25rem);
-		display: block;
-		height: calc(14px + 1.25rem);
-		opacity: 1;
-		padding: 5px 10px;
-		width: 256px;
-		z-index: inherit;
-		&:hover {
-			background: darken(white, 2.5%);
-		}
-		&:focus {
-			border-color: $search-border;
-		}
-	}
-	#search-submit {
-		display: none;
-	}
-	&.hidden {
-		display: block;
-		#s {
-			opacity: 0;
-			width: 128px;
-			z-index: -1;
-		}
-	}
-}
-
 @include breakpoint(M) {
-	#login-button,
-	#search-toggle,
-	#search-wrapper {
-		position: static;
-	}
-	#navigation-wrapper .inside {
+	#nav-wrp .inside {
 		@include flexbox();
 	}
-	#search-toggle {
-		display: none;
-	}
-	#search-wrapper #s,
-	#login-button {
-		border-radius: 3px;
-	}
-	#search-wrapper {
-		padding: 3px;
-		width: calc(100% - 1.5rem - 15px);
-		#s {
-			height: auto;
-			padding: 7px 10px;
-		}
-		&.hidden {
-			#s {
-				opacity: 1;
-				width: 100%;
-			}
-		}
-	}
-	#login-button {
-		margin: 3px 3px 3px 0px;
-		width: calc(1.5rem + 12px);
-	}
-	#navigation-menu {
+	#nav-menu {
 		width: 100%;
 	}
 }

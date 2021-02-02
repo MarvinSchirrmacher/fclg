@@ -16,21 +16,21 @@ class FcOnline {
 			return '';
 		}
 
-		$search_toggle = '<div id="search-toggle" class="toggle search-form-toggle round-button"></div>';
-		$login_button = sprintf('<a href="%s" id="login-button" class="button round-button"></a>', FcOnline::getLoginUrl());
+		$search_toggle = '<div id="srch-tog" class="toggle search-form-toggle rnd-btn"></div>';
+		$login_button = sprintf('<a href="%s" id="login-btn" class="button rnd-btn"></a>', FcOnline::getLoginUrl());
 		$search_form = get_search_form(false);
 		$search_form = preg_replace('/<\/?p>/m', '', $search_form);
 		$search_form = preg_replace('/id="search-form"/m',
-			'id="search-wrapper" class="wrapper hidden"', $search_form);
+			'id="srch-wrp" class="wrapper hidden"', $search_form);
 		$pre_nav_menu = $search_toggle.$search_form.$login_button;
 
 		$nav_menu = wp_nav_menu(array(
 			'theme_location'  => $menu_slug,
 			'container'       => 'div',
 			'container_class' => 'wrapper strip hidden',
-			'container_id'    => 'navigation-wrapper',
+			'container_id'    => 'nav-wrp',
 			'menu_class'      => 'menu',
-			'menu_id'         => 'navigation-menu',
+			'menu_id'         => 'nav-menu',
 			'echo'            => false,
 			'fallback_cb'     => 'wp_page_menu',
 			'items_wrap'      => '<div class="inside"><nav id="%1$s" class="%2$s">%3$s</nav></div>',
@@ -39,13 +39,13 @@ class FcOnline {
 
 		$sub_menu_pattern = '/<ul\s+class=".*?sub-menu.*?">/';
 		$sub_menu =
-			'<div id="sub-menu-toggle" class="toggle sub-menu-toggle"></div>'.
+			'<div id="sub-tog" class="toggle sub-tog"></div>'.
 			'<ul id="sub-menu-wrapper" class="wrapper menu sub-menu flexbox hidden">';
 		$nav_menu = preg_replace($sub_menu_pattern, $sub_menu, $nav_menu);
 		
 		$nav_menu_pattern = '/<nav /';
 		$nav_menu = preg_replace($nav_menu_pattern, $pre_nav_menu.'<nav ', $nav_menu);
-		$nav_menu_toggle = '<div id="navigation-toggle" class="toggle round-button"></div>';
+		$nav_menu_toggle = '<div id="nav-tog" class="toggle rnd-btn"></div>';
 		$body_overlay = '<div id="overlay"></div>';
 
 		return $nav_menu_toggle.$nav_menu.$body_overlay;
