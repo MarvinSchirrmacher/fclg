@@ -1,0 +1,126 @@
+#search-toggle,
+#login-button {
+	border-radius: 50%;
+	display: block;
+	font-weight: bold;
+	line-height: 1rem;
+}
+
+#login-button,
+#search-toggle,
+#search-wrapper {
+	top: -106px;
+	position: absolute;
+}
+
+$search-color: darken(white, 30%);
+$search-border: darken(white, 20%);
+$search-bg: darken(white, 5%);
+#login-button,
+#search-toggle {
+	background: $search-bg;
+	border: solid 1px $search-border;
+	color: $search-color;
+	font-size: 1.25rem;
+	padding: 6px;
+	text-align: center;
+	z-index: 100;
+	&:hover {
+		color: darken(white, 50%);
+	}
+	&.active {
+		background: rgba($search-bg, 0);
+		border-color: transparent;
+	}
+}
+
+#login-button {
+	right: 20px;
+	@include icon($icon-user, false);
+}
+
+body.logged-in #login-button {
+	&:before {
+		margin-left: 1px;
+		margin-right: -1px;
+	}
+	@include icon-content($icon-log-out);
+}
+
+#search-toggle,
+#search-wrapper {
+	right: 64px;
+}
+
+#search-toggle {
+	@include icon($icon-magnifying-glass, false);
+	&.active {
+		@include icon-content($icon-cross);
+	}
+	&:hover + #search-wrapper #s {
+		background: darken(white, 2.5%);
+	}
+}
+
+#search-wrapper {
+	z-index: 99;
+	#s {
+		background: $search-bg;
+		border-color: $search-bg;
+		border-radius: calc(6px + 1.25rem);
+		display: block;
+		height: calc(14px + 1.25rem);
+		opacity: 1;
+		padding: 5px 10px;
+		width: 256px;
+		z-index: inherit;
+		&:hover {
+			background: darken(white, 2.5%);
+		}
+		&:focus {
+			border-color: $search-border;
+		}
+	}
+	#search-submit {
+		display: none;
+	}
+	&.hidden {
+		display: block;
+		#s {
+			opacity: 0;
+			width: 128px;
+			z-index: -1;
+		}
+	}
+}
+
+@include breakpoint(M) {
+	#search-toggle,
+	#search-wrapper {
+		position: static;
+	}
+	#search-toggle {
+		display: none;
+	}
+	#search-wrapper #s{
+		border-radius: 3px;
+	}
+	#search-wrapper {
+		padding: 3px;
+		width: calc(100% - 1.5rem - 15px);
+		#s {
+			height: auto;
+			padding: 7px 10px;
+		}
+		&.hidden {
+			#s {
+				opacity: 1;
+				width: 100%;
+			}
+		}
+	}
+	#login-button {
+		margin: 3px 3px 3px 0px;
+		width: calc(1.5rem + 12px);
+	}
+}
