@@ -1,4 +1,4 @@
-#block-toggle{
+#block-tog{
     margin-bottom: 0px;
     padding-bottom: 12px;
     position: relative;
@@ -14,7 +14,7 @@
     &.active {
         padding-left: 10px;
         @include icon-content($icon-chevron-up);
-        &, & + #block-wrapper {
+        &, & + #block-wrp {
             border-width: 5px;
         }
     }

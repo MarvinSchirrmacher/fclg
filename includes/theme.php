@@ -16,20 +16,20 @@ class FcOnline {
 			return '';
 		}
 
-		$search_toggle = '<div id="srch-tog" class="toggle search-form-toggle rnd-btn"></div>';
+		$search_toggle = '<div id="srch-tog" class="tog search-form-tog rnd-btn"></div>';
 		$login_button = sprintf('<a href="%s" id="login-btn" class="button rnd-btn"></a>', FcOnline::getLoginUrl());
 		$search_form = get_search_form(false);
 		$search_form = preg_replace('/<\/?p>/m', '', $search_form);
 		$search_form = preg_replace('/id="search-form"/m',
-			'id="srch-wrp" class="wrapper hidden"', $search_form);
+			'id="srch-wrp" class="wrp hidden"', $search_form);
 		$pre_nav_menu = $search_toggle.$search_form.$login_button;
 
 		$nav_menu = wp_nav_menu(array(
 			'theme_location'  => $menu_slug,
 			'container'       => 'div',
-			'container_class' => 'wrapper strip hidden',
+			'container_class' => 'wrp strip hidden',
 			'container_id'    => 'nav-wrp',
-			'menu_class'      => 'menu',
+			'menu_class'      => 'menu uc',
 			'menu_id'         => 'nav-menu',
 			'echo'            => false,
 			'fallback_cb'     => 'wp_page_menu',
@@ -39,13 +39,13 @@ class FcOnline {
 
 		$sub_menu_pattern = '/<ul\s+class=".*?sub-menu.*?">/';
 		$sub_menu =
-			'<div id="sub-tog" class="toggle sub-tog"></div>'.
-			'<ul id="sub-menu-wrapper" class="wrapper menu sub-menu flexbox hidden">';
+			'<div id="sub-tog" class="tog sub-tog"></div>'.
+			'<ul id="sub-wrp" class="wrp menu sub-menu flexbox hidden">';
 		$nav_menu = preg_replace($sub_menu_pattern, $sub_menu, $nav_menu);
 		
 		$nav_menu_pattern = '/<nav /';
 		$nav_menu = preg_replace($nav_menu_pattern, $pre_nav_menu.'<nav ', $nav_menu);
-		$nav_menu_toggle = '<div id="nav-tog" class="toggle rnd-btn"></div>';
+		$nav_menu_toggle = '<div id="nav-tog" class="tog rnd-btn"></div>';
 		$body_overlay = '<div id="overlay"></div>';
 
 		return $nav_menu_toggle.$nav_menu.$body_overlay;

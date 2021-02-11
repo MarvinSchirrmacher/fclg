@@ -47,7 +47,7 @@
 	background: darken(white, 10%) !important;
 }
 
-#page-title-wrapper {
+#page-title-wrp {
 	height: 28px;
 	padding: 0px 20px;
 	@include flexbox($align: flex-end);
@@ -64,7 +64,7 @@
 }
 
 @include breakpoint(S) {
-	#page-title-wrapper {
+	#page-title-wrp {
 		height: (28px * 1.5 + 15px);
 		flex-direction: column;
 		align-items: flex-start;
@@ -76,7 +76,7 @@
 }
 
 @include breakpoint(XXS) {
-	#page-title-wrapper {
+	#page-title-wrp {
 		align-items: center;
 	}
 }

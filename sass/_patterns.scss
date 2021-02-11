@@ -9,6 +9,16 @@
 	hyphens: auto;
 }
 
+.uc {
+	text-transform: uppercase;
+}
+
+.dc {
+	text-transform: none;
+}
+
+
+
 /**
  * Links
  */
@@ -77,7 +87,7 @@ input[type="checkbox"] {
 }
 
 select,
-.toggle {
+.tog {
 	cursor: pointer;
 }
 
@@ -101,7 +111,7 @@ table.transparent {
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-	.subscription-toggle {
+	.subscription-tog {
 		background: $theme-color-green;
 		color: white;
 		cursor: pointer;

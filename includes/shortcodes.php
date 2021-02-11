@@ -292,7 +292,7 @@ function fconline_definition($atts, $content = null) {
 
 	$hidden = empty($visible) ? ' hidden' : '';
 
-	$output .= '<dt class="toggle" id="definition-toggle">' . $heading . '</dt>';
+	$output .= '<dt class="tog" id="definition-tog">' . $heading . '</dt>';
 	$output .= '<dd class="wrapper justify' . $hidden . '" id="definition-wrapper">' . $content . '</dd>';
 
 	return do_shortcode($output);

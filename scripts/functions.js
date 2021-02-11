@@ -267,7 +267,7 @@ function initPhotoSwipeFromDOM(gallerySelector) {
 	 */
 	function toggleWrapperVisibility(event) {
 		var that = $(this);
-		var wrapperId = '#' + (event.target.id).replace('toggle', 'wrapper');
+		var wrapperId = '#' + (event.target.id).replace('tog', 'wrp');
 		var wrapper = that.nextInDOM(wrapperId);
 
 		that.toggleClass('active');
@@ -384,7 +384,7 @@ function initPhotoSwipeFromDOM(gallerySelector) {
 		}
 
 		var clickEvent = 'click.fconline';
-		$('.toggle').on(clickEvent, toggleWrapperVisibility);
+		$('.tog').on(clickEvent, toggleWrapperVisibility);
 		_window.on(clickEvent, hideNavigation);
 		_window.on('swiperight', hideNavigation);
 

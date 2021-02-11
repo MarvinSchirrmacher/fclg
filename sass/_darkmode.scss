@@ -41,7 +41,7 @@
         input[type="button"],
         input[type="reset"],
         input[type="submit"],
-        .subscription-toggle {
+        .subscription-tog {
             background: darken($theme-color-green, 10%);
             color: $theme-color;
             &:hover, &:focus, &:active, &.active {

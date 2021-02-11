@@ -1,11 +1,3 @@
-#srch-tog,
-#login-btn {
-	border-radius: 50%;
-	display: block;
-	font-weight: bold;
-	line-height: 1rem;
-}
-
 #login-btn,
 #srch-tog,
 #srch-wrp {
@@ -103,7 +95,8 @@ body.logged-in #login-btn {
 	#srch-tog {
 		display: none;
 	}
-	#srch-wrp #s{
+	#login-btn,
+	#srch-wrp #s {
 		border-radius: 3px;
 	}
 	#srch-wrp {
@@ -113,11 +106,9 @@ body.logged-in #login-btn {
 			height: auto;
 			padding: 7px 10px;
 		}
-		&.hidden {
-			#s {
-				opacity: 1;
-				width: 100%;
-			}
+		&.hidden #s {
+			opacity: 1;
+			width: 100%;
 		}
 	}
 	#login-btn {
