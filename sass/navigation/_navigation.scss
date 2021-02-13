@@ -39,9 +39,6 @@ $nav_toggle_top: 20px;
 	&.active {
 		@include icon-content($icon-cross);
 	}
-	@include breakpoint(M) {
-		display: block;
-	}
 }
 
 #top-lnk {
@@ -56,31 +53,11 @@ $nav_toggle_top: 20px;
 	}
 }
 
-/* Navigation menu */
-
 #nav-wrp {
 	background-color: lighten(black, 30%);
 	box-shadow: $primary-box-shadow;
 	&, &.hidden {
 		display: block;
-	}
-	@include breakpoint(M) {
-		height: 100%;
-		overflow: auto;
-		overflow-y: scroll;
-		-webkit-overflow-scrolling: touch;
-		position: fixed;
-			right: 0;
-			top: 0;
-		width: $site-navigation-width;
-		z-index: 100;
-		box-shadow: none;
-		&.hidden {
-			right: -$site-navigation-width;
-		}
-		&:before {
-			display: none;
-		}
 	}
 }
 
@@ -113,32 +90,14 @@ $admin-bar-height-medium: 46px;
 	padding: 0px 20px;
 	text-align: center;
 	@include flexbox();
-	@include breakpoint(M) {
-		padding: 0;
-		text-align: left;
-	}
 
 	li {
+		position: relative;
 		&:hover,
 		&.current-menu-item,
 		&.current-menu-ancestor,
 		&.current-page-ancestor {
 			background-color: $menu-item-hover-color;
-		}
-		&.current-menu-ancestor,
-		&.current-page-ancestor {
-			@include breakpoint(M) {
-				> .sub-tog {
-					display: none;
-				}
-				> .sub-menu {
-					display: block !important;
-				}
-			}
-		}
-		position: relative;
-		@include breakpoint(M) {
-			width: 100%;
 		}
 	}
 	a, .sub-tog {
@@ -168,9 +127,6 @@ $admin-bar-height-medium: 46px;
 	&:hover {
 		background-color: $menu-item-hover-color;
 	}
-	@include breakpoint(M) {
-		display: block;
-	}
 }
 
 #nav-menu .sub-menu {
@@ -192,24 +148,6 @@ $admin-bar-height-medium: 46px;
 	> li:not(:first-child) {
 		border-top: $menu-item-border;
 	}
-	@include breakpoint(M) {
-		background-color: none;
-		margin-left: 10px;
-		position: relative;
-		top: 0;
-		width: calc(100% - 10px);
-		z-index: 100;
-		border-radius: 0px;
-		box-shadow: none;
-		opacity: 1;
-		transform: translateY(0px);
-		&.hidden:not(.current-menu-ancestor):not(.current-page-ancestor) {
-			display: none;
-		}
-		> li:first-child {
-			border-top: $menu-item-border;
-		}
-	}
 }
 
 #nav-menu > li {
@@ -220,16 +158,6 @@ $admin-bar-height-medium: 46px;
 	}
 	> .sub-menu {
 		font-size: 0.875rem;
-	}
-	@include breakpoint(M) {
-		width: 100%;
-		border: none;
-		border-bottom: $menu-item-border;
-		box-shadow: none;
-		&:hover {
-			background-color: $menu-item-hover-color;
-			box-shadow: none;
-		}
 	}
 }
 
@@ -303,7 +231,86 @@ $admin-bar-height-medium: 46px;
 	#nav-wrp .inside {
 		@include flexbox();
 	}
+	#nav-tog {
+		display: block;
+	}
+	#nav-wrp {
+		height: 100%;
+		overflow: auto;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		position: fixed;
+			right: 0;
+			top: 0;
+		width: $site-navigation-width;
+		z-index: 100;
+		box-shadow: none;
+		&.hidden { right: -$site-navigation-width; }
+		&:before { display: none; }
+	}
 	#nav-menu {
 		width: 100%;
+		padding: 0;
+		text-align: left;
+		li {
+			width: 100%;
+			&.current-menu-ancestor,
+			&.current-page-ancestor {
+				> .sub-tog { display: none; }
+				> .sub-menu { display: block !important; }
+			}
+		}
+	}
+	#nav-menu > li {
+		width: 100%;
+		border: none;
+		border-bottom: $menu-item-border;
+		box-shadow: none;
+		&:hover {
+			background-color: $menu-item-hover-color;
+			box-shadow: none;
+		}
+	}
+	#nav-menu > li {
+		> a {
+			padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
+			> span {
+				display: none;
+				opacity: 0.5;
+				transform: scale(1);
+			}
+		}
+		&[id^="menu-item-"] > a {
+			&:before { margin-right: 0.6em; }
+		}
+		&:hover,
+		&.current-menu-item,
+		&.current-menu-ancestor,
+		&.current-page-ancestor {
+			> a {
+				padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
+			}
+		}
+	}
+	#nav-menu .sub-tog {
+		display: block;
+	}
+	#nav-menu .sub-menu {
+		background-color: none;
+		margin-left: 10px;
+		position: relative;
+		top: 0;
+		width: calc(100% - 10px);
+		z-index: 100;
+		border-radius: 0px;
+		box-shadow: none;
+		opacity: 1;
+		transform: translateY(0px);
+		&.hidden:not(.current-menu-ancestor):not(.current-page-ancestor) {
+			display: none;
+		}
+		> li:first-child {
+			border-top: $menu-item-border;
+		}
 	}
 }
