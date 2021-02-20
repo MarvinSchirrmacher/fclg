@@ -1,6 +1,6 @@
 $pie-size: 200px;
 
-.pie-wrp {
+.pie-wrapper {
   @include size($pie-size, $pie-size);
   position: relative;
 

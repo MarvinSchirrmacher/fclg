@@ -14,7 +14,7 @@
     &.active {
         padding-left: 10px;
         @include icon-content($icon-chevron-up);
-        &, & + #block-wrp {
+        &, & + #block-wrapper {
             border-width: 5px;
         }
     }

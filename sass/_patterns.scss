@@ -1,6 +1,6 @@
 @import "_toggle.scss";
 
-.flexbox {
+.flex {
 	@include flexbox();
 }
 
@@ -17,7 +17,47 @@
 	text-transform: none;
 }
 
+.round {
+	border-radius: 50%;
+	display: block;
+	font-weight: bold;
+	line-height: 1rem;
+}
 
+.icn::before {
+	font-family: 'theme-icons';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	content: "";
+}
+
+.icn-aft::after {
+	font-family: 'theme-icons';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	content: "";
+}
+
+.rel {
+	position: relative;
+}
+
+.grey {
+	background: lighten(black, 30%);
+	color: white;
+}
+
+.shadow {
+	box-shadow: 0 0 10px rgba(black, 0.25);
+}
 
 /**
  * Links
@@ -319,8 +359,12 @@ img,
 	display: block;
 }
 
-.padded {
-	padding: $primary-padding;
+.pad {
+	padding: 25px;
+}
+
+.thn-pad {
+	padding: 5px;
 }
 
 .unpadded {

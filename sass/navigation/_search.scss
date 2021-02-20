@@ -1,4 +1,4 @@
-#login-btn,
+#login,
 #srch-tog,
 #srch-wrp {
 	top: -106px;
@@ -8,7 +8,7 @@
 $search-color: darken(white, 30%);
 $search-border: darken(white, 20%);
 $search-bg: darken(white, 5%);
-#login-btn,
+#login,
 #srch-tog {
 	background: $search-bg;
 	border: solid 1px $search-border;
@@ -26,12 +26,12 @@ $search-bg: darken(white, 5%);
 	}
 }
 
-#login-btn {
+#login {
 	right: 20px;
 	@include icon($icon-user, false);
 }
 
-body.logged-in #login-btn {
+body.logged-in #login {
 	&:before {
 		margin-left: 1px;
 		margin-right: -1px;
@@ -87,7 +87,7 @@ body.logged-in #login-btn {
 }
 
 @include breakpoint(M) {
-	#login-btn,
+	#login,
 	#srch-tog,
 	#srch-wrp {
 		position: static;
@@ -95,12 +95,12 @@ body.logged-in #login-btn {
 	#srch-tog {
 		display: none;
 	}
-	#login-btn,
+	#login,
 	#srch-wrp #s {
-		border-radius: 3px;
+		border-radius: 5px;
 	}
 	#srch-wrp {
-		padding: 3px;
+		padding: 5px;
 		width: calc(100% - 1.5rem - 15px);
 		#s {
 			height: auto;
@@ -111,8 +111,9 @@ body.logged-in #login-btn {
 			width: 100%;
 		}
 	}
-	#login-btn {
-		margin: 3px 3px 3px 0px;
-		width: calc(1.5rem + 12px);
+	#login {
+		border: none;
+		margin: 5px 5px 5px 0;
+		width: calc(1.5rem + 9px);
 	}
 }

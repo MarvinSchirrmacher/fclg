@@ -14,11 +14,11 @@
 <a name="top"></a>
 
 <body <?php body_class(); ?>>
-	<a href="#top" id="top-lnk" class="hidden rnd-btn"></a>
+	<a href="#top" id="top-lnk" class="round shadow hidden"></a>
 	<section id="page">
 		<header id="page-header" role="banner">
 			<div id="top-strip" class="strip">
-				<div id="page-title-wrp" class="inside">
+				<div id="page-title-wrapper" class="inside">
 					<?php include get_template_directory() . "/images/title.svg"; ?>
 					<?php include get_template_directory() . "/images/claim.svg"; ?>
 				</div>

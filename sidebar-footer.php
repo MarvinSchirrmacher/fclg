@@ -5,7 +5,7 @@ if ( ! is_active_sidebar( $sidebar_id ) ) {
 }
 ?>
 
-<div id="footer-sidebar" class="strip widget-area">
+<div id="footer-sidebar" class="widget-area grey shadow">
 	<aside class="inside">
 		<?php dynamic_sidebar( $sidebar_id ); ?>
 	</aside>
