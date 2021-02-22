@@ -139,10 +139,6 @@ $nav-toggle-top: 20px;
 	}
 }
 
-.logged-in #nav-menu > li:nth-child(8) > a {
-	@include icon-content($icon-clipboard);
-}
-
 @include breakpoint-mf(M) {
 	#nav-tog {
 		display: none;
