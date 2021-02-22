@@ -36,17 +36,15 @@ $nav-toggle-top: 20px;
 
 #nav-tog {
 	top: $nav-toggle-top;
-	@include icon($icon-menu, false);
-	&.active {
-		@include icon-content($icon-cross);
-	}
+	&.icn::before { content: $icon-menu; }
+	&.active.icn::before { content: $icon-cross; }
 }
 
 #top-lnk {
 	bottom: 20px;
 	opacity: 1;
-	@include icon($icon-chevron-up, false);
 	transform: scale(1);
+	&.icn::before { content: $icon-chevron-up; }
 	&.hidden {
 		z-index: -1;
 		opacity: 0;

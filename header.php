@@ -14,7 +14,7 @@
 <a name="top"></a>
 
 <body <?php body_class(); ?>>
-	<a href="#top" id="top-lnk" class="round shadow hidden"></a>
+	<a href="#top" id="top-lnk" class="round shadow icn hidden"></a>
 	<section id="page">
 		<header id="page-header" role="banner">
 			<div id="top-strip" class="strip">
