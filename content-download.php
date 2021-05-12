@@ -24,7 +24,7 @@ $meta = 'data-filetype="'.$type.' / '.$size.'" title="'.$title.' ('.$version . '
 	</figcaption> -->
 </a>
 <?php else: ?>
-<a class="download-link button" <?php echo $meta; ?>>
+<a class="download-link button sub left" <?php echo $meta; ?>>
 	<?php echo $title; ?>
 </a>
 <?php endif; ?>

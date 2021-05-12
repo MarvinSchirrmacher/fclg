@@ -8,13 +8,8 @@
 }
 
 .download-link.button {
-	margin-bottom: $primary-margin * 0.5;
 	@include icon($icon-download);
-	&:after {
-		display: block;
-		font-size: 0.75em;
-		font-weight: 400;
-	}
+	margin-bottom: $primary-margin * 0.5;
 	&[data-filetype]:after {
 		content: attr(data-filetype);
 	}

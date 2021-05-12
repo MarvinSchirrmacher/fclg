@@ -189,6 +189,16 @@ table.transparent {
 			text-align: left;
 			@include icon($icon-link);
 		}
+		&.sub {
+			&:after {
+				display: block;
+				font-size: 0.75em;
+				font-weight: 400;
+			}
+			&.left:after { text-align: left; }
+			&.right:after { text-align: right; }
+			&.italic:after { font-style: italic; }
+		}
 	}
 }
 
