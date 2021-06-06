@@ -65,9 +65,8 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-title, .sitemap-table {
 	margin-top: 0;
 	> a {
-		color: $theme-color;
 		&:hover {
-			color: darken($theme-color-green, 10%);
+			color: $theme-color-green;
 		}
 	}
 }
@@ -76,7 +75,9 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-meta,
 .comment-metadata {
 	span {
-		color: lighten($theme-color, 50%);
+		&, a {
+			color: lighten($theme-color, 50%);
+		}
 		font-size: 0.875em;
 		text-transform: uppercase;
 	}
@@ -144,12 +145,16 @@ table {
 	}
 }
 
-.read-more {
+.read-more, .more-link {
+	color: darken($theme-color-green, 10%);
 	display: block;
 	font-size: 0.875rem;
 	margin-top: $primary-text-tag-margin;
 	text-align: center;
 	text-transform: uppercase;
+	&:hover {
+		color: $theme-color-green;
+	}
 }
 
 .format-standard .post-content {
@@ -167,6 +172,18 @@ table {
 
 .post-meta [class*="grid-"] {
 	margin-bottom: $primary-margin;
+}
+
+.post {
+	p, ol, ul {
+		a:not(.button):not(.read-more):not(.more-link) {
+			text-decoration: underline;
+			text-decoration-color: $theme-color-green;
+			&:hover {
+				color: $theme-color-green;
+			}
+		}
+	}
 }
 
 /**

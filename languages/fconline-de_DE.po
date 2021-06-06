@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de_DE\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: forum.php:28
@@ -196,6 +196,10 @@ msgstr "Kommentare"
 #: home.php:4
 msgid "Articles"
 msgstr "Artikel"
+
+#: post.php
+msgid "Continue reading"
+msgstr "Weiterlesen"
 
 #: search.php:5
 msgid "Search results"

@@ -25,7 +25,7 @@
 		</span>
 
 		<?php
-			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'fconline' ) );
+			the_content( __( 'Continue reading', 'fconline' ) );
 			wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'fconline' ) . '</span>',
 				'after'       => '</div>',

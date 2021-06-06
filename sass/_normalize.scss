@@ -78,14 +78,13 @@ body {
 }
 
 a {
-	color: $theme-color-green;
+	color: $theme-color;
 	text-decoration: none;
 	&:focus {
 		outline: 0;
 	}
 	&:hover, &:active {
 		outline: 0;
-		color: darken($theme-color-green, 10%);
 	}
 }
 

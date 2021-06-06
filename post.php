@@ -56,13 +56,15 @@ $is_sponsor = $post_type == 'sponsor';
 
 	<?php if ($is_singular): ?>
 	<div class="post-content">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'fconline' ) );
+		<?php the_content( __( 'Continue reading', 'fconline' ) );
 		wp_link_pages( array(
 			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'fconline' ) . '</span>',
 			'after'       => '</div>',
 			'link_before' => '<span>',
 			'link_after'  => '</span>'
-		) ); ?>
+		) );
+		
+		wp_link_pages(); ?>
 	</div>
 	<?php if ($is_sponsor): ?>
 	<footer class="sponsor-meta grid">
