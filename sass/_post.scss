@@ -174,8 +174,8 @@ table {
 	margin-bottom: $primary-margin;
 }
 
-.post {
-	p, ol, ul {
+.post-content {
+	p, ol, ul, label {
 		a:not(.button):not(.read-more):not(.more-link) {
 			text-decoration: underline;
 			text-decoration-color: $theme-color-green;
