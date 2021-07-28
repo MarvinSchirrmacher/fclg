@@ -32,6 +32,7 @@ function fconline_dequeue_plugin_styles() {
 		'bbp-default', 'connections-user', 'cn-public', 'cn-chosen',
 		'contact-form-7', 'dlm-frontend',
 		'basecss', // eu-cookie-law
+		'events-manager',
 		'validate-engine-css',
 		'woocommerce-general', 'woocommerce-layout', 'woocommerce-gzd-layout', 'woocommerce-smallscreen',
 		'yarppWidgetCss'
