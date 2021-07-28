@@ -1,0 +1,134 @@
+input:not([type="file"]),
+select,
+textarea {
+	border: 1px solid darken(white, 30%) !important;
+	border-radius: 0;
+	&:not([type="radio"]):not([type="checkbox"]) {
+		-webkit-appearance: none;
+	}
+	&:focus, &:active {
+		border-color: darken(white, 40%) !important;
+		outline: 0;
+	}
+	&:disabled {
+		cursor: default;
+	}
+	&::-webkit-input-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder,
+	&:-moz-placeholder,
+	&::placeholder {
+		color: darken(white, 30%) !important;
+	}
+}
+
+input:not([type="file"]):not([type="radio"]):not([type="checkbox"]),
+select,
+select > option,
+textarea {
+	padding: 7px 10px;
+}
+
+.gm-style button {
+	border-radius: 0;
+}
+
+input[type="date"] {
+	min-height: calc(1.25rem + 14px);
+}
+
+textarea {
+	width: 100%;
+}
+
+input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+select,
+.tog {
+	cursor: pointer;
+}
+
+.box {
+	button:not([draggable="false"]),
+	.button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+	.subscription-tog {
+		&, &:active, &.active {
+			background: darken($theme-color-green, 5%);
+		}
+		color: white;
+		cursor: pointer;
+		display: block;
+		margin: 0 auto;
+		padding: 6px 12px;
+		&:not([data-meta]):not(.download-link) {
+			line-height: $primary-line-height * 1.1;
+			font-weight: $primary-font-weight + 300;
+			text-align: center;
+		}
+		&:hover, &:focus {
+			&:not(:disabled) {
+				background: $theme-color-green;
+			}
+		}
+		&:disabled {
+			background: darken(white, 20%);
+			color: white;
+			cursor: inherit;
+		}
+	}
+	
+	.button {
+		&:after {
+			display: block;
+			font-size: 0.75em;
+			font-weight: 400;
+		}
+		&[data-meta]:after {
+			content: attr(data-meta);
+		}
+		&.link-button {
+			font-weight: normal;
+			text-align: left;
+			@include icon($icon-link);
+		}
+		&.sub {
+			&:after {
+				display: block;
+				font-size: 0.75em;
+				font-weight: 400;
+			}
+			&.left:after { text-align: left; }
+			&.right:after { text-align: right; }
+			&.italic:after { font-style: italic; }
+		}
+	}
+}
+
+@include darkmode() {
+	input[type="text"],
+	select,
+	textarea {
+		background: transparent;
+	}
+
+	input:not([type="file"]),
+	select,
+	textarea {
+		border-color: lighten(black, 40%) !important;
+		&:focus, &:active {
+			border-color: lighten(black, 50%) !important;
+		}
+		&::-webkit-input-placeholder,
+		&::-moz-placeholder,
+		&:-ms-input-placeholder,
+		&:-moz-placeholder,
+		&::placeholder {
+			color: lighten(black, 40%) !important;
+		}
+	}
+}

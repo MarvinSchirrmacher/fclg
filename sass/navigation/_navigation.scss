@@ -2,7 +2,6 @@ $site-navigation-width: 220px;
 $menu-item-color: lighten($theme-color, 10%);
 $menu-item-color-active: $theme-color;
 $menu-item-border: solid 1px lighten($theme-color, 5%);
-$menu-item-hover-color: rgba($theme-color, 0.5);
 
 @mixin nav-icons() {
 	&[id^="menu-item-"] > a {
@@ -15,8 +14,6 @@ $menu-item-hover-color: rgba($theme-color, 0.5);
 
 #nav-tog,
 #top-lnk {
-	background: $menu-item-color;
-	color: white;
 	font-size: 1.75rem;
 	padding: 10px;
 	position: fixed;
@@ -72,7 +69,6 @@ $nav-toggle-top: 20px;
 }
 
 #nav-menu {
-	color: white;
 	font-family: $theme-font-header;
 	font-size: 1rem;
 	li {
@@ -91,7 +87,7 @@ $nav-toggle-top: 20px;
 		display: block;
 	}
 	a {
-		padding: ($primary-padding * 0.4) ($primary-padding * 0.6);
+		padding: ($padding * 0.4) ($padding * 0.6);
 	}
 }
 
@@ -109,8 +105,7 @@ $nav-toggle-top: 20px;
 }
 
 #nav-menu ul {
-	background: $menu-item-color;
-	border-left: solid 10px $menu-item-color-active;
+	background: $menu-item-color-active;
 	overflow: hidden;
 	word-wrap: break-word;
 	&.hidden:not(.current-menu-ancestor):not(.current-page-ancestor) {
@@ -120,16 +115,22 @@ $nav-toggle-top: 20px;
 
 #nav-menu > li {
 	&:hover {
-		background-color: $menu-item-hover-color;
+		background-color: $menu-item-color-active;
 	}
 	> ul {
 		font-size: 0.875rem;
 	}
 }
 
+#nav-menu > li > ul > li {
+	&:hover {
+		background-color: $menu-item-color;
+	}
+}
+
 #nav-menu > li {
 	> a {
-		padding: ($primary-padding * 0.4) ($primary-padding * 0.8);
+		padding: ($padding * 0.4) ($padding * 0.8);
 		> span { display: none; }
 	}
 	&[id^="menu-item-"] > a {
@@ -137,7 +138,7 @@ $nav-toggle-top: 20px;
 	}
 }
 
-@include breakpoint-mf(M) {
+@media (min-width: 72rem) and (max-width: 123.75rem) {
 	#nav-tog {
 		display: none;
 	}
@@ -160,7 +161,7 @@ $nav-toggle-top: 20px;
 		border-left: 0;
 		width: 100%;
 		&, &.hidden {
-			display: block !important;
+			display: flex !important;
 		}
 	}
 	#nav-menu > li > ul {
@@ -217,10 +218,18 @@ $nav-toggle-top: 20px;
 		}
 	}
 	#nav-menu > li > ul {
-		border: solid thick $menu-item-color-active;
+		border: solid thin $menu-item-color-active;
 		border-top: none;
 	}
 }
+
+// @include breakpoint-mf(L) {
+// 	#nav-wrp {
+// 		float: left;
+// 		height: 100%;
+// 		width: $site-navigation-width;
+// 	}
+// }
 
 @media(hover: hover) and (pointer: fine) {
 	#nav-menu li:hover {

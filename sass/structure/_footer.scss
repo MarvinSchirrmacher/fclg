@@ -1,0 +1,79 @@
+#page-footer {
+	margin-top: 30px;
+}
+
+#footer-sidebar {
+	overflow: hidden;
+	margin-top: 30px;
+	&, a {
+		color: white;
+	}
+	a:hover, a:active {
+		border-color: white;
+	}
+	@include breakpoint(L) {
+		margin-top: 20px;
+	}
+	> .inside {
+		@include flexbox();
+	}
+	.widget {
+		padding: 20px;
+		width: 20%;
+		@include breakpoint(M) { width: 25%; }
+		@include breakpoint(S) { width: 50%; }
+		@include breakpoint(XXS) { width: 100%; }
+		&:hover {
+			background: rgba($theme-color, 0.2);
+		}
+	}
+	.textwidget {
+		font-size: 1.0rem;
+		h5 {
+			margin: 0 0 10px;
+		}
+		p {
+			margin: 0 0 10px;
+		}
+		& + & {
+			float: left;
+			width: 100%;
+			@include breakpoint(S) { width: 50%; }
+			@include breakpoint(XS) { width: 100%; }
+		}
+	}
+}
+
+$footer-logo-width: 190px;
+#site-info {
+	margin-top: 30px;
+	@include breakpoint(S) {
+		margin-top: 15px;
+	}
+	> .inside {
+		padding: 10px ($padding * 0.8);
+		span {
+			display: block;
+			max-width: calc(100% - #{$footer-logo-width} + #{$padding});
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+			z-index: 2;
+			width: $footer-logo-width;
+			height: 200px;
+			background: url(images/footballer_190px.png) no-repeat center center;
+			background-size: 190px 200px;
+			@include pixel-ratio(1.5) {
+				background: url(images/footballer_284px.png) no-repeat center center;
+				background-size: 190px 200px;
+			}
+			@include pixel-ratio(2) {
+				background: url(images/footballer_379px.png) no-repeat center center;
+				background-size: 190px 200px;
+			}
+		}
+	}
+}

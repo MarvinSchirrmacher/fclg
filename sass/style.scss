@@ -28,10 +28,10 @@ Text Domain: fconline
 @import "_functions.scss";
 @import "_normalize.scss";
 @import "_structure.scss";
-@import "navigation/_navigation.scss";
-@import "navigation/_search.scss";
-@import "navigation/_menu.scss";
+@import "structure/*.scss";
+@import "navigation/*.scss";
 @import "_patterns.scss";
+@import "_input.scss";
 @import "_list.scss";
 @import "_post.scss";
 @import "_comment.scss";
