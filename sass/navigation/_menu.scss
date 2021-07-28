@@ -14,7 +14,7 @@
 	> p, a {
 		display: block;
 		height: 100%;
-		padding: 0.2em $primary-padding;
+		padding: 0.2em $padding;
 		text-align: center;
 		font-weight: bold;
 	}
@@ -33,13 +33,13 @@
 .paging-nav {
 	margin: 0;
 	overflow: hidden;
-	padding: 0 ($primary-padding * 0.8);
+	padding: 0 ($padding * 0.8);
 	text-align: center;
 	> li {
 		display: inline-block;
 		> a {
 			color: $theme-color;
-			padding: 0.2em ($primary-padding * 0.2);
+			padding: 0.2em ($padding * 0.2);
 			display: inline-block;
 		}
 		&.active, &.current-cat {

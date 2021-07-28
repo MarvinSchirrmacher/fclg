@@ -4,7 +4,7 @@
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<div class="module posts">
+		<div class="box posts">
 			<?php get_template_part( 'post', get_post_format() ); ?>
 		</div>
 

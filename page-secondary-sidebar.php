@@ -3,7 +3,7 @@
 
 <section id="content" class="grid-3-4" role="main">
 
-	<div class="module unpadded">
+	<div class="box">
 	<?php
 		// Start the Loop.
 		while ( have_posts() ) : the_post();

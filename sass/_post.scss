@@ -33,7 +33,7 @@ a.post-thumbnail, a > .post-thumbnail {
 		width: 100%;
 		height: 100%;
 		content: '';
-		box-shadow: inset 0px 0px 0px 0px rgba(white, 0.5);
+		box-shadow: inset 0px 0px 0px 0px rgba(white, 0.75);
 		transition: all 0.3s ease-out 0.0s;
 	}
 	&:hover {
@@ -52,7 +52,7 @@ a.post-thumbnail, a > .post-thumbnail {
 }
 
 .post-header {
-	padding-top: $primary-padding;
+	padding-top: $padding;
 	font-family: $theme-font-header;
 }
 
@@ -109,7 +109,7 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-content,
 .post-summary,
 .sitemap {
-	padding-bottom: $primary-padding;
+	padding-bottom: $padding;
 	p {
 		@include hyphenation();
 		text-align: justify;
@@ -159,7 +159,7 @@ table {
 
 .format-standard .post-content {
 	@include columns(2);
-	@include column-gap($primary-padding);
+	@include column-gap($padding);
 	@include breakpoint(XS) {
 		@include columns(1);
 	}

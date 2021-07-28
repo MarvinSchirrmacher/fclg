@@ -27,13 +27,14 @@ class FcOnline {
 		$nav_menu = wp_nav_menu(array(
 			'theme_location'  => $menu_slug,
 			'container'       => 'div',
-			'container_class' => 'wrp grey shadow hidden',
+			'container_class' => 'wrp grey shaded hidden',
 			'container_id'    => 'nav-wrp',
-			'menu_class'      => 'menu uc flex',
+			'menu_class'      => 'menu grey uc flex',
 			'menu_id'         => 'nav-menu',
 			'echo'            => false,
 			'fallback_cb'     => 'wp_page_menu',
 			'items_wrap'      => '<div class="inside flex rel"><nav id="%1$s" class="%2$s">%3$s</nav></div>',
+			'add_li_class'    => 'shaded-hover',
 			'depth'           => 0
 		));
 
@@ -45,7 +46,7 @@ class FcOnline {
 		
 		$nav_menu_pattern = '/<nav /';
 		$nav_menu = preg_replace($nav_menu_pattern, $pre_nav_menu.'<nav ', $nav_menu);
-		$nav_menu_toggle = '<div id="nav-tog" class="tog icn round shadow"></div>';
+		$nav_menu_toggle = '<div id="nav-tog" class="tog icn round grey shaded"></div>';
 		$body_overlay = '<div id="overlay"></div>';
 
 		return $nav_menu_toggle.$nav_menu.$body_overlay;

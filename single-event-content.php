@@ -1,5 +1,5 @@
 <section class="grid-1-1">
-	<div class="module unpadded">
+	<div class="box">
 
 		<article id="post-#_EVENTPOSTID" class="post event">
 

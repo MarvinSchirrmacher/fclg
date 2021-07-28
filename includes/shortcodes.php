@@ -28,7 +28,7 @@ function fconline_module_shortcode($atts, $content = null) {
 	if (isset($id))
 		$output .= ' id="'.$id.'"';
 
-	$output .= ' class="module';
+	$output .= ' class="box';
 	if (isset($class))
 		$output .= ' '.$class;
 	$output .= '"';

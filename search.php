@@ -2,7 +2,7 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="module" data-heading="<?php _e('Search results', 'fconline');?>">
+	<div class="box" data-heading="<?php _e('Search results', 'fconline');?>">
 
 		<header class="sitemap-header">
 			<h1 class="sitemap-header-title">
@@ -30,7 +30,7 @@
 
 	</div>
 
-	<div class="module menu-mod">
+	<div class="box menu-mod">
 		<?php FcOnlineModules::pageNavigation();?>
 	</div>
 

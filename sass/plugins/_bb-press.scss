@@ -39,16 +39,16 @@
 	overflow: hidden;
 	font-weight: normal;
 	line-height: 1;
-	padding: ($primary-padding * 0.2) ($primary-padding * 0.4);
+	padding: ($padding * 0.2) ($padding * 0.4);
 	@include border-radius(0 $font-size $font-size 0);
 	&:not(.bbp-breadcrumb-home) {
-		padding-left: $primary-padding * 0.6 !important;
+		padding-left: $padding * 0.6 !important;
 	}
 }
 
 [class^="bbp-breadcrumb-"] {
 	background: lighten(black, 30%);
-	margin-right: $primary-padding * -0.4;
+	margin-right: $padding * -0.4;
 }
 
 a[class^="bbp-breadcrumb-"] {
@@ -88,7 +88,7 @@ a[class^="bbp-breadcrumb-"] {
 
 #subscription-toggle {
 	z-index: 5;
-	margin-bottom: $primary-padding;
+	margin-bottom: $padding;
 }
 
 .bbp-forums,

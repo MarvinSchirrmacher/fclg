@@ -9,6 +9,10 @@
 	hyphens: auto;
 }
 
+.padded {
+	padding: 25px;
+}
+
 .uc {
 	text-transform: uppercase;
 }
@@ -55,9 +59,29 @@
 	color: white;
 }
 
-.shadow {
-	box-shadow: 0 0 10px rgba(black, 0.25);
+.green {
+	color: darken($theme-color-green, 10%);
 }
+
+a.green:hover {
+	color: $theme-color-green;
+}
+
+.white {
+	background: white;
+	fill: white;
+	color: lighten(black, 20%);
+}
+
+.shaded { box-shadow: $shadow; }
+.shaded-inside { box-shadow: inset $shadow; }
+.shaded.shaded-inside { box-shadow: $shadow, inset $shadow; }
+.shaded-before:before { box-shadow: $shadow; }
+.shaded-hover:hover { box-shadow: $shadow; }
+.small-shaded { box-shadow: $small-shadow; }
+.small-shaded-inside { box-shadow: inset $small-shadow; }
+.small-shaded-before:before { box-shadow: $small-shadow; }
+.small-shaded-hover:hover { box-shadow: $small-shadow; }
 
 /**
  * Links

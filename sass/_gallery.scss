@@ -62,10 +62,10 @@ $column-gap: 20px;
 }
 
 .of-above-average-width {
-	margin-left: -$primary-padding;
-	width: calc(100% + #{$primary-padding} * 2);
-	max-width: calc(100% + #{$primary-padding} * 2) !important;
+	margin-left: -$padding;
+	width: calc(100% + #{$padding} * 2);
+	max-width: calc(100% + #{$padding} * 2) !important;
 	&:last-child {
-		margin-bottom: -$primary-padding;
+		margin-bottom: -$padding;
 	}
 }

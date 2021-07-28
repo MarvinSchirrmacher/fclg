@@ -3,7 +3,7 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="module widget_em_calendar" data-heading="<?php _e( 'Calendar', 'fconline' ); ?>">
+	<div class="box widget_em_calendar" data-heading="<?php _e( 'Calendar', 'fconline' ); ?>">
 		<?php if (class_exists('EM_Calendar')) {
 			echo EM_Calendar::output( array(
 				'long_events' => 1,
@@ -14,7 +14,7 @@
 	</div>
 
 	<section class="grid-1-2">
-		<div class="module widget_em_widget" data-heading="<?php _e( 'Events', 'fconline' ); ?>">
+		<div class="box widget_em_widget" data-heading="<?php _e( 'Events', 'fconline' ); ?>">
 			<?php if (class_exists('EM_Events')) {
 				echo do_shortcode(EM_Events::output(array(
 					'limit' => 5
@@ -24,7 +24,7 @@
 	</section>
 
 	<section class="grid-1-2">
-		<div class="module widget_em_widget" data-heading="<?php _e( 'Locations', 'fconline' ); ?>">
+		<div class="box widget_em_widget" data-heading="<?php _e( 'Locations', 'fconline' ); ?>">
 			<?php if (class_exists('EM_Locations')) {
 				echo do_shortcode(EM_Locations::output( array(
 					'scope' => future,

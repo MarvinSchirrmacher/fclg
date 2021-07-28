@@ -2,11 +2,11 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="module menu-mod">
+	<div class="box menu-mod">
 		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
 
-	<div class="module sitemap">
+	<div class="box sitemap">
 		<header class="sitemap-header">
 			<h1 class="sitemap-header-title"><?php //_e('Category', 'fconline'); ?><?php single_cat_title(); ?></h1>
 		</header>
@@ -33,11 +33,11 @@
 		</table>
 	</div>
 
-	<div class="module menu-mod">
+	<div class="box menu-mod">
 		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
 
-	<div class="module menu-mod widget widget_categories">
+	<div class="box menu-mod widget widget_categories">
 		<ul>
 			<?php wp_list_categories( array(
 				'hierarchical' => false,

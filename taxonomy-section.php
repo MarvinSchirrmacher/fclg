@@ -2,7 +2,7 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="module unpadded" data-heading="Section">
+	<div class="box" data-heading="Section">
 	<?php
 		// Start the Loop.
 		while ( have_posts() ) : the_post();

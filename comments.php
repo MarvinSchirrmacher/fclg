@@ -1,4 +1,4 @@
-<div id="comments" class="comments-area module" data-heading="<?php _e( 'Comments', 'fconline'); ?>">
+<div id="comments" class="comments-area box" data-heading="<?php _e( 'Comments', 'fconline'); ?>">
 
 	<?php if ( have_comments() ) : ?>
 	<ol class="comment-list">

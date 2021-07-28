@@ -4,7 +4,7 @@
 	
 	<?php while ( have_posts() ) : the_post(); ?>
 
-	<div class="module unpadded">
+	<div class="box">
 		<?php get_template_part( 'post' ); ?>
 	</div>
 

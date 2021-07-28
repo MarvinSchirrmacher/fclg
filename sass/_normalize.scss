@@ -197,7 +197,7 @@ blockquote {
 	font-weight: $primary-font-weight - 100;
 	line-height: $primary-line-height * 0.85;
 	margin-bottom: 20px;
-	padding: ($primary-padding * 0.4) 0;
+	padding: ($padding * 0.4) 0;
 	cite, small {
 		display: block;
 		font-size: 0.75rem;

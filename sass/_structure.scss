@@ -28,296 +28,18 @@
 	> br { display: none !important; }
 }
 
-/**
- * Header
- */
-
-.strip {
-	color: white;
-	background-color: lighten(black, 30%);
-	box-shadow: $primary-box-shadow;
-	@include three-dimensional();
-	> * { position: relative; }
-}
-
-#top-strip {
-	z-index: 9;
-	color: $theme-color;
-	padding: 15px 0px;
-	background: darken(white, 10%) !important;
-}
-
-#page-title-wrapper {
-	height: 28px;
-	padding: 0px 20px;
-	@include flexbox($align: flex-end);
-}
-
-#page-title,
-#page-claim {
-	fill: $theme-color;
-	width: 190px;
-}
-
-#page-claim {
-	margin-left: 15px;
-}
-
-@include breakpoint(S) {
-	#page-title-wrapper {
-		height: (28px * 1.5 + 15px);
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	#page-claim {
-		margin-top: 15px;
-		margin-left: 0;
-	}
-}
-
-@include breakpoint(XXS) {
-	#page-title-wrapper {
-		align-items: center;
-	}
-}
-
-#middle-strip {
-	z-index: 8;
-	height: 35px;
-	background: lighten($tertiary-color, 2.5%) !important;
-	@include breakpoint(XS) {
-		height: 70px;
-	}
-}
-#bottom-strip {
-	z-index: 7;
-	height: 25px;
-	background: lighten($theme-color-green, 2.5%) !important;
-	@include breakpoint(XS) {
-		height: 50px;
-	}
-}
-
-$logo-diameter: 140px;
-$logo-radius: 70px;
-$logo-border: 5px;
-#site-logo {
-	z-index: 20;
-	display: block;
-	width: $logo-diameter;
-	height: $logo-diameter;
-	background: lighten($tertiary-color, 0%);
-	border: solid $logo-border $background-color;
-	margin: -$logo-diameter + 10px auto -10px;
-	overflow: hidden;
-	position: relative;
-	border-radius: $logo-radius;
-	box-shadow: $primary-box-shadow, inset $primary-box-shadow;
-	@include breakpoint(XS) {
-		margin-top: -130px;
-		margin-bottom: -10px;
-	}
-	&:before, &:after, & span {
-		position: absolute;
-		left: -$logo-border;
-		top: -$logo-border;
-		display: block;
-		width: calc(100% + 2 * #{$logo-border});
-		height: calc(100% + 2 * #{$logo-border});
-		overflow: hidden;
-		box-sizing: border;
-		border-radius: $logo-radius;
-	}
-	&:before, &:after {
-		content: "";
-	}
-	/* Coat of arms */
-	&:before {
-		z-index: 21;
-		background-image: url("images/coat-of-arms.svg");
-		background-position: 50% 57%;
-		background-size: 65% 65%;
-		background-repeat: no-repeat;
-		opacity: 1;
-		transition: all 0.3s ease-out 0.0s;
-	}
-	/* Home icon */
-	span {
-		z-index: 22;
-		@include icon($icon-home, false);
-		opacity: 0;
-		transform: scale(1.25);
-		&:before {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			margin-left: -0.5em;
-			margin-top: -0.525em;
-			color: white;
-			font-size: 85px;
-			text-shadow: 0 0 5px rgba(black, 0.75);
-		}
-	}
-	/* Background circle */
-	&:after {
-		z-index: 23;
-		@include background(
-			radial-gradient(
-				50% 10%, circle 30%,
-				rgba(255, 255, 255, 0.4)   0%,
-				rgba(255, 255, 255, 0.0) 100%),
-			radial-gradient(
-				50% -20%, circle 100%,
-				rgba(255, 255, 255, 0.0)    0%,
-				rgba(255, 255, 255, 0.0)   50%,
-				rgba(  0,   0,   0, 0.15) 100%)
-		);
-	}
-	&:hover {
-		&:before {
-			opacity: 0;
-			transition: all 0.1s ease-in 0.0s;
-		}
-		span {
-			opacity: 1;
-			transform: scale(1);
-		}
-	}
-}
-
-/**
- * Footer
- */
-
-#page-footer {
-	margin-top: 30px;
-}
-
-#footer-sidebar {
-	overflow: hidden;
-	margin-top: 30px;
-	&, a {
-		color: white;
-	}
-	a:hover, a:active {
-		border-color: white;
-	}
-	@include breakpoint(L) {
-		margin-top: 20px;
-	}
-	> .inside {
-		@include flexbox();
-	}
-	.widget {
-		padding: 20px;
-		width: 20%;
-		@include breakpoint(M) { width: 25%; }
-		@include breakpoint(S) { width: 50%; }
-		@include breakpoint(XXS) { width: 100%; }
-		&:hover {
-			background: rgba($theme-color, 0.2);
-		}
-	}
-	.textwidget {
-		font-size: 1.0rem;
-		h5 {
-			margin: 0 0 10px;
-		}
-		p {
-			margin: 0 0 10px;
-		}
-		& + & {
-			float: left;
-			width: 100%;
-			@include breakpoint(S) { width: 50%; }
-			@include breakpoint(XS) { width: 100%; }
-		}
-	}
-}
-
-$footer-logo-width: 190px;
-#site-info {
-	margin-top: 30px;
-	@include breakpoint(S) {
-		margin-top: 15px;
-	}
-	> .inside {
-		padding: 10px ($primary-padding * 0.8);
-		span {
-			display: block;
-			max-width: calc(100% - #{$footer-logo-width} + #{$primary-padding});
-		}
-		&:after {
-			content: "";
-			position: absolute;
-			right: 0px;
-			bottom: 0px;
-			z-index: 2;
-			width: $footer-logo-width;
-			height: 200px;
-			background: url(images/footballer_190px.png) no-repeat center center;
-			background-size: 190px 200px;
-			@include pixel-ratio(1.5) {
-				background: url(images/footballer_284px.png) no-repeat center center;
-				background-size: 190px 200px;
-			}
-			@include pixel-ratio(2) {
-				background: url(images/footballer_379px.png) no-repeat center center;
-				background-size: 190px 200px;
-			}
-		}
-	}
-}
-
-/**
- * Module
- */
-
 $module-title-height: 1.9rem;
-.module {
+.box {
 	background: white;
 	margin-bottom: 30px !important;
 	overflow: hidden;
-	padding: $primary-padding;
 	position: relative;
-	box-shadow: $secondary-box-shadow;
-	&[data-heading]:not([data-heading=""]) {
-		padding-top: calc(#{$module-title-height} + #{$primary-padding});
-		&:before {
-			background: lighten(black, 30%);
-			color: white;
-			content: attr(data-heading);
-			font-family: $theme-font-header;
-			font-size: 0.9rem;
-			left: 0;
-			line-height: 1;
-			padding: 0.5rem $primary-padding;
-			position: absolute;
-			text-transform: uppercase;
-			top: 0;
-			width: 100%;
-			z-index: 1;
-			box-shadow: $secondary-box-shadow;
-		}
+	box-shadow: $shadow;
+	&[data-heading] {
+		padding-top: $module-title-height;
+		&.padded {
+			padding-top: calc(#{$module-title-height} + #{$padding});
 	}
-	&.unpadded,
-	&.menu-mod,
-	&.image-module,
-	&.map-module,
-	&.posts,
-	&.teams,
-	&.connections-module,
-	&.widget_post_preview,
-	&.widget_sp_image,
-	&.widget_em_widget,
-	&.widget_categories,
-	&.widget_archive,
-	&.widget_em_calendar,
-	&.customMetaWidget {
-		padding: 0;
-		&[data-heading]:not([data-heading=""]) {
-			padding-top: $module-title-height;
-		}
 	}
 	p {
 		text-align: justify;
@@ -335,6 +57,34 @@ $module-title-height: 1.9rem;
 	}
 	> *::last-child {
 		margin-bottom: 0;
+	}
+}
+
+.box:before {
+			background: lighten(black, 30%);
+			color: white;
+			content: attr(data-heading);
+			font-family: $theme-font-header;
+			font-size: 0.9rem;
+			left: 0;
+			line-height: 1;
+	padding: 0.5rem $padding;
+			position: absolute;
+			text-transform: uppercase;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+	}
+
+.box {
+	p, ol, ul, label, tbody {
+		a:not(.button):not(.read-more):not(.more-link) {
+			text-decoration: underline;
+			text-decoration-color: $theme-color-green;
+			&:hover {
+				color: $theme-color-green;
+	}
+	}
 	}
 }
 
@@ -375,12 +125,12 @@ $module-title-height: 1.9rem;
 	}
 }
 
-.module > .grid {
+.box .grid {
 	margin-left: -25px;
 	margin-right: -25px;
 }
 
-.module .grid {
+.box.unpadded .grid {
 	padding-right: 0px !important;
 	padding-left: 25px !important;
 	align-items: stretch;
@@ -406,7 +156,7 @@ $module-title-height: 1.9rem;
 .grid-8-9 { width: (100% * 8/9); }
 .grid-1-1 {	width: (100% * 1/1); }
 
-.module {
+.box {
 	.alignleft {
 		padding-right: 25px;
 	}

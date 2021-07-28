@@ -1,4 +1,4 @@
-$cn-card-padding: $primary-padding * 0.08;
+$cn-card-padding: $padding * 0.08;
 
 .cn-template {
 	overflow: hidden;
@@ -55,7 +55,7 @@ $cn-card-padding: $primary-padding * 0.08;
 		display: block;
 	}
 	.cn-card-data {
-		padding: $primary-padding * 0.4;
+		padding: $padding * 0.4;
 		> span {
 			&,
 			&[class*="-block"] > span {

@@ -1,4 +1,4 @@
-<div class="module" data-heading="<?php _e('Related', 'fconline'); ?>">
+<div class="box" data-heading="<?php _e('Related', 'fconline'); ?>">
 	<div class="columns gallery-columns-3 related-posts">
 	<?php
 		// Start the Loop.
