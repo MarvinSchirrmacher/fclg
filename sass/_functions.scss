@@ -173,3 +173,9 @@
 	from { @include transform(rotate(0deg)); }
 	to   { @include transform(rotate(360deg)); }
 }
+
+@mixin darkmode() {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}

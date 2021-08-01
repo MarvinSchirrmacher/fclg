@@ -183,3 +183,23 @@
         min-width: 10px;
     }
 }
+
+@include darkmode() {
+    .quform-page-progress-tab {
+        &.quform-current-tab {
+            & ~ .quform-page-progress-tab {
+                &::before {
+                    background: lighten(black, 15%);
+                    border-color: lighten(black, 50%);
+                }
+                &::after {
+                    background: lighten(black, 50%);
+                }
+            }
+        }
+    }
+
+    .quform-required {
+        color: lighten(red, 25%) !important;
+    }
+}

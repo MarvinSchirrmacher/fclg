@@ -274,3 +274,14 @@ table {
 		}
 	}
 }
+
+@include darkmode() {
+	a.post-thumbnail, a > .post-thumbnail {
+		&:before {
+			box-shadow: inset 0px 0px 0px 0px rgba(black, 0.5);
+		}
+		&:hover:before {
+			box-shadow: inset 0px 0px 0px 10px rgba(black, 0.5);
+		}
+	}
+}

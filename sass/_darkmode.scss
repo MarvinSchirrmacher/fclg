@@ -7,132 +7,34 @@
     button,
     input,
     select,
-    textarea {
-        color: $background-color;
-    }
-
-    input[type="text"],
-    textarea {
-        background: lighten(black, 20%);
+    textarea,
+    a {
+        color: darken(white, 10%);
     }
 
     table,
     th,
     td {
-        border-color: lighten(black, 10%);
+        border-color: lighten(black, 30%);
     }
 
     th {
         background: lighten(black, 10%);
     }
 
-    .module {
-        background: lighten(black, 10%);
-
-        &[data-heading]:not([data-heading=""]) {
-            &:before {
-                background: lighten(black, 5%);
-                color: white;
-            }
-        }
-
-        button:not([draggable="false"]),
-        .button,
-        input[type="button"],
-        input[type="reset"],
-        input[type="submit"],
-        .subscription-tog {
-            background: darken($theme-color-green, 10%);
-            color: $theme-color;
-            &:hover, &:focus, &:active, &.active {
-                &:not(:disabled) {
-                    background: darken($theme-color-green, 15%);
-                }
-            }
-        }
-    }
-
     .post-title, .sitemap-table {
         > a {
-            color: $background-color;
+            color: darken(white, 10%);
         }
-    }
-
-    input:not([type="file"]),
-    select,
-    textarea {
-        border-color: lighten(black, 20%);
-        &:focus, &:active {
-            border-color: lighten(black, 30%);
-        }
-        &::-webkit-input-placeholder,
-        &::-moz-placeholder,
-        &:-ms-input-placeholder,
-        &:-moz-placeholder,
-        &::placeholder {
-            color: lighten(black, 20%);;
-        }
-    }
-
-    .strip {
-        background-color: lighten(black, 20%);
-    }
-
-    #top-strip {
-        background: lighten(black, 20%) !important;
-    }
-
-    #middle-strip {
-        background: darken($tertiary-color, 15%) !important;
-    }
-
-    #bottom-strip {
-        background: darken($theme-color-green, 15%) !important;
-    }
-
-    #page-title,
-    #page-claim {
-        fill: $background-color;
-    }
-
-    #site-logo {
-        background: darken($tertiary-color, 30%);
-	    border-color: lighten(black, 30%);
-    }
-
-    #nav-wrp {
-        background-color: lighten(black, 20%);
     }
 
     .cn-card {
         a {
-            color: $background-color;
+            color: darken(white, 10%);
             &:hover {
                 color: darken($theme-color-green, 10%);
             }
         }
-    }
-
-    .em-calendar {
-        tr.first,
-        .days-names {
-            background: lighten(black, 10%) !important;
-        }
-        .days {
-            color: $background-color !important;
-            > td {
-                &[class*="pre"], &[class*="post"] {
-                    color: lighten(black, 30%) !important;
-                    a {
-                        color: lighten(black, 30%) !important;
-                    }
-                }
-            }
-        }
-    }
-
-    .em-loading {
-        background: lighten(black, 5%) !important;
     }
 
     #pea_cook_btn {

@@ -29,7 +29,7 @@ $pie-size: 200px;
     top: $pie-size * 0.1;
     background: lighten($theme-color, 10%);
     border-radius: 50%;
-    box-shadow: $secondary-box-shadow;
+    // box-shadow: $secondary-box-shadow;
     color: lighten($theme-color, 80%);
     font-size: 3rem;
     font-weight: bold;
