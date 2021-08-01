@@ -174,18 +174,6 @@ table {
 	margin-bottom: $primary-margin;
 }
 
-.post-content {
-	p, ol, ul, label {
-		a:not(.button):not(.read-more):not(.more-link) {
-			text-decoration: underline;
-			text-decoration-color: $theme-color-green;
-			&:hover {
-				color: $theme-color-green;
-			}
-		}
-	}
-}
-
 /**
  * Tags
  */
@@ -259,9 +247,6 @@ table {
 	}
 	.post-thumbnail {
 		margin-bottom: 0;
-		&:before {
-			box-shadow: inset 0px 0px 0px 0px rgba(white, 0.75);
-		}
 		&:not(:empty) {
 			position: static;
 			& + .post-meta {
@@ -280,12 +265,6 @@ table {
 		}
 	}
 	&:hover {
-		.post-thumbnail {
-			&:before {
-				box-shadow: inset 0px 0px 0px 10px rgba(white, 0.75);
-				transition: all 0.1s ease-in 0.0s;
-			}
-		}
 		.post-thumbnail:not(:empty) + .post-meta {
 			background: rgba(white, 0.9);
 			border-color: rgba(white, 0);
