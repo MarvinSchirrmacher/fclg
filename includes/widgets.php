@@ -25,7 +25,7 @@ function fconline_widgets_init() {
 		'name'          => __('Footer Sidebar', 'fconline'),
 		'id'            => 'footer',
 		'description'   => __('Appears in the footer section of the website.', 'fconline'),
-		'before_widget' => '<div id="%1$s" class="box widget %2$s">',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h6 class="widget-title">',
 		'after_title'   => '</h6>',
