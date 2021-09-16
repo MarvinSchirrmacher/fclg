@@ -6,7 +6,7 @@
 		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
 
-	<div class="box sitemap">
+	<div class="box padded sitemap">
 		<table class="sitemap-table">
 			<tbody>
 			<?php

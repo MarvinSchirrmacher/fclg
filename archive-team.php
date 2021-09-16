@@ -2,7 +2,7 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="box teams" data-heading="<?php _e( 'Teams', 'fconline' ) ?>">
+	<div class="box padded teams" data-heading="<?php _e( 'Teams', 'fconline' ) ?>">
 	<?php
 	if ( have_posts() ) :
 		// Start the Loop.
