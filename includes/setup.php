@@ -7,6 +7,7 @@ function fconline_setup() {
 		'primary'   => __('Header menu', 'fconline')
 	));
 
+	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
 	add_theme_support('html5', array(
 		'search-form', 'comment-form', 'comment-list',
@@ -17,6 +18,7 @@ function fconline_setup() {
 	add_theme_support('custom-background', apply_filters('fconline_custom_background_args', array(
 		'default-color' => '4d4d4d',
 	)));
+	add_theme_support('wp-block-styles');
 
 	add_theme_support('connections');
 	add_theme_support('events-manager');
