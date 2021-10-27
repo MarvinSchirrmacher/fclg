@@ -30,7 +30,7 @@
 
 <?php if ($has_widget) : ?>
 	<section class="grid-2-3">
-		<div class="box menu-mod" data-heading="<?php _e( 'Competition', 'fconline' ); ?>">
+		<div class="box menu" data-heading="<?php _e( 'Competition', 'fconline' ); ?>">
 			<?php Team::echoFussballdeWidget(); ?>
 		</div>
 	</section>

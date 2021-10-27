@@ -2,7 +2,7 @@
 
 <section id="content" class="grid-3-4 group" role="main">
 
-	<div class="box menu-mod" data-heading="<?php _e('Archive', 'fconline'); ?>">
+	<div class="box menu" data-heading="<?php _e('Archive', 'fconline'); ?>">
 		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
 
@@ -30,7 +30,7 @@
 		</table>
 	</div>
 
-	<div class="box menu-mod">
+	<div class="box menu">
 		<?php FcOnlineModules::pageNavigation(); ?>
 	</div>
 

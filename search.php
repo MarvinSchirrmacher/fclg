@@ -30,7 +30,7 @@
 
 	</div>
 
-	<div class="box menu-mod">
+	<div class="box menu">
 		<?php FcOnlineModules::pageNavigation();?>
 	</div>
 

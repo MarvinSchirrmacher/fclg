@@ -7,7 +7,7 @@
 	}
 }
 
-.menu-mod,
+.box.menu,
 .widget_categories,
 .widget_archive {
 	background: darken(white, 10%);
@@ -17,6 +17,7 @@
 		padding: 0.2em $padding;
 		text-align: center;
 		font-weight: bold;
+		text-decoration: none;
 	}
 	a {
 		&:hover {
@@ -27,7 +28,7 @@
 	}
 }
 
-.menu-mod > ul,
+.box.menu > ul,
 .widget_categories > ul,
 .widget_archive > ul,
 .paging-nav {
