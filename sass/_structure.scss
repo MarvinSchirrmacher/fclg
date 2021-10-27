@@ -60,7 +60,7 @@ $module-title-height: 1.9rem;
 	}
 }
 
-.box:before {
+.box[data-heading]:before {
 	background: lighten(black, 30%);
 	color: white;
 	content: attr(data-heading);
