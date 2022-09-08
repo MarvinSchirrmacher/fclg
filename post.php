@@ -67,19 +67,21 @@ $is_sponsor = $post_type == 'sponsor';
 		wp_link_pages(); ?>
 	</div>
 	<?php if ($is_sponsor): ?>
-	<footer class="sponsor-meta grid">
-		<div class="grid-1-1"><?php Sponsor::echoSponsorGallery(); ?></div>
-		<div class="grid-1-1"><hr /></div>
-		<div class="grid-1-3">
-			<?php Sponsor::echoSponsorMeta(); ?>
-		</div>
-		<div class="grid-2-3">
-			<?php Sponsor::echoContactForm(); ?>
-		</div>
-		<div class="grid-1-1">
-			<?php Sponsor::echoSponsorLocationMap(); ?>
-			<?php Sponsor::echoSponsorAdvertisingMedia(); ?>
-		</div>
+	<footer class="sponsor-meta">
+		<section class="grid">
+			<div class="grid-1-1"><?php Sponsor::echoSponsorGallery(); ?></div>
+			<hr/>
+			<div class="grid-1-3">
+				<?php Sponsor::echoSponsorMeta(); ?>
+			</div>
+			<div class="grid-2-3">
+				<?php Sponsor::echoContactForm(); ?>
+			</div>
+			<div class="grid-1-1">
+				<?php Sponsor::echoSponsorLocationMap(); ?>
+				<?php Sponsor::echoSponsorAdvertisingMedia(); ?>
+			</div>
+		</section>
 	</footer>
 	<?php Sponsor::echoFooterImage('of-above-average-width'); ?>
 	<?php else: ?>
