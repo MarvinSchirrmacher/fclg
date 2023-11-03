@@ -1,7 +1,7 @@
 {
-  "name": "my-new-project",
+  "name": "fc-loehne-gohfeld",
   "authors": [
-    "John Doe <john@doe.com> (http://johndoe.com)"
+    "Marvin Schirrmacher <marvin.schirrmacher@icloud.com> (http://fclg.de)"
   ],
   "description": "CodeKit automatically generated this file. You should customize it according to: https://github.com/bower/spec/blob/master/json.md",
   "main": [
@@ -19,10 +19,10 @@
     "none"
   ],
   "license": "MIT",
-  "homepage": "https://google.com",
+  "homepage": "https://fclg.de",
   "repository": {
     "type": "git",
-    "url": "git://github.com/foo/bar.git"
+    "url": "git@github.com:MarvinSchirrmacher/fclg.git"
   },
   "ignore": [
     "**/.*",
@@ -33,7 +33,9 @@
   ],
   "private": true,
   "dependencies": {
-    "photoswipe": "^4.1.2",
-    "underscore-amd": "^1.5.2"
-  }
+    "photoswipe": "^5.4.2",
+    "underscore-amd": "^1.13.6"
+  },
+  "strict-ssl": false,
+  "https-proxy": ""
 }

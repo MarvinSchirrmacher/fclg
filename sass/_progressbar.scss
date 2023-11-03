@@ -5,7 +5,7 @@ $pie-size: 200px;
   position: relative;
 
   .pie {
-    clip: rect(0, $pie-size, $pie-size, $pie-size / 2);
+    clip: rect(0, $pie-size, $pie-size, calc($pie-size / 2));
 
     &, .half-circle {
       @include size(100%, 100%);
@@ -15,9 +15,9 @@ $pie-size: 200px;
     }
 
     .half-circle {
-      border: ($pie-size / 10) solid $theme-color-green;
+      border: calc($pie-size / 10) solid $theme-color-green;
       border-radius: 50%;
-      clip: rect(0, $pie-size / 2, $pie-size, 0);
+      clip: rect(0, calc($pie-size / 2), $pie-size, 0);
     }
   }
 

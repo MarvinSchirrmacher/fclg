@@ -1,3 +1,3 @@
 <?php
-require_once FCO_THEME_DIR . '/admin/settings.php';
+require_once THEME_DIR . '/admin/settings.php';
 ?>

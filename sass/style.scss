@@ -11,11 +11,6 @@ Tags:        grid-layout, two-columns, right-sidebar, custom-background, custom-
 Text Domain: fconline
 */
 
-/* Compass */
-
-@import "compass/css3";
-@import "compass/utilities/general/clearfix";
-
 /* Bower */
 
 @import "../bower_components/photoswipe/src/css/main.scss";
@@ -28,8 +23,11 @@ Text Domain: fconline
 @import "_functions.scss";
 @import "_normalize.scss";
 @import "_structure.scss";
-@import "structure/*.scss";
-@import "navigation/*.scss";
+@import "structure/_footer.scss";
+@import "structure/_header.scss";
+@import "navigation/_menu.scss";
+@import "navigation/_navigation.scss";
+@import "navigation/_search.scss";
 @import "_patterns.scss";
 @import "_input.scss";
 @import "_list.scss";

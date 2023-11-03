@@ -6,13 +6,13 @@ function fco_initialize_settings() {
     );
     add_settings_section(
         FcOnlineSettings::$section,
-        __('FC Online', FCO_THEME_TEXTDOMAIN),
+        __('FC Online', THEME_TEXTDOMAIN),
         'FcOnlineSettings::echoSectionHeader',
         FcOnlineSettings::$page
     );
     add_settings_field(
         'fco_login_redirect_url',
-        __('Loging redirect url', FCO_THEME_TEXTDOMAIN),
+        __('Loging redirect url', THEME_TEXTDOMAIN),
         'FcOnlineSettings::echoLoginRedirectUrlField',
         FcOnlineSettings::$page,
         FcOnlineSettings::$section

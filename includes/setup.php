@@ -39,7 +39,7 @@ function fconline_dequeue_plugin_styles() {
 		'woocommerce-general', 'woocommerce-layout', 'woocommerce-gzd-layout', 'woocommerce-smallscreen',
 		'yarppWidgetCss'
 	);
-	
+
 	foreach ($plugin_slugs as $slug) {
 		wp_dequeue_style($slug);
 		wp_deregister_style($slug);
@@ -55,7 +55,7 @@ function fconline_enqueue_styles($template_directory_uri) {
 	wp_enqueue_style('theme-font',
 		$theme_font_url, array(), null);
 	wp_enqueue_style('fconline',
-		get_stylesheet_uri(), array('theme-font'), FCO_VERSION);
+		get_stylesheet_uri(), array('theme-font'), THEME_VERSION);
 	wp_enqueue_style('photoswipe',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe.css', array(), '4.1.2');
 	wp_enqueue_style('photoswipe-skin',
@@ -81,7 +81,7 @@ function fconline_enqueue_scripts($template_directory_uri) {
 	wp_enqueue_script('photoswipe-ui',
 		$template_directory_uri . '/bower_components/photoswipe/dist/photoswipe-ui-default.min.js', array(), '4.1.2', true);
 	wp_enqueue_script('fconline-script',
-		$template_directory_uri . '/scripts/functions-min.js', array('jquery', 'underscore', 'photoswipe'), FCO_VERSION, true);
+		$template_directory_uri . '/scripts/functions-min.js', array('jquery', 'underscore', 'photoswipe'), THEME_VERSION, true);
 	wp_enqueue_script('fussballde-script',
 		$template_directory_uri . '/scripts/fussballde-min.js', array(), null, false);
 	// wp_enqueue_script('systemjs',
@@ -94,7 +94,7 @@ function fconline_enqueue_scripts($template_directory_uri) {
 
 /**
 * Enqueues all neccessary styles and scripts for the theme.
-* Dequeues some default plugin styles which collidate with theme style entries. 
+* Dequeues some default plugin styles which collidate with theme style entries.
 */
 function fconline_scripts() {
 	$template_directory_uri = get_template_directory_uri();

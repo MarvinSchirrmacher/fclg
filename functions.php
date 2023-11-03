@@ -1,9 +1,9 @@
 <?php
-define( 'FCO_VERSION', '2.10.12' );
-define( 'FCO_REQUIRED_WP_VERSION', '5.0' );
-define( 'FCO_THEME', __FILE__ );
-define( 'FCO_THEME_DIR', untrailingslashit( dirname( FCO_THEME ) ) );
-define( 'FCO_THEME_TEXTDOMAIN', 'fconline' );
+define( 'THEME_VERSION', '2.11.12' );
+define( 'THEME_REQUIRED_WP_VERSION', '5.0' );
+define( 'THEME', __FILE__ );
+define( 'THEME_DIR', untrailingslashit( dirname( THEME ) ) );
+define( 'THEME_TEXTDOMAIN', 'fconline' );
 
 // the order matters
 $paths = array(
@@ -17,10 +17,10 @@ $paths = array(
 );
 
 foreach ($paths as $path) {
-    require_once FCO_THEME_DIR . $path;
+    require_once THEME_DIR . $path;
 }
 
 if (is_admin()) {
-	require_once FCO_THEME_DIR . '/admin/admin.php';
+	require_once THEME_DIR . '/admin/admin.php';
 }
 ?>

@@ -12,7 +12,7 @@
 .wpcf7-form.grid {
 	margin-left: -25px;
 	margin-right: -50px;
-	
+
 	input[type=text],
 	input[type=email],
 	input[type=tel],
@@ -109,7 +109,7 @@ div[data-class="wpcf7cf_group"]:not(:last-child) {
 .wpcf7-not-valid {
 	border-color: lighten($theme-color-2, 40%) !important;
 	margin-bottom: 12px;
-	@include border-radius($primary-border-radius $primary-border-radius 0 0 !important);
+	border-radius: $primary-border-radius $primary-border-radius 0 0 !important;
 	label {
 		background: lighten($theme-color-2, 40%);
 	}
@@ -138,7 +138,7 @@ input[type="file"].wpcf7-not-valid {
 		width: 100%;
 	text-transform: uppercase;
 	white-space:nowrap;
-	@include border-radius(0 0 $primary-border-radius $primary-border-radius);
+	border-radius: 0 0 $primary-border-radius $primary-border-radius;
 }
 
 .wpcf7-validation-errors {

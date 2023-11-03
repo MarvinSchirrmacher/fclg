@@ -16,7 +16,7 @@ $calendar-border-color: darken(white, 20%);
 		text-align: center;
 		vertical-align: middle;
 		border: none;
-		width: (100% / 7);
+		width: calc(100% / 7);
 	}
 	tr.first,
 	.days-names {
@@ -151,11 +151,6 @@ $td-padding: 10px;
 
 .em-location-map-container {
 	width: 100% !important; // overrides default element value
-	&, * {
-		&, &:hover {
-			@include transition(none);
-		}
-	}
 	@include breakpoint(XS) {
 		height: 400px !important;
 	}

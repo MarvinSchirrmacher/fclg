@@ -86,7 +86,7 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-meta {
 	font-family: $theme-font;
 	margin-bottom: $primary-text-tag-margin;
-	> span { 
+	> span {
 		margin-right: 8px;
 		&:before {
 			margin-right: 4px;
@@ -154,14 +154,6 @@ table {
 	text-transform: uppercase;
 	&:hover {
 		color: $theme-color-green;
-	}
-}
-
-.format-standard .post-content {
-	@include columns(2);
-	@include column-gap($padding);
-	@include breakpoint(XS) {
-		@include columns(1);
 	}
 }
 
@@ -257,7 +249,7 @@ table {
 			}
 		}
 	}
-	.post-thumbnail:not(:empty) + .post-meta { 
+	.post-thumbnail:not(:empty) + .post-meta {
 		background: rgba($theme-color, 0.75);
 		border-top: 1px solid rgba(white, 0.75);
 		span {

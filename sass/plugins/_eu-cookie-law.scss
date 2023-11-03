@@ -21,7 +21,7 @@
 
 .pea_cook_wrapper:not(.pea_cook_topcenter):not(.pea_cook_bottomcenter) {
     padding: 15px;
-    @include border-radius(15px);
+    border-radius: 15px;
     #pea_cook_btn {
         margin: 10px auto 0;
     }
