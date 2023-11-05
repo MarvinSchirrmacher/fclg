@@ -50,62 +50,64 @@ select,
 	cursor: pointer;
 }
 
-.box {
-	button:not([draggable="false"]),
-	.button,
-	input[type="button"],
-	input[type="reset"],
-	input[type="submit"],
-	.subscription-tog {
-		&, &:active, &.active {
-			background: darken($theme-color-green, 5%);
-		}
-		color: white;
-		cursor: pointer;
-		display: block;
-		margin: 0 auto;
-		padding: 6px 12px;
-		&:not([data-meta]):not(.download-link) {
-			line-height: $primary-line-height * 1.1;
-			font-weight: $primary-font-weight + 300;
-			text-align: center;
-		}
-		&:hover, &:focus {
-			&:not(:disabled) {
-				background: $theme-color-green;
-			}
-		}
-		&:disabled {
-			background: darken(white, 20%);
-			color: white;
-			cursor: inherit;
+button:not([draggable="false"]),
+.button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.subscription-tog,
+.wp-block-button__link {
+	&, &:active, &.active {
+		background: darken($theme-color-green, 5%);
+	}
+	border-radius: 0;
+	color: white;
+	cursor: pointer;
+	display: block;
+	font-size: 1.125em;
+	margin: 0 auto;
+	padding: 6px 12px;
+	&:not([data-meta]):not(.download-link) {
+		line-height: $primary-line-height * 1.1;
+		font-weight: $primary-font-weight + 300;
+		text-align: center;
+	}
+	&:hover, &:focus {
+		&:not(:disabled) {
+			background: $theme-color-green;
 		}
 	}
-	
-	.button {
+	&:disabled {
+		background: darken(white, 20%);
+		color: white;
+		cursor: inherit;
+	}
+}
+
+.button,
+.wp-block-button__link {
+	&:after {
+		display: block;
+		font-size: 0.75em;
+		font-weight: 400;
+	}
+	&[data-meta]:after {
+		content: attr(data-meta);
+	}
+	&.link-button {
+		font-weight: normal;
+		text-align: left;
+		@include icon($icon-link);
+	}
+	&.sub {
 		&:after {
 			display: block;
 			font-size: 0.75em;
 			font-weight: 400;
 		}
-		&[data-meta]:after {
-			content: attr(data-meta);
-		}
-		&.link-button {
-			font-weight: normal;
-			text-align: left;
-			@include icon($icon-link);
-		}
-		&.sub {
-			&:after {
-				display: block;
-				font-size: 0.75em;
-				font-weight: 400;
-			}
-			&.left:after { text-align: left; }
-			&.right:after { text-align: right; }
-			&.italic:after { font-style: italic; }
-		}
+		&.left:after { text-align: left; }
+		&.right:after { text-align: right; }
+		&.italic:after { font-style: italic; }
 	}
 }
 
