@@ -112,7 +112,6 @@ a.post-thumbnail, a > .post-thumbnail {
 	padding-bottom: $padding;
 	p {
 		@include hyphenation();
-		text-align: justify;
 	}
 }
 
@@ -122,6 +121,10 @@ a.post-thumbnail, a > .post-thumbnail {
 	table {
 		table-layout: fixed;
 	}
+}
+
+p:not(.has-text-align-left):not(.has-text-align-right):not(.has-text-align-center) {
+	text-align: justify;
 }
 
 table {
