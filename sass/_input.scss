@@ -42,7 +42,27 @@ textarea {
 }
 
 input[type="checkbox"] {
-	margin-right: 5px;
+	display: none;
+	& + label {
+		padding-left: 0 !important; // override any default style
+		&:before {
+			background: $button-option-color;
+			content: "";
+			display: inline-block;
+			position: relative;
+			height: calc(1rem + 6px);
+			width: calc(1rem + 6px);
+			top: 4px;
+			margin-right: 8px;
+		}
+		&:hover:before {
+			background: $button-option-color-active;
+		}
+	}
+	&:active + label:before,
+	&:checked + label:before {
+		background: $button-option-color-checked;
+	}
 }
 
 select,
@@ -109,6 +129,15 @@ input[type="submit"],
 		&.right:after { text-align: right; }
 		&.italic:after { font-style: italic; }
 	}
+}
+
+.screen-reader-response {
+	display: none;
+}
+
+// it's enough to mention google recaptcha in the privacy policy
+.grecaptcha-badge {
+	display: none !important;
 }
 
 @include darkmode() {
