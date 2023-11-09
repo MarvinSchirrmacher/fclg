@@ -1,4 +1,3 @@
-#login,
 #srch-tog,
 #srch-wrp {
 	top: -106px;
@@ -8,7 +7,6 @@
 $search-color: darken(white, 30%);
 $search-border: darken(white, 20%);
 $search-bg: darken(white, 5%);
-#login,
 #srch-tog {
 	background: $search-bg;
 	border: solid 1px $search-border;
@@ -24,19 +22,6 @@ $search-bg: darken(white, 5%);
 		background: rgba($search-bg, 0);
 		border-color: transparent;
 	}
-}
-
-#login {
-	right: 20px;
-	@include icon($icon-user, false);
-}
-
-body.logged-in #login {
-	&:before {
-		margin-left: 1px;
-		margin-right: -1px;
-	}
-	@include icon-content($icon-log-out);
 }
 
 #srch-tog,
@@ -87,7 +72,6 @@ body.logged-in #login {
 }
 
 @include breakpoint(M) {
-	#login,
 	#srch-tog,
 	#srch-wrp {
 		position: static;
@@ -95,13 +79,11 @@ body.logged-in #login {
 	#srch-tog {
 		display: none;
 	}
-	#login,
 	#srch-wrp #s {
 		border-radius: 5px;
 	}
 	#srch-wrp {
 		padding: 5px;
-		width: calc(100% - 1.5rem - 15px);
 		#s {
 			height: auto;
 			padding: 7px 10px;
@@ -110,10 +92,5 @@ body.logged-in #login {
 			opacity: 1;
 			width: 100%;
 		}
-	}
-	#login {
-		border: none;
-		margin: 5px 5px 5px 0;
-		width: calc(1.5rem + 9px);
 	}
 }

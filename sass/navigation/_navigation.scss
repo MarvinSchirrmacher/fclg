@@ -13,6 +13,12 @@ $menu-item-border: solid 1px lighten($theme-color, 5%);
 }
 
 #nav-tog,
+#nav-wrp,
+#top-lnk {
+	transition: all 0.3s ease-out 0.0s;
+}
+
+#nav-tog,
 #top-lnk {
 	font-size: 1.75rem;
 	padding: 10px;
