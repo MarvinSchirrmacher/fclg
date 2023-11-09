@@ -28,7 +28,7 @@
             margin-left: -10px;
         z-index: 10;
     }
-    
+
     // edge
     &:not(:first-child)::after {
         background: $theme-color-green;
@@ -77,9 +77,6 @@
 
 .quform-options-style-button {
 
-    $button-option-color: lighten($theme-color, 20%);
-    $button-option-color-active: lighten($theme-color, 40%);
-    $button-option-color-checked: $theme-color-green;
     .quform-option-label {
         background: $button-option-color;
         border: solid 1px $button-option-color;

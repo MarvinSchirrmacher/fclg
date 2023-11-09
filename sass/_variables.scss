@@ -11,6 +11,10 @@ $theme-color-2: #bf350d;
 $theme-color-3: #0d97bf;
 $theme-color-4: #350dbf;
 
+$button-option-color: lighten($theme-color, 20%);
+$button-option-color-active: lighten($theme-color, 40%);
+$button-option-color-checked: $theme-color-green;
+
 $color-background-hover: lighten(black, 90%);
 $background_stripe: rgba(white, 0.2);
 $background-color: #f8f8ff;
