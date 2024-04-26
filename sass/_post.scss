@@ -24,7 +24,7 @@ article.hentry, article.post {
 	}
 }
 
-article .post-thumbnail img {
+article .post-thumbnail > img {
 	aspect-ratio: 16/10;
 	object-fit: cover;
 }
@@ -83,7 +83,6 @@ a.post-thumbnail, a > .post-thumbnail {
 		&, a {
 			color: lighten($theme-color, 50%);
 		}
-		font-size: 0.875em;
 		text-transform: uppercase;
 	}
 }
@@ -91,25 +90,8 @@ a.post-thumbnail, a > .post-thumbnail {
 .post-meta {
 	font-family: $theme-font;
 	margin-bottom: $primary-text-tag-margin;
-	> span {
-		margin-right: 8px;
-		&:before {
-			margin-right: 4px;
-		}
-		@include breakpoint(XXS) {
-			display: block;
-		}
-	}
+	@include flexbox($gap: 0.2rem 1rem);
 }
-
-.post-meta-category:before { content: $icon-folder; }
-.post-meta-date:before { content: $icon-calendar; }
-.post-meta-time:before { content: $icon-clock; }
-.post-meta-author:before { content: $icon-user; }
-.post-meta-comments:before { content: $icon-message; }
-.post-meta-location:before { content: $icon-location; }
-.post-meta-edit:before { content: $icon-new-message; }
-.post-meta-export:before { content: $icon-export; }
 
 .post-content,
 .post-summary,

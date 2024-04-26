@@ -35,7 +35,6 @@ $is_sponsor = $post_type == 'sponsor';
 	<?php if ($is_post) : ?>
 		<div class="post-meta">
 
-			<span class="post-meta-category"><?php echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'fconline' ) ); ?></span>
 		<?php if ( 'post' == get_post_type() ) : ?>
 			<span class="post-meta-date">
 				<time datetime="<?php esc_attr( get_the_date( 'c' ) ); ?>"><?php the_time('j. F Y'); ?></time>
@@ -46,6 +45,7 @@ $is_sponsor = $post_type == 'sponsor';
 				</span>
 			<?php endif; ?>
 		<?php endif; ?>
+		<span class="post-meta-category"><?php echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'fconline' ) ); ?></span>
 
 		<?php if ( is_user_logged_in() ) : ?>
 			<?php edit_post_link( __( 'Edit', 'fconline' ), '<span class="post-meta-edit">', '</span>' ); ?>
