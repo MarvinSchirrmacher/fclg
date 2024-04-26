@@ -55,7 +55,7 @@
 }
 
 .grey {
-	background: lighten(black, 30%);
+	background: $theme-color;
 	color: white;
 }
 
@@ -304,6 +304,6 @@ img,
 
 @include darkmode() {
 	.grey {
-		background: lighten(black, 10%);
+		background: darken($theme-color, 10%);
 	}
 }

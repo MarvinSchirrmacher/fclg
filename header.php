@@ -13,17 +13,11 @@
 <a name="top"></a>
 
 <body <?php body_class(); ?>>
-	<a href="#top" id="top-lnk" class="round grey shaded icn hidden"></a>
+	<a href="#top" id="top-lnk" aria-label="link to top" class="round grey shaded icn hidden"></a>
 	<section id="page">
 		<header id="page-header" role="banner">
-			<div id="top-strip" class="strip shaded">
-				<div id="page-title-wrapper" class="inside">
-					<?php include get_template_directory() . "/images/title.svg"; ?>
-					<?php include get_template_directory() . "/images/claim.svg"; ?>
-				</div>
-			</div>
-			<div id="middle-strip" class="strip shaded"></div>
-			<div id="bottom-strip" class="strip shaded"></div>
+			<div id="top-edging" class="edging shaded"></div>
+			<div id="bottom-edging" class="edging shaded"></div>
 			<a id="logo-wrapper" class="round" href="<?php bloginfo('url'); ?>">
 				<?php include get_template_directory() . "/images/logo.svg"; ?>
 				<span id="home" class="round"></span>

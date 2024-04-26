@@ -17,18 +17,14 @@ class FcOnline {
 		}
 
 		$search_toggle = '<div id="srch-tog" class="tog search-form-tog round"></div>';
-		$search_form = get_search_form(false);
-		$search_form = preg_replace('/<\/?p>/m', '', $search_form);
-		$search_form = preg_replace('/id="search-form"/m',
-			'id="srch-wrp" class="wrp hidden"', $search_form);
-		$pre_nav_menu = $search_toggle.$search_form;
+		$pre_nav_menu = $search_toggle;
 
 		$nav_menu = wp_nav_menu(array(
 			'theme_location'  => $menu_slug,
 			'container'       => 'div',
-			'container_class' => 'wrp grey shaded hidden',
+			'container_class' => 'wrp shaded hidden',
 			'container_id'    => 'nav-wrp',
-			'menu_class'      => 'menu grey uc flex',
+			'menu_class'      => 'menu uc flex',
 			'menu_id'         => 'nav-menu',
 			'echo'            => false,
 			'fallback_cb'     => 'wp_page_menu',

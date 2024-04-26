@@ -1,6 +1,6 @@
 $site-navigation-width: 220px;
-$menu-item-color: lighten($theme-color, 10%);
-$menu-item-color-active: $theme-color;
+$menu-item-color: $theme-color;
+$menu-item-color-active: lighten($theme-color, 10%);
 $menu-item-border: solid 1px lighten($theme-color, 5%);
 
 @mixin nav-icons() {
@@ -15,6 +15,9 @@ $menu-item-border: solid 1px lighten($theme-color, 5%);
 #nav-tog,
 #nav-wrp,
 #top-lnk {
+	background: rgba(51, 51, 51, 0.8);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 	transition: all 0.3s ease-out 0.0s;
 }
 
@@ -25,7 +28,7 @@ $menu-item-border: solid 1px lighten($theme-color, 5%);
 	position: fixed;
 	right: 10px;
 	z-index: 100;
-	&:hover { background: $theme-color; }
+	&:hover { background: rgba(51, 51, 51, 1); }
 	&.active { right: $site-navigation-width + 10px; }
 	@include breakpoint-mf(S) {
 		right: 20px;
@@ -40,7 +43,7 @@ $nav-toggle-top: 20px;
 #nav-tog {
 	top: $nav-toggle-top;
 	&.icn::before { content: $icon-menu; }
-	&.active.icn::before { content: $icon-cross; }
+	&.active.icn::before { content: $icon-chevron-right; }
 }
 
 #top-lnk {
@@ -93,7 +96,7 @@ $nav-toggle-top: 20px;
 		display: block;
 	}
 	a {
-		padding: ($padding * 0.4) ($padding * 0.6);
+		padding: ($padding * 0.4) ($padding * 0.8);
 	}
 }
 
@@ -149,6 +152,8 @@ $nav-toggle-top: 20px;
 		display: none;
 	}
 	#nav-wrp {
+		background: $theme-color;
+		backdrop-filter: none;
 		overflow: visible;
 		position: static;
 		width: auto;
@@ -189,16 +194,15 @@ $nav-toggle-top: 20px;
 			text-align: left;
 		}
 		> a {
-			padding: ($padding * 0.6) 0;
+			padding: ($padding * 0.4) 0;
 			position: relative;
 			> span {
 				position: absolute;
 				left: 0;
-				bottom: $padding * 0.4;
+				bottom: $padding * 0.2;
 				width: 100%;
 				display: block;
 				font-size: 0.7rem;
-				margin-top: -5px;
 				opacity: 0;
 				transform: scale(0.9);
 			}
@@ -215,7 +219,7 @@ $nav-toggle-top: 20px;
 		&.current-menu-ancestor,
 		&.current-page-ancestor {
 			> a {
-				padding: ( $padding * 0.32 ) 0 ( $padding * 0.88 );
+				padding: ( $padding * 0.12 ) 0 ( $padding * 0.68 );
 				span {
 					opacity: 1;
 					transform: scale(1);
@@ -228,14 +232,6 @@ $nav-toggle-top: 20px;
 		border-top: none;
 	}
 }
-
-// @include breakpoint-mf(L) {
-// 	#nav-wrp {
-// 		float: left;
-// 		height: 100%;
-// 		width: $site-navigation-width;
-// 	}
-// }
 
 @media(hover: hover) and (pointer: fine) {
 	#nav-menu li:hover {

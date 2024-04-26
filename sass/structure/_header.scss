@@ -1,84 +1,38 @@
-.strip {
+.edging {
 	color: white;
 	@include three-dimensional();
 	> * { position: relative; }
 }
 
-#top-strip {
-	z-index: 9;
-	color: $theme-color;
-	padding: 15px 0px;
-	background: darken(white, 10%) !important;
-}
+$top-edging-height: 35px;
+$bottom-edging-height: 25px;
 
-#page-title-wrapper {
-	height: 28px;
-	padding: 0px 20px;
-	@include flexbox($align: flex-end);
-}
-
-#page-title,
-#page-claim {
-	fill: $theme-color;
-	width: 190px;
-}
-
-#page-claim {
-	margin-left: 15px;
-}
-
-@include breakpoint(S) {
-	#page-title-wrapper {
-		height: (28px * 1.5 + 15px);
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	#page-claim {
-		margin-top: 15px;
-		margin-left: 0;
-	}
-}
-
-@include breakpoint(XXS) {
-	#page-title-wrapper {
-		align-items: center;
-	}
-}
-
-#middle-strip {
+#top-edging {
 	z-index: 8;
-	height: 35px;
+	height: $top-edging-height;
 	background: lighten($tertiary-color, 2.5%) !important;
-	@include breakpoint(XS) {
-		height: 70px;
-	}
 }
-#bottom-strip {
+#bottom-edging {
 	z-index: 7;
-	height: 25px;
+	height: $bottom-edging-height;
 	background: lighten($theme-color-green, 2.5%) !important;
-	@include breakpoint(XS) {
-		height: 50px;
-	}
 }
 
-$logo-diameter: 140px;
-$logo-border: 5px;
+$logo-diameter: $top-edging-height + $bottom-edging-height + 40px;
+$logo-border: 1px;
+$logo-color: $background-color;
+
 #logo-wrapper {
-	z-index: 20;
+	z-index: 10;
 	display: block;
 	width: $logo-diameter;
 	height: $logo-diameter;
 	background: $tertiary-color;
-	border: solid $logo-border $background-color;
-	margin: (-$logo-diameter + 10px) auto -10px;
+	border: solid $logo-border $logo-color;
+	margin: (-$logo-diameter + 20px) auto -20px;
 	overflow: hidden;
 	position: relative;
     box-shadow: $shadow, inset $shadow;
-	@include breakpoint(XS) {
-		margin-top: -130px;
-		margin-bottom: -10px;
-	}
 	#logo, #home, &:after {
 		position: absolute;
 		left: -$logo-border;
@@ -87,18 +41,18 @@ $logo-border: 5px;
 		width: calc(100% + 2 * #{$logo-border});
 		height: calc(100% + 2 * #{$logo-border});
 		box-sizing: border;
+		transition: all 0.3s ease-out 0.0s;
 	}
 	#logo {
-		z-index: 21;
+		z-index: 11;
 		top: 18%;
 		left: 15%;
 		width: 70%;
 		height: 70%;
 		opacity: 1;
-		transition: all 0.3s ease-out 0.0s;
 	}
 	#home {
-		z-index: 22;
+		z-index: 12;
 		@include icon($icon-home, false);
 		opacity: 0;
 		transform: scale(1.25);
@@ -109,14 +63,14 @@ $logo-border: 5px;
 			margin-left: -0.5em;
 			margin-top: -0.525em;
 			color: white;
-			font-size: 85px;
+			font-size: ($logo-diameter * 0.6);
 			text-shadow: 0 0 5px rgba(black, 0.75);
 		}
 	}
 	/* Background circle */
 	&:after {
 		content: "";
-		z-index: 23;
+		z-index: 13;
 		background:
 			radial-gradient(
 				50% 10%, circle 30%,
@@ -143,37 +97,25 @@ $logo-border: 5px;
 
 #logo {
 	#logo-text > * {
-		fill: lighten(black, 20%);
+		fill: $theme-color;
 	}
 }
 
 @include darkmode() {
-    #top-strip {
-        background: lighten(black, 15%) !important;
-    }
-
-    #middle-strip {
+    #top-edging {
         background: darken($tertiary-color, 15%) !important;
     }
 
-    #bottom-strip {
+    #bottom-edging {
         background: darken($theme-color-green, 15%) !important;
     }
 
-    #page-title,
-    #page-claim {
-        fill: darken(white, 10%);
-    }
-
     #logo-wrapper {
-        background: darken($tertiary-color, 20%);
+        background: darken($tertiary-color, 15%);
 	    border-color: darken(white, 10%);
-		#home:before {
-			color: darken(white, 10%);
-		}
     }
 
     #nav-wrp {
-        background-color: lighten(black, 15%);
+        background-color: $theme-color;
     }
 }
