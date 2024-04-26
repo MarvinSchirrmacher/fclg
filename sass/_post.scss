@@ -24,6 +24,11 @@ article.hentry, article.post {
 	}
 }
 
+article .post-thumbnail img {
+	aspect-ratio: 16/10;
+	object-fit: cover;
+}
+
 a.post-thumbnail, a > .post-thumbnail {
 	position: relative;
 	&:before {
