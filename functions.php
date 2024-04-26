@@ -1,5 +1,5 @@
 <?php
-define( 'THEME_VERSION', '2.11.14' );
+define( 'THEME_VERSION', '2.11.15' );
 define( 'THEME_REQUIRED_WP_VERSION', '5.0' );
 define( 'THEME', __FILE__ );
 define( 'THEME_DIR', untrailingslashit( dirname( THEME ) ) );
