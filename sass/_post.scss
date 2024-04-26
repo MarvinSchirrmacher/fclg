@@ -204,9 +204,12 @@ table {
 }
 
 .related-posts {
+	.post-thumbnail img {
+		filter: grayscale(1);
+	}
 	.post-summary {
-		color: lighten($theme-color, 40%);
-		font-size: 0.8rem;
+		color: lighten($theme-color, 20%);
+		font-size: 0.9rem;
 	}
 	.more-link,
 	.sharedaddy {
