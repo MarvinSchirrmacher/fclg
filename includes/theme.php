@@ -22,7 +22,7 @@ class FcOnline {
 		$nav_menu = wp_nav_menu(array(
 			'theme_location'  => $menu_slug,
 			'container'       => 'div',
-			'container_class' => 'wrp shaded hidden',
+			'container_class' => 'wrp hidden',
 			'container_id'    => 'nav-wrp',
 			'menu_class'      => 'menu uc flex',
 			'menu_id'         => 'nav-menu',

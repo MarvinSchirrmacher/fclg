@@ -59,6 +59,7 @@ $nav-toggle-top: 20px;
 }
 
 #nav-wrp {
+	box-shadow: $shadow;
 	height: 100%;
 	overflow: auto;
 	overflow-y: scroll;
@@ -69,7 +70,10 @@ $nav-toggle-top: 20px;
 	width: $site-navigation-width;
 	z-index: 100;
 	&, &.hidden { display: block; }
-	&.hidden { right: -$site-navigation-width; }
+	&.hidden {
+		right: -$site-navigation-width;
+		box-shadow: 0 0 0px rgba(black, 0.25);
+	}
 	&:before { display: none; }
 }
 
