@@ -146,9 +146,6 @@ $nav-toggle-top: 20px;
 		padding: ($padding * 0.4) ($padding * 0.8);
 		> span { display: none; }
 	}
-	&[id^="menu-item-"] > a {
-		&:before { margin-right: 0.6em; }
-	}
 }
 
 @media (min-width: 72rem) and (max-width: 123.75rem) {
@@ -163,7 +160,6 @@ $nav-toggle-top: 20px;
 		width: auto;
 	}
 	#nav-menu {
-		padding: 0px 20px;
 		li {
 			&.current-menu-ancestor,
 			&.current-page-ancestor {
