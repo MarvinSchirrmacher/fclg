@@ -21,12 +21,6 @@ $is_sponsor = $post_type == 'sponsor';
 	<?php endif; ?>
 
 	<header class="post-header">
-	<?php if ($is_singular) : ?>
-		<h1 class="post-title"><?php the_title(); ?></h1>
-	<?php else : ?>
-		<h1 class="post-title"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-	<?php endif; ?>
-
 	<?php if ($is_post) : ?>
 		<div class="post-meta">
 
@@ -46,6 +40,12 @@ $is_sponsor = $post_type == 'sponsor';
 			<?php edit_post_link( __( 'Edit', 'fconline' ), '<span class="post-meta-edit">', '</span>' ); ?>
 		<?php endif; ?>
 		</div>
+	<?php endif; ?>
+
+	<?php if ($is_singular) : ?>
+		<h1 class="post-title"><?php the_title(); ?></h1>
+	<?php else : ?>
+		<h1 class="post-title"><a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 	<?php endif; ?>
 	</header>
 
