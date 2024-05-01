@@ -21,11 +21,6 @@ $is_sponsor = $post_type == 'sponsor';
 	<?php endif; ?>
 
 	<header class="post-header">
-
-	<?php if (function_exists('the_subtitle')): $subtitle = the_subtitle('', '', false); if (!empty($subtitle)): ?>
-		<h6 class="post-subtitle"><?php the_subtitle(); ?></h6>
-	<?php endif; endif; ?>
-
 	<?php if ($is_singular) : ?>
 		<h1 class="post-title"><?php the_title(); ?></h1>
 	<?php else : ?>
