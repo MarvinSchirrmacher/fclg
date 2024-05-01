@@ -33,7 +33,7 @@ $logo-color: $background-color;
 	overflow: hidden;
 	position: relative;
     box-shadow: $shadow, inset $shadow;
-	#logo, #home, &:after {
+	#logo, &:after {
 		position: absolute;
 		left: -$logo-border;
 		top: -$logo-border;
@@ -50,22 +50,6 @@ $logo-color: $background-color;
 		width: 70%;
 		height: 70%;
 		opacity: 1;
-	}
-	#home {
-		z-index: 12;
-		@include icon($icon-home, false);
-		opacity: 0;
-		transform: scale(1.25);
-		&:before {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			margin-left: -0.5em;
-			margin-top: -0.525em;
-			color: white;
-			font-size: ($logo-diameter * 0.6);
-			text-shadow: 0 0 5px rgba(black, 0.75);
-		}
 	}
 	/* Background circle */
 	&:after {
@@ -84,14 +68,7 @@ $logo-color: $background-color;
 		;
 	}
 	&:hover {
-		#logo {
-			opacity: 0;
-			transition: all 0.1s ease-in 0.0s;
-		}
-		#home {
-			opacity: 1;
-			transform: scale(1);
-		}
+		animation: pulse-animation 2s infinite;
 	}
 }
 
