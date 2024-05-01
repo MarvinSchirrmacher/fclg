@@ -1,7 +1,7 @@
 <?php /* Template Name: Calendar */ ?> 
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4 group" role="main">
+<section id="content" class="boxes flex group inside">
 
 	<div class="box widget_em_calendar" data-heading="<?php _e( 'Calendar', 'fconline' ); ?>">
 		<?php if (class_exists('EM_Calendar')) {
@@ -13,7 +13,7 @@
 		} ?>
 	</div>
 
-	<section class="grid-1-2">
+	<section class="flex-1-2">
 		<div class="box widget_em_widget" data-heading="<?php _e( 'Events', 'fconline' ); ?>">
 			<?php if (class_exists('EM_Events')) {
 				echo do_shortcode(EM_Events::output(array(
@@ -23,7 +23,7 @@
 		</div>
 	</section>
 
-	<section class="grid-1-2">
+	<section class="flex-1-2">
 		<div class="box widget_em_widget" data-heading="<?php _e( 'Locations', 'fconline' ); ?>">
 			<?php if (class_exists('EM_Locations')) {
 				echo do_shortcode(EM_Locations::output( array(

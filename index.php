@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4" role="main">
+<section id="content" class="boxes flex group inside">
 	<div class="box">
 	<?php
 		while ( have_posts() ) : the_post();

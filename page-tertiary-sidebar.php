@@ -1,7 +1,7 @@
 <?php /* Template Name: Single page with tertiary sidebar */ ?>
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4" role="main">
+<section id="content" class="boxes group inside">
 
 	<div class="box">
 	<?php

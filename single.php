@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4 group" role="main">
+<section id="content" class="boxes flex group inside">
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<div class="box posts">
+		<div class="flex-2-3 box posts">
 			<?php get_template_part( 'post', get_post_format() ); ?>
 		</div>
 

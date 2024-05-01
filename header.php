@@ -14,14 +14,12 @@
 
 <body <?php body_class(); ?>>
 	<a href="#top" id="top-lnk" aria-label="link to top" class="round grey shaded icn hidden"></a>
-	<section id="page">
-		<header id="page-header" role="banner">
-			<div id="top-edging" class="edging shaded"></div>
-			<div id="bottom-edging" class="edging shaded"></div>
-			<a id="logo-wrapper" class="round" href="<?php bloginfo('url'); ?>">
-				<?php include get_template_directory() . "/images/logo.svg"; ?>
-				<span id="home" class="round"></span>
-			</a>
-		</header>
-		<?php echo FcOnline::assembleNavMenu('primary'); ?>
-		<section id="page-main" class="inside grid">
+	<header id="page-header" role="banner">
+		<div id="top-edging" class="edging shaded"></div>
+		<div id="bottom-edging" class="edging shaded"></div>
+		<a id="logo-wrapper" class="round" href="<?php bloginfo('url'); ?>">
+			<?php include get_template_directory() . "/images/logo.svg"; ?>
+		</a>
+	</header>
+	<?php echo FcOnline::assembleNavMenu('primary'); ?>
+	<main id="page-main">

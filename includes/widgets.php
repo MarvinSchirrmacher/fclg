@@ -8,7 +8,7 @@ function fconline_register_sidebar($name, $id, $description = null) {
 		'name'          => $name,
 		'id'            => $id,
 		'description'   => $description,
-		'before_widget' => '<div class="grid-1-1"><div id="%1$s" class="box widget %2$s"',
+		'before_widget' => '<div class="flex-1-4"><div id="%1$s" class="box widget %2$s"',
 		'after_widget'  => '</div></div>',
 		'before_title'  => ' data-heading="',
 		'after_title'   => '">',

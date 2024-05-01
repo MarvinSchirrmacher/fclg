@@ -1,7 +1,7 @@
 <?php /* Template Name: Modules template */ ?>
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4 grid" role="main">
+<section id="content" class="boxes flex group inside">
 
 	<?php
 		while ( have_posts() ) : the_post();

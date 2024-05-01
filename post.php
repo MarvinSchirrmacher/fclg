@@ -68,16 +68,16 @@ $is_sponsor = $post_type == 'sponsor';
 	</div>
 	<?php if ($is_sponsor): ?>
 	<footer class="sponsor-meta">
-		<section class="grid">
-			<div class="grid-1-1"><?php Sponsor::echoSponsorGallery(); ?></div>
+		<section class="flex">
+			<div class="flex-1-1"><?php Sponsor::echoSponsorGallery(); ?></div>
 			<hr/>
-			<div class="grid-1-3">
+			<div class="flex-1-3">
 				<?php Sponsor::echoSponsorMeta(); ?>
 			</div>
-			<div class="grid-2-3">
+			<div class="flex-2-3">
 				<?php Sponsor::echoContactForm(); ?>
 			</div>
-			<div class="grid-1-1">
+			<div class="flex-1-1">
 				<?php Sponsor::echoSponsorLocationMap(); ?>
 				<?php Sponsor::echoSponsorAdvertisingMedia(); ?>
 			</div>

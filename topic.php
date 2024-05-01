@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4 group" role="main">
+<section id="content" class="boxes group inside">
 
 	<div class="box" data-heading="<?php _e( 'Topic', 'fconline' ); ?>">
 		<?php the_content(); ?>

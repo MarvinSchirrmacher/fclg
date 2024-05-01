@@ -2,17 +2,15 @@
 <?php $has_widget = Team::hasFussballdeWidget(); ?>
 <?php $has_sponsor = Team::hasSponsor(); ?>
 
-<section id="content" class="grid-3-4 grid" role="main">
+<section id="content" class="boxes flex group inside">
 	
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<section class="grid-1-1">
-		<div class="box">
-			<?php get_template_part( 'post' ); ?>
-		</div>
-	</section>
+	<div class="box flex-2-3">
+		<?php get_template_part( 'post' ); ?>
+	</div>
 
-	<section class="<?php echo ($has_widget ? 'grid-1-3' : 'grid-2-3'); ?> ">
+	<section class="flex-1-3 boxes flex">
 		<div class="box" data-heading="<?php _e( 'Coaching Team', 'fconline' ); ?>">
 			<?php Team::echoCoachingTeam(); ?>
 		</div>
@@ -29,13 +27,13 @@
 	</section>
 
 <?php if ($has_widget) : ?>
-	<section class="grid-2-3">
+	<section class="flex-2-3">
 		<div class="box menu" data-heading="<?php _e( 'Competition', 'fconline' ); ?>">
 			<?php Team::echoFussballdeWidget(); ?>
 		</div>
 	</section>
 <?php else : ?>
-	<section class="grid-1-3">
+	<section class="flex-1-3">
 		<div class="box" data-heading="<?php _e( 'Meta', 'fconline' ); ?>">
 			<?php Team::echoTeamMeta(); ?>
 		</div>

@@ -6,7 +6,7 @@ function fconline_grid_shortcode($atts, $content = null) {
 		'width' => '1-2',
 		'group' => false
 	), $atts));
-	return '<section' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="grid-' . $width . ($group ? ' grid' : '') . '">' . do_shortcode($content) . '</section>';
+	return '<section' . ($id != '' ? ' id="' . $id . '"' : '') . ' class="flex-' . $width . ($group ? ' boxes flex' : '') . '">' . do_shortcode($content) . '</section>';
 }
 add_shortcode('grid', 'fconline_grid_shortcode');
 add_filter('grid', 'do_shortcode');
@@ -28,7 +28,7 @@ function fconline_module_shortcode($atts, $content = null) {
 	if (isset($id))
 		$output .= ' id="'.$id.'"';
 
-	$output .= ' class="box';
+	$output .= ' class="box flex-'.$width;
 	if (isset($class))
 		$output .= ' '.$class;
 	$output .= '"';
@@ -51,7 +51,7 @@ function fconline_module_shortcode($atts, $content = null) {
 		$output .= '</div></article>';
 	$output .= '</div>';
 
-	return fconline_grid_shortcode(array('width' => $width), $output);
+	return $output;
 }
 add_shortcode('module', 'fconline_module_shortcode');
 add_filter('module', 'do_shortcode');
@@ -314,7 +314,7 @@ function fconline_shop_product($atts, $content = null) {
 		'width' => '1-3'
 	), $atts));
 
-	$output = '<div class="grid-'.$width.'"><table><tbody>';
+	$output = '<div class="flex-'.$width.'"><table><tbody>';
 	if (isset($image))
 		$output .= '<tr><td>'.wp_get_attachment_image($image, $image_size).'</td></tr>';
 

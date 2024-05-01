@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section id="content" class="grid-3-4 group" role="main">
+<section id="content" class="boxes flex group inside">
 
 	<div class="box menu" data-heading="<?php _e('Archive', 'fconline'); ?>">
 		<?php FcOnlineModules::pageNavigation(); ?>

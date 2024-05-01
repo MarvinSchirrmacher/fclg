@@ -26,7 +26,7 @@
 .comment-content,
 .comment-metadata,
 .comment-body > .reply {
-	margin-left: 64px + $padding;
+	margin-left: calc(64px + $padding);
 	@include breakpoint(XXS) {
 		margin-left: 0;
 	}

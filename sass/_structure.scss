@@ -2,36 +2,44 @@
  * Page
  */
 
-#page {
-	padding-top: 20px;
-}
-
 #page-header,
 #page-main,
 #page-footer {
 	@include clearfix();
 }
 
+#page-header {
+	padding-top: 30px;
+}
+
 #page-main {
 	margin-top: 30px !important;
-	@include breakpoint(L) {
-		margin-top: 20px !important;
-	}
 }
 
 .inside {
-	margin: 0 auto !important;
-	max-width: 1920px - 180px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	max-width: 1920px;
+	& + .inside { margin-top: 2rem; }
+	@include breakpoint(L) {
+		padding: 0 1rem;
+	}
+	@include breakpoint(XS) {
+		padding: 0 0.5rem;
+	}
 }
 
 #content {
 	> br { display: none !important; }
 }
 
+/**
+ * Boxes
+ */
+
 $module-title-height: 1.9rem;
 .box {
 	background: white;
-	margin-bottom: 30px !important;
 	overflow: hidden;
 	position: relative;
 	box-shadow: $shadow;
@@ -48,12 +56,6 @@ $module-title-height: 1.9rem;
 	> h5,
 	> h6 {
 		margin-top: 0;
-	}
-	@include breakpoint(L) {
-		margin-bottom: 20px !important;
-	}
-	> *::last-child {
-		margin-bottom: 0;
 	}
 }
 
@@ -83,77 +85,6 @@ $module-title-height: 1.9rem;
 			}
 		}
 	}
-}
-
-/**
- * Grid
- */
-
-.grid {
-	padding-right: 0px;
-	padding-left: 30px;
-	@include breakpoint(L) {
-		padding-left: 20px;
-	}
-	@include breakpoint(XS) {
-		padding-left: 10px;
-	}
-	@include breakpoint(XXS) {
-		padding-left: 0px;
-	}
-	@include flexbox($width: 100%, $align: flex-start);
-	> br {
-		display: none;
-	}
-	> .grid {
-		padding-left: 0px !important;
-	}
-	&:not(.menu) > *:not(.grid) {
-		padding-right: 30px;
-		@include breakpoint(L) {
-			padding-right: 20px;
-		}
-		@include breakpoint(XS) {
-			padding-right: 10px;
-		}
-		@include breakpoint(XXS) {
-			padding-right: 0px;
-		}
-	}
-}
-
-.box .grid {
-	margin-left: -25px;
-	margin-right: -25px;
-}
-
-.box.unpadded .grid {
-	padding-right: 0px !important;
-	padding-left: 25px !important;
-	align-items: stretch;
-	> *:not(.grid) {
-		padding-right: 25px;
-		padding-bottom: 25px;
-	}
-}
-
-
-[class*="grid-"] > *:last-child {
-	margin-bottom: 0;
-}
-
-.grid-1-5 { width: calc(100% * 1/5); }
-.grid-1-4 { width: calc(100% * 1/4); }
-.grid-1-3 { width: calc(100% * 1/3); }
-.grid-1-2 { width: calc(100% * 1/2); }
-.grid-2-3 { width: calc(100% * 2/3); }
-.grid-3-4 { width: calc(100% * 3/4); }
-.grid-4-5 { width: calc(100% * 4/5); }
-.grid-5-6 { width: calc(100% * 5/6); }
-.grid-8-9 { width: calc(100% * 8/9); }
-.grid-1-1 {	width: calc(100% * 1/1); }
-
-.box {
 	.alignleft {
 		padding-right: 25px;
 	}
@@ -162,43 +93,95 @@ $module-title-height: 1.9rem;
 	}
 }
 
+.boxes {
+	&.flex {
+		gap: 2rem;
+		@include breakpoint(L) { gap: 1rem; }
+		@include breakpoint(XS) { gap: 0.5rem; }
+		&.inside {
+			padding-right: 0;
+		}
+	}
+	> br { display: none; }
+}
+
+.flex-1-5 { width: calc(100% * 1/5 - 2rem); }
+.flex-1-4 { width: calc(100% * 1/4 - 2rem); }
+.flex-1-3 { width: calc(100% * 1/3 - 2rem); }
+.flex-1-2 { width: calc(100% * 1/2 - 2rem); }
+.flex-2-3 { width: calc(100% * 2/3 - 2rem); }
+.flex-3-4 { width: calc(100% * 3/4 - 2rem); }
+.flex-4-5 { width: calc(100% * 4/5 - 2rem); }
+.flex-5-6 { width: calc(100% * 5/6 - 2rem); }
+.flex-8-9 { width: calc(100% * 8/9 - 2rem); }
+.flex-1-1 {	width: calc(100% * 1/1 - 2rem); }
+
+@include breakpoint(L) {
+	.flex-1-5 { width: calc(100% * 1/5 - 1rem); }
+	.flex-1-4 { width: calc(100% * 1/4 - 1rem); }
+	.flex-1-3 { width: calc(100% * 1/3 - 1rem); }
+	.flex-1-2 { width: calc(100% * 1/2 - 1rem); }
+	.flex-2-3 { width: calc(100% * 2/3 - 1rem); }
+	.flex-3-4 { width: calc(100% * 3/4 - 1rem); }
+	.flex-4-5 { width: calc(100% * 4/5 - 1rem); }
+	.flex-5-6 { width: calc(100% * 5/6 - 1rem); }
+	.flex-8-9 { width: calc(100% * 8/9 - 1rem); }
+	.flex-1-1 {	width: calc(100% * 1/1 - 1rem); }
+}
+
+@include breakpoint(M) {
+	.flex-5-6 { width: calc(100% * 1/1 - 1rem); }
+	.flex-8-9 { width: calc(100% * 1/1 - 1rem); }
+}
+
 @include breakpoint(S) {
-	.grid-1-4 {	width: calc(100% * 1/3); }
-	.grid-1-2 {	width: calc(100% * 2/3);
-		> .grid-1-2 { width: calc(100% * 1/2); } }
-	.grid-2-3 {
-		> .grid-1-2 { width: calc(100% * 1/2); }	}
-	.grid-3-4 {	width: calc(100% * 1/1); }
-	.sidebar.grid-1-4 {
-		width: calc(100% * 1/1);
-		> .grid-1-1 { width: calc(100% * 1/3); }
+	.flex-1-4 { width: calc(100% * 1/3 - 1rem); }
+	.flex-1-3 { width: calc(100% * 1/2 - 1rem); }
+	.flex-1-2 { width: calc(100% * 2/3 - 1rem);
+		> .flex-1-2 { width: calc(100% * 1/2 - 1rem); }
+	}
+	.flex-2-3 {
+		width: calc(100% * 1/1 - 0.5rem);
+		> .flex-1-2 { width: calc(100% * 1/2 - 1rem); }
+	}
+	.flex-3-4 { width: calc(100% * 1/1 - 1rem); }
+	.flex-4-5 { width: calc(100% * 1/1 - 1rem); }
+	.sidebar.flex-1-4 {
+		width: calc(100% * 1/1 - 1rem);
+		> .flex-1-1 { width: calc(100% * 1/3 - 1rem); }
 	}
 }
 @include breakpoint(XS) {
-	.grid-1-5 {	width: calc(100% * 1/3); }
-	.grid-1-4 {	width: calc(100% * 1/1);
-		> .grid-1-1 { width: calc(100% * 1/2); } }
-	.grid-1-3 {	width: calc(100% * 1/2); }
-	.grid-1-2 {	width: calc(100% * 1/1); }
-	.grid-2-3 {
-		~ .grid-1-3 { width: calc(100% * 1/1); } }
-	.grid-3-4 {
-		.grid-2-3 { width: calc(100% * 1/1); }
-		.grid-1-4 {	width: calc(100% * 1/2);	} }
-	.sidebar.grid-1-4 {
-		> .grid-1-1 { width: calc(100% * 1/2); } }
+	.flex-1-5 { width: calc(100% * 1/3 - 0.5rem); }
+	.flex-1-4 { width: calc(100% * 1/1 - 0.5rem);
+		> .flex-1-1 { width: calc(100% * 1/2 - 0.5rem); }
+	}
+	.flex-1-3 { width: calc(100% * 1/2 - 0.5rem); }
+	.flex-1-2 { width: calc(100% * 1/1 - 0.5rem); }
+	.flex-2-3 {
+		> .flex-1-3 { width: calc(100% * 1/2 - 0.5rem); }
+	}
+	.flex-3-4 {
+		width: calc(100% * 1/1 - 0.5rem);
+		.flex-2-3 { width: calc(100% * 1/1 - 0.5rem); }
+		.flex-1-4 { width: calc(100% * 1/2 - 0.5rem); }
+	}
+	.flex-4-5 { width: calc(100% * 1/1 - 0.5rem); }
+	.flex-5-6 { width: calc(100% * 1/1 - 0.5rem); }
+	.flex-8-9 { width: calc(100% * 1/1 - 0.5rem); }
+	.flex-1-1 {	width: calc(100% * 1/1 - 0.5rem); }
+	.sidebar.flex-1-4 {
+		> .flex-1-1 { width: calc(100% * 1/2 - 0.5rem); }
+	}
 }
 @include breakpoint(XXS) {
-	.grid-3-4.group {
-		.grid-1-4 {	width: calc(100% * 1/2) !important; } }
-	.grid-1-5 { width: calc(100% * 1/2); }
-	.grid-1-3 { width: calc(100% * 1/1); }
-	.grid {
-		padding-left: 0px !important;
+	.flex-3-4.group {
+		.flex-1-4 { width: calc(100% * 1/2 - 0.5rem) !important; }
 	}
-	[class*="grid-"] {
-		width: 100% !important;
-		padding-right: 0px;
+	.flex-1-5 { width: calc(100% * 1/2 - 0.5rem); }
+	.flex-1-3 { width: calc(100% * 1/1 - 0.5rem); }
+	[class*="flex-"] {
+		width: calc(100% - 0.5rem) !important;
 	}
 }
 
